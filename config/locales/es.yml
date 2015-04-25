@@ -20,6 +20,7 @@ es:
       - vie
       - sáb
     abbr_month_names:
+      -
       - ene
       - feb
       - mar
@@ -41,6 +42,7 @@ es:
       - viernes
       - sábado
     month_names:
+      -
       - Enero
       - Febrero
       - Marzo

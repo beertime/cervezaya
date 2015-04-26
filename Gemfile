@@ -12,7 +12,6 @@ gem 'turbolinks'
 
 gem 'slim-rails'
 gem 'jbuilder', '~> 2.0'
-gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'activeadmin', github: 'activeadmin'
 gem 'devise'
 gem 'carrierwave'
@@ -25,4 +24,3 @@ group :development, :test do
   gem 'byebug'
   gem 'spring'
 end
-

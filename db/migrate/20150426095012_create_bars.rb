@@ -4,10 +4,10 @@ class CreateBars < ActiveRecord::Migration
       t.string :name
       t.text :description
       t.string :photo
-      t.string :address
-      t.string :city
-      t.string :region
       t.string :country
+      t.string :region
+      t.string :city
+      t.string :address
       t.string :postal
       t.string :phone
       t.integer :rank

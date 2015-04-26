@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150426084726) do
+ActiveRecord::Schema.define(version: 20150426100859) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -28,6 +28,22 @@ ActiveRecord::Schema.define(version: 20150426084726) do
   add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace"
   add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id"
 
+  create_table "bars", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.string   "photo"
+    t.string   "address"
+    t.string   "city"
+    t.string   "region"
+    t.string   "country"
+    t.string   "postal"
+    t.string   "phone"
+    t.integer  "rank"
+    t.boolean  "published",   default: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
   create_table "brands", force: :cascade do |t|
     t.string   "name"
     t.string   "color"
@@ -39,11 +55,19 @@ ActiveRecord::Schema.define(version: 20150426084726) do
     t.datetime "updated_at",                   null: false
   end
 
-  create_table "products", force: :cascade do |t|
-    t.float    "price"
+  create_table "franchises", force: :cascade do |t|
+    t.string   "name"
+    t.string   "photo"
     t.boolean  "published"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.float    "price"
+    t.boolean  "published",  default: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   create_table "sizes", force: :cascade do |t|

@@ -26,6 +26,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'activeadmin', github: 'activeadmin'
 # Devise, gem to manage users
 gem 'devise'
+# This gem provides a simple and extremely flexible way to upload files
+gem 'carrierwave'
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'

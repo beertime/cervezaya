@@ -28,6 +28,7 @@ module Cervezaya
     config.generators do |g|
       g.template_engine :slim
       g.assets false
+      g.helper false
     end
   end
 end

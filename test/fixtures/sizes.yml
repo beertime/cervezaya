@@ -2,14 +2,12 @@
 
 one:
   name: MyString
-  image: MyString
-  alt_image: MyString
-  shadow_image: MyString
+  icon: 1
+  volume: 20
   published: false
 
 two:
   name: MyString
-  image: MyString
-  alt_image: MyString
-  shadow_image: MyString
+  icon: 2
+  volume: 33
   published: false

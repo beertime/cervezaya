@@ -5,8 +5,17 @@ Rails.application.routes.draw do
 
   root 'welcome#index'
 
-  namespace :api, defaults: { format: :json } do
-    resources :products, :only => [:show, :index]
+  namespace :api, constraints: { subdomain: 'api' }, path: '/', defaults: { format: :json } do
+
+    with_options only: :index do |r|
+      r.resources :types
+      r.resources :sizes
+    end
+
+    with_options only: [:show, :index] do |r|
+      r.resources :users
+    end
+
   end
 
 end

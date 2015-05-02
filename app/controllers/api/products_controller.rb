@@ -1,9 +1,9 @@
-class Api::ProductsController < ApplicationController
-  
+class API::ProductsController < ApplicationController
+
   respond_to :json
 
   def index
-    respond_with Product.all  
+    respond_with Product.all
   end
 
   def show

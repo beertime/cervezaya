@@ -7,6 +7,4 @@ class Brand < ActiveRecord::Base
   mount_uploader :alt_image, LogoUploader
   mount_uploader :shadow_image, LogoUploader
 
-  has_and_belongs_to_many :types
-
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150501160616) do
+ActiveRecord::Schema.define(version: 20150426100859) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -54,14 +54,6 @@ ActiveRecord::Schema.define(version: 20150501160616) do
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
   end
-
-  create_table "brands_types", id: false, force: :cascade do |t|
-    t.integer "brand_id"
-    t.integer "type_id"
-  end
-
-  add_index "brands_types", ["brand_id"], name: "index_brands_types_on_brand_id"
-  add_index "brands_types", ["type_id"], name: "index_brands_types_on_type_id"
 
   create_table "franchises", force: :cascade do |t|
     t.string   "name"

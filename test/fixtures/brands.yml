@@ -2,16 +2,16 @@
 
 one:
   name: MyString
+  color: MyString
   image: MyString
   alt_image: MyString
   shadow_image: MyString
-  type: 
   published: false
 
 two:
   name: MyString
+  color: MyString
   image: MyString
   alt_image: MyString
   shadow_image: MyString
-  type: 
   published: false

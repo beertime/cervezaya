@@ -19,7 +19,8 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'country_select'
 gem 'bcrypt', '~> 3.1.7'
- 
+gem 'kaminari'
+
 group :development, :test do
   gem 'sqlite3'
   gem 'byebug'

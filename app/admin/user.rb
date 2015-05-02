@@ -4,6 +4,7 @@ ActiveAdmin.register User do
   index do
     selectable_column
     id_column
+    column :username
     column :email
     column :current_sign_in_at
     column :sign_in_count
@@ -18,6 +19,7 @@ ActiveAdmin.register User do
 
   form do |f|
     f.inputs "Admin Details" do
+      f.input :username
       f.input :email
       f.input :password
       f.input :password_confirmation

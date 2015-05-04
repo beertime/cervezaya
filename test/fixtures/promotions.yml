@@ -1,0 +1,35 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  description: MyText
+  image: MyString
+  start_date: 2015-05-04
+  end_date: 2015-05-04
+  start_hour: 2015-05-04 23:22:31
+  end_hour: 2015-05-04 23:22:31
+  recurrent: false
+  monday: false
+  tuesday: false
+  wednesday: false
+  thursday: false
+  friday: false
+  saturday: false
+  sunday: false
+
+two:
+  title: MyString
+  description: MyText
+  image: MyString
+  start_date: 2015-05-04
+  end_date: 2015-05-04
+  start_hour: 2015-05-04 23:22:31
+  end_hour: 2015-05-04 23:22:31
+  recurrent: false
+  monday: false
+  tuesday: false
+  wednesday: false
+  thursday: false
+  friday: false
+  saturday: false
+  sunday: false

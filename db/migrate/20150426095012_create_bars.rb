@@ -6,11 +6,12 @@ class CreateBars < ActiveRecord::Migration
       t.string :photo
       t.string :country
       t.string :region
-      t.string :city
       t.string :address
       t.string :postal
       t.string :phone
       t.integer :rank
+      t.float :latitude
+      t.float :longitude
       t.boolean :published, default: false
 
       t.timestamps null: false

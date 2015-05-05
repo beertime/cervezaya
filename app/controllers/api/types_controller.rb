@@ -1,7 +1,7 @@
 class API::TypesController < ApplicationController
 
   def index
-    render json: Type.all, status: 200
+    render json: Type.where(published: true), status: 200
   end
 
 end

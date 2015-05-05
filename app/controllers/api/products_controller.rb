@@ -3,7 +3,7 @@ class API::ProductsController < ApplicationController
   respond_to :json
 
   def index
-    render json: Product.all, status: 200
+    render json: Product.where(published: true), status: 200
   end
 
   def show

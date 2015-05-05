@@ -16,6 +16,9 @@ class CreatePromotions < ActiveRecord::Migration
       t.boolean :friday
       t.boolean :saturday
       t.boolean :sunday
+      t.boolean :published, default: false
+
+      t.belongs_to :bar, index:true
 
       t.timestamps null: false
     end

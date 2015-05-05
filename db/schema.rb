@@ -82,7 +82,7 @@ ActiveRecord::Schema.define(version: 20150504212231) do
   end
 
   create_table "promotions", force: :cascade do |t|
-    t.string   "title",       default: "", null: false
+    t.string   "title",       default: "",    null: false
     t.text     "description"
     t.string   "image"
     t.date     "start_date"
@@ -97,9 +97,13 @@ ActiveRecord::Schema.define(version: 20150504212231) do
     t.boolean  "friday"
     t.boolean  "saturday"
     t.boolean  "sunday"
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.boolean  "published",   default: false
+    t.integer  "bar_id"
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
+
+  add_index "promotions", ["bar_id"], name: "index_promotions_on_bar_id"
 
   create_table "sizes", force: :cascade do |t|
     t.string   "name"

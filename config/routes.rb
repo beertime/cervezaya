@@ -1,13 +1,9 @@
 Rails.application.routes.draw do
 
-  namespace :api do
-  get 'promotions/index'
-  end
+  root 'admin/dashboard#index'
 
-  devise_for :users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-
-  root 'welcome#index'
+  devise_for :users, ActiveAdmin::Devise.config
 
   namespace :api, constraints: { subdomain: 'api' }, path: '/', defaults: { format: :json } do
 

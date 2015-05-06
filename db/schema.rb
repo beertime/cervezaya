@@ -37,13 +37,17 @@ ActiveRecord::Schema.define(version: 20150504212231) do
     t.string   "address"
     t.string   "postal"
     t.string   "phone"
+    t.string   "email"
     t.integer  "rank"
     t.float    "latitude"
     t.float    "longitude"
-    t.boolean  "published",   default: false
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.boolean  "published",    default: false
+    t.integer  "franchise_id"
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
   end
+
+  add_index "bars", ["franchise_id"], name: "index_bars_on_franchise_id"
 
   create_table "brands", force: :cascade do |t|
     t.string   "name"

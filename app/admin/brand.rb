@@ -1,9 +1,10 @@
 ActiveAdmin.register Brand do
 
   form do |f|
+    f.semantic_errors
     f.inputs
     f.inputs "Tipos" do
-      f.input :type_ids, as: :check_boxes, collection: Type.all
+      f.input :type_ids, as: :check_boxes, collection: Type.all, label: "Tipo"
     end
     f.actions
   end

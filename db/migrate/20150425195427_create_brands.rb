@@ -7,7 +7,7 @@ class CreateBrands < ActiveRecord::Migration
       t.string :alt_image
       t.string :shadow_image
       t.boolean :published, default: false
-      
+
       t.timestamps null: false
     end
   end

@@ -1,0 +1,78 @@
+es:
+  time:
+    am: am
+    formats:
+      default: '%d / %m / %Y'
+      long: '%d %B %Y'
+      short: '%d de %b'
+    pm: pm
+  date:
+    formats:
+      default: '%d / %m / %Y'
+      long: '%d de %B de %Y'
+      short: '%d de %b'
+    abbr_day_names:
+      - dom
+      - lun
+      - mar
+      - mié
+      - jue
+      - vie
+      - sáb
+    abbr_month_names:
+      -
+      - ene
+      - feb
+      - mar
+      - abr
+      - may
+      - jun
+      - jul
+      - ago
+      - sep
+      - oct
+      - nov
+      - dic
+    day_names:
+      - domingo
+      - lunes
+      - martes
+      - miércoles
+      - jueves
+      - viernes
+      - sábado
+    month_names:
+      -
+      - Enero
+      - Febrero
+      - Marzo
+      - Abril
+      - Mayo
+      - Junio
+      - Julio
+      - Agosto
+      - Septiembre
+      - Octubre
+      - Noviembre
+      - Diciembre
+    order:
+      - :day
+      - :month
+      - :year
+  active_admin:
+    import: "Importar"
+  active_admin_import:
+    file_error: "Error: %{message}"
+    file_format_error: "Sólo se puede importar un archivo CSV válido"
+    file_empty_error: "No se puede importar un archivo vacío"
+    no_file_error: "Por favor, seleccionar un archivo para importar"
+    details: "Por favor, selecciona un archivo para importar"
+    imported:
+      one: "Importado 1 %{model} correctamente"
+      other: "Importado %{count} %{model} correctamente"
+    failed:
+      one:   "No se ha podido importar 1 %{model}"
+      other: "No se han podido importar %{count} %{model}"
+    import_model: "Importar %{model}"
+    import_btn: "Importar"
+    import_btn_disabled: "Espere..."

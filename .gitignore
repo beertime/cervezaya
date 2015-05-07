@@ -1,0 +1,22 @@
+# Ignore Mac OS X files
+.DS_Store
+
+# Ignore bundler config.
+/.bundle
+
+# Ignore the default SQLite database.
+/db/*.sqlite3
+/db/*.sqlite3-journal
+
+# Ignore all logfiles and tempfiles.
+/log/*
+!/log/.keep
+/tmp
+
+# Secrets and database settings
+/config/database.yml
+/config/secrets.yml
+
+# Ignore compiled files
+/public/assets
+/public/uploads

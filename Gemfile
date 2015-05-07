@@ -25,4 +25,6 @@ group :development, :test do
   gem 'sqlite3'
   gem 'byebug'
   gem 'spring'
+  gem 'capistrano', '~> 3.1'
+  gem 'capistrano-rails', '~> 1.1'
 end

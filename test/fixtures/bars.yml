@@ -5,7 +5,7 @@ one:
   description: MyString
   photo: MyString
   address: MyString
-  city: MyString
+  email: MyString
   region: MyString
   country: MyString
   postal: MyString
@@ -18,7 +18,7 @@ two:
   description: MyString
   photo: MyString
   address: MyString
-  city: MyString
+  email: MyString
   region: MyString
   country: MyString
   postal: MyString

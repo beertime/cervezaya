@@ -11,11 +11,10 @@ Rails.application.routes.draw do
       r.resources :types
       r.resources :sizes
       r.resources :promotions
+      r.resources :brands
     end
 
-    with_options only: [:show, :index] do |r|
-      r.resources :users
-    end
+    resources :users, :only => [:show, :create]
 
   end
 

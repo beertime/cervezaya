@@ -1,5 +1,5 @@
 ActiveAdmin.register User do
-  permit_params :username, :email, :password, :password_confirmation
+  permit_params :username, :email, :password, :password_confirmation, :active, :admin, :publicname, :firstname, :lastname, :avatar, :gender, :country, :city, :birth
 
   index do
     selectable_column
@@ -18,11 +18,23 @@ ActiveAdmin.register User do
   filter :created_at
 
   form do |f|
-    f.inputs "Admin Details" do
+    f.inputs "Usuario" do
       f.input :username
       f.input :email
       f.input :password
       f.input :password_confirmation
+      f.input :active
+      f.input :admin
+    end
+    f.inputs "Más datos de usuario" do
+      f.input :publicname
+      f.input :firstname
+      f.input :lastname
+      f.input :avatar
+      f.input :gender
+      f.input :country
+      f.input :city
+      f.input :birth
     end
     f.actions
   end

@@ -61,6 +61,7 @@ es:
       - :year
   active_admin:
     import: "Importar"
+    powered_by: "Powered by CervezaYa with ♥"
   active_admin_import:
     file_error: "Error: %{message}"
     file_format_error: "Sólo se puede importar un archivo CSV válido"

@@ -13,10 +13,6 @@
 !/log/.keep
 /tmp
 
-# Secrets and database settings
-/config/database.yml
-/config/secrets.yml
-
 # Ignore compiled files
 /public/assets
 /public/uploads

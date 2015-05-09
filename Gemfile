@@ -20,11 +20,11 @@ gem 'mini_magick'
 gem 'country_select'
 gem 'bcrypt', '~> 3.1.7'
 gem 'kaminari'
+gem 'active_model_serializers'
+gem 'puma'
 
 group :development, :test do
   gem 'sqlite3'
-  gem 'byebug'
-  gem 'spring'
   gem 'capistrano', '~> 3.1'
   gem 'capistrano3-puma', require: false
   gem 'capistrano-rails', '~> 1.1', require: false
@@ -33,6 +33,5 @@ group :development, :test do
 end
 
 group :production do
-  gem 'puma'
   gem 'pg'
 end

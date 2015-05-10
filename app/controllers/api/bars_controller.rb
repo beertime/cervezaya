@@ -21,7 +21,7 @@ class API::BarsController < ApplicationController
   end
 
   def show
-    render json: Bar.find(params[:id]), status: 200
+    render json: Bar.find(params[:id]), status: 200, serializer: BarDetailSerializer
   end
 
 end

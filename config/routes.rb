@@ -14,6 +14,7 @@ Rails.application.routes.draw do
       r.resources :brands
     end
 
+    resources :bars, :only => [:index]
     resources :users, :only => [:show, :create]
 
   end

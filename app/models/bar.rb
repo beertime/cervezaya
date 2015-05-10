@@ -7,4 +7,6 @@ class Bar < ActiveRecord::Base
 
   mount_uploader :photo, BarUploader
 
+  paginates_per 25
+
 end

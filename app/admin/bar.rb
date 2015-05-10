@@ -1,5 +1,21 @@
 ActiveAdmin.register Bar do
 
+  index do
+    selectable_column
+    id_column
+    column :name
+    column :photo
+    column :region
+    column :address
+    column :phone
+    column :email
+    column :rank
+    column :published
+    column :created_at
+    column :updated_at
+    actions
+  end
+
   form do |f|
     f.semantic_errors
     f.inputs

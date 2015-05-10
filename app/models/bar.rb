@@ -7,4 +7,8 @@ class Bar < ActiveRecord::Base
 
   mount_uploader :photo, BarUploader
 
+  geocoded_by :address, :latitude  => :latitude, :longitude => :longitude
+
+  paginates_per 25
+
 end

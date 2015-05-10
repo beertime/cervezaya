@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  namespace :api do
+  get 'bars/show'
+  end
+
   root 'admin/dashboard#index'
 
   ActiveAdmin.routes(self)
@@ -14,6 +18,7 @@ Rails.application.routes.draw do
       r.resources :brands
     end
 
+    resources :bars, :only => [:index, :show]
     resources :users, :only => [:show, :create]
 
   end

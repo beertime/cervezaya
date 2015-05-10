@@ -1,0 +1,513 @@
+FORMAT: 1A
+
+# CervezaYa API
+
+Documentación de la API para CervezaYa app.
+URL: http://api.cervezaya.com
+
+## Usuarios [/users]
+
+### Crear nuevo usuario [POST]
+
++ Parameters
+
+    + uid (string) - Campo obligatorio y único
+    + username (string) - Campo único
+    + email (string) - Campo obligatorio y único
+    + firstname (string)
+    + lastname (string)
+    + publicname (string)
+    + phone (string)
+    + avatar (string)
+    + gender (string)
+    + country (string)
+    + city (string)
+    + birth (date)
+    + active (boolean) - Por defecto 'true'
+    + password (string) - Opcional
+    + password_confirmation (string) - Opcional
+
++ Response 201 (application/json)
+
+        {
+            "id": 1,
+            "uid": null,
+            "email": "admin@example.com",
+            "publicname": null,
+            "name": " ",
+            "avatar": "",
+            "gender": null,
+            "birth": null,
+            "city": null,
+            "country": null
+        }
+
+## Usuario [/users/:id]
+
+### Mostrar detalle de usuario [GET]
+
++ Response 200 (application/json)
+
+        {
+            "id": 1,
+            "uid": null,
+            "email": "admin@example.com",
+            "publicname": null,
+            "name": " ",
+            "avatar": "",
+            "gender": null,
+            "birth": null,
+            "city": null,
+            "country": null
+        }
+
+### Editar usuario [PUT]
+
++ Parameters
+
+    + username (string) - Campo único
+    + email (string) - Campo obligatorio y único
+    + firstname (string)
+    + lastname (string)
+    + publicname (string)
+    + phone (string)
+    + avatar (string)
+    + gender (string)
+    + country (string)
+    + city (string)
+    + birth (date)
+    + active (boolean) - Por defecto 'true'
+
++ Response 200 (application/json)
+
+        {
+            "id": 1,
+            "uid": null,
+            "email": "admin@example.com",
+            "publicname": null,
+            "name": " ",
+            "avatar": "",
+            "gender": null,
+            "birth": null,
+            "city": null,
+            "country": null
+        }
+
+### Eliminar usuario [DELETE]
+
++ Response 204
+
+
+## Favoritos (DEPRECATED) [/users/:id/favorites]
+
+## Mostrar favoritos de usuario [GET]
+
++ Response 200 (application/json)
+
+        [
+            {
+                "_id": "545fff9564e112f35346b192",
+                "name": "La Escondida",
+                "address": "Calle Cardenal Bueno Monreal, 30",
+                "photo": "1bf31998a6c19d4e2192772e74dbab5e.png",
+                "latitude": 37.3692168,
+                "longitude": -5.9797449,
+                "rank": 6,
+                "product_brand_name": "Cruzcampo",
+                "product_brand_image": "804d213e6f4e614650ed05058551a6b1.png",
+                "product_price": 1
+            }
+        ]
+
+## Crear favorito de usuario [POST]
+
++ Parameters
+
+    + bar (string) - ID del bar
+
++ Response 201 (application/json)
+
+        [
+            {
+                "_id": "545fff9564e112f35346b192",
+                "name": "La Escondida",
+                "address": "Calle Cardenal Bueno Monreal, 30",
+                "photo": "1bf31998a6c19d4e2192772e74dbab5e.png",
+                "latitude": 37.3692168,
+                "longitude": -5.9797449,
+                "rank": 6,
+                "product_brand_name": "Cruzcampo",
+                "product_brand_image": "804d213e6f4e614650ed05058551a6b1.png",
+                "product_price": 1
+            }
+        ]
+
+### Eliminar favorito del usuario [DELETE]
+
++ Response 204
+
+## Historial de usuario (DEPRECATED) [/users/:id/recents]
+
+## Mostrar historial de usuario [GET]
+
+Se ordenan por fecha, del más reciente al más antiguo.
+
++ Response 200 (application/json)
+
+        [
+            {
+                "_id": "545fff9564e112f35346b192",
+                "name": "La Escondida",
+                "address": "Calle Cardenal Bueno Monreal, 30",
+                "photo": "1bf31998a6c19d4e2192772e74dbab5e.png",
+                "latitude": 37.3692168,
+                "longitude": -5.9797449,
+                "rank": 6,
+                "product_brand_name": "Cruzcampo",
+                "product_brand_image": "804d213e6f4e614650ed05058551a6b1.png",
+                "product_price": 1
+            }
+        ]
+
+## Crear historial o reciente de usuario [POST]
+
++ Parameters
+
+    + bar (string) - ID del bar
+
++ Response 201 (application/json)
+
+        [
+            {
+                "_id": "545fff9564e112f35346b192",
+                "name": "La Escondida",
+                "address": "Calle Cardenal Bueno Monreal, 30",
+                "photo": "1bf31998a6c19d4e2192772e74dbab5e.png",
+                "latitude": 37.3692168,
+                "longitude": -5.9797449,
+                "rank": 6,
+                "product_brand_name": "Cruzcampo",
+                "product_brand_image": "804d213e6f4e614650ed05058551a6b1.png",
+                "product_price": 1
+            }
+        ]
+
+## Bares [/bars]
+
+### Mostrar todos los bares [GET]
+
++ Parameters
+
+    + longitude (number) - Longitud
+    + latitude (number) - Latitud
+    + min_distance (number) - Mínima distancia
+    + max_distance (number) - Máxima distancia
+    + min_price (number) - Mínimo precio
+    + max_price (number) - Máximo precio
+    + user (string) - ID de usuario
+    + icon (array[number]) - Número de icono
+    + brand (array[string]) - ID de marcas
+    + type (array[string]) - ID de tipos
+    + q (string) - Búsqueda por string en nombre o dirección
+    + limit (number) - Limita el número de resultados
+    + offset (number) - Número de bares que se salta antes de dar el resultado
+
++ Response 200 (application/json)
+
+        [
+            {
+                "id": 1,
+                "name": "La Escondida",
+                "address": "Calle Cardenal Bueno Monreal,  30",
+                "region": "Sevilla",
+                "phone": "954 614 879",
+                "rank": 6,
+                "latitude": 37.3692168,
+                "longitude": 5.9797449,
+                "photo_small": "",
+                "photo_medium": "",
+                "photo_large": "",
+                "user_favorite": false,
+                "user_rank": 6,
+                "product_name": null,
+                "product_price": 0,
+                "product_image_small": null,
+                "product_image_medium": null,
+                "product_image_large": null
+            }
+        ]
+
+## Bar [/bars/:id]
+
+### Mostrar un único bar por _id [GET]
+
++ Parameters
+
+    + user (string) - ID del usuario
+
++ Response 200 (application/json)
+
+        {
+            "id": 1,
+            "name": "La Escondida",
+            "description": null,
+            "address": "Calle Cardenal Bueno Monreal,  30",
+            "region": "Sevilla",
+            "phone": "954 614 879",
+            "rank": 6,
+            "latitude": 37.3692168,
+            "longitude": 5.9797449,
+            "photo_small": "",
+            "photo_medium": "",
+            "photo_large": "",
+            "user_favorite": false,
+            "user_rank": 0,
+            "products": [
+                {
+                    "id": 2,
+                    "price": 2.0,
+                    "brand_name": "Alhambra",
+                    "brand_color": "#2b8b2d",
+                    "size_icon": 4,
+                    "image_small": "",
+                    "image_medium": "",
+                    "image_large": "",
+                    "image_alt_small": "",
+                    "image_alt_medium": "",
+                    "image_alt_large": "",
+                    "image_shadow_small": "",
+                    "image_shadow_medium": "",
+                    "image_shadow_large": ""
+                }
+            ]
+        }
+
+## Comentarios (DEPRECATED) [/comments]
+
+### Mostrar todos los comentario [GET]
+
++ Parameters
+
+    + bar (string) - ID del bar
+    + user (string) - ID del usuario
+
++ Response 200 (application/json)
+
+        [
+            {
+                "_id": "550e99b2a9d1f1e710ec911f",
+                "__v": 0,
+                "comment": "Lorem ipsum",
+                "userphoto": "http://cdn.cervezaya.com/photo.png",
+                "username": "juanmuestra",
+                "publicname": "Juan Muestra",
+                "user": "000c5ba104e197041d40ca04",
+                "bar": "0000004064e112f35346b19a",
+                "timevalue": 17,
+                "timeunit": "minute",
+                "updatedAt": "2015-03-22T10:30:10.937Z",
+                "createdAt": "2015-03-22T10:30:10.937Z",
+                "published": true
+            }
+        ]
+
+### Crear comentario [POST]
+
++ Parameters
+
+    + comment (string) - Campo obligatorio
+    + user (string) - ID del usuario
+    + bar (string) - ID del bar
+    + published (boolean) - Por defecto 'true'
+
++ Response 200 (application/json)
+
+        [
+            {
+                "_id": "550e99b2a9d1f1e710ec911f",
+                "__v": 0,
+                "comment": "Lorem ipsum",
+                "userphoto": "http://cdn.cervezaya.com/photo.png",
+                "username": "juanmuestra",
+                "publicname": "Juan Muestra",
+                "user": "000c5ba104e197041d40ca04",
+                "bar": "0000004064e112f35346b19a",
+                "timevalue": 17,
+                "timeunit": "minute",
+                "updatedAt": "2015-03-22T10:30:10.937Z",
+                "createdAt": "2015-03-22T10:30:10.937Z",
+                "published": true
+            }
+        ]
+
+## Valoraciones (DEPRECATED) [/ratings]
+
+### Mostrar todas las valoraciones de bares [GET]
+
++ Parameters
+
+    + bar (string) - ID del bar
+    + user (string) - ID del usuario
+
++ Response 200 (application/json)
+
+        [
+            {
+                "_id": "550d68f409009cf929d0828d",
+                "bar": "545fff9564e112f35346b192",
+                "rating": 7,
+                "user": "000c7ff5155086ec1e5059e1",
+                "__v": 0,
+                "updatedAt": "2015-03-21T12:49:56.665Z",
+                "createdAt": "2015-03-21T12:49:56.665Z",
+                "published": true
+            }
+        ]
+
+## Crear valoración de bar [POST]
+
++ Parameters
+
+    + bar (string) - ID del bar
+    + user (string) - ID del usuario
+    + rating (number) - Valoración de 1 a 10
+
++ Response 201 (application/json)
+
+        [
+            {
+                "_id": "550d68f409009cf929d0828d",
+                "bar": "545fff9564e112f35346b192",
+                "rating": 7,
+                "user": "000c7ff5155086ec1e5059e1",
+                "__v": 0,
+                "updatedAt": "2015-03-21T12:49:56.665Z",
+                "createdAt": "2015-03-21T12:49:56.665Z",
+                "published": true
+            }
+        ]
+
+## Valoración (DEPRECATED) [/ratings/:id]
+
+## Editar valoración de bar [PUT]
+
++ Parameters
+
+    + rating (number) - Valoración de 1 a 10
+
++ Response 201 (application/json)
+
+        [
+            {
+                "_id": "550d68f409009cf929d0828d",
+                "bar": "545fff9564e112f35346b192",
+                "rating": 7,
+                "user": "000c7ff5155086ec1e5059e1",
+                "__v": 0,
+                "updatedAt": "2015-03-21T12:49:56.665Z",
+                "createdAt": "2015-03-21T12:49:56.665Z",
+                "published": true
+            }
+        ]
+
+
+## Promociones [/promociones]
+
+### Mostrar todas las promociones [GET]
+
++ Parameters
+
+    + start_date (string) - fecha en formato YYYY-MM-DD
+    + end_date (string) - fecha en formato YYYY-MM-DD
+    + date (string) - fecha en formato YYYY-MM-DD, si se usa, anula los anteriores
+    + latitude (number) - Latitud
+    + longitude (number) - Longitud
+
++ Response 200 (application/json)
+
+    [
+        {
+            "id": 1,
+            "title": "Promotion 1",
+            "description": "Lorem ipsum",
+            "image_small": "",
+            "image_medium": "",
+            "image_large": "",
+            "start_date": "2015-05-09 00:00",
+            "end_date": "2015-05-25 23:59",
+            "recurrent": true,
+            "bar": {
+                "id": 3,
+                "name": "Burbujas",
+                "address": "Calle Radio Sevilla,  30",
+                "region": "Sevilla",
+                "phone": "652 345 195",
+                "rank": 0,
+                "latitude": 37.3880527,
+                "longitude": 6.00323509999999,
+                "photo_small": "",
+                "photo_medium": "",
+                "photo_large": "",
+                "user_favorite": false,
+                "user_rank": 0,
+                "product_name": null,
+                "product_price": 0,
+                "product_image_small": null,
+                "product_image_medium": null,
+                "product_image_large": null
+            }
+        }
+    ]
+
+
+## Tipos [/types]
+
+### Mostrar todos los tipos [GET]
+
++ Response 200 (application/json)
+
+        [
+            {
+                "id": 1,
+                "name": "Sin Alcohol"
+            }
+        ]
+
+## Formatos [/sizes]
+
+### Mostrar todos los formatos [GET]
+
++ Response 200 (application/json)
+
+        [
+            {
+                "id": 1,
+                "name": "Caña",
+                "icon": 1,
+                "volume": 20
+            }
+        ]
+
+
+## Marcas [/brands]
+
+### Mostrar todas las marcas [GET]
+
++ Response 200 (application/json)
+
+        [
+            {
+                "id": 1,
+                "name": "Albero",
+                "color": "#8d8e1e",
+                "image_small": "",
+                "image_medium": "",
+                "image_large": "",
+                "image_alt_small": "",
+                "image_alt_medium": "",
+                "image_alt_large": "",
+                "image_shadow_small": "",
+                "image_shadow_medium": "",
+                "image_shadow_large": ""
+            }
+        ]

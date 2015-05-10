@@ -19,7 +19,7 @@ Rails.application.routes.draw do
     end
 
     resources :bars, :only => [:index, :show]
-    resources :users, :only => [:show, :create]
+    resources :users, :only => [:show, :create, :update, :destroy]
 
   end
 

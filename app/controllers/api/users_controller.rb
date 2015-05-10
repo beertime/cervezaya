@@ -3,11 +3,11 @@ class API::UsersController < ApplicationController
   respond_to :json
 
   def show
-    render User.find(params[:id]), status: 200
+    render json: User.find(params[:id]), status: 200
   end
 
   def create
-    user = User.new(user_params)
+    user = User.new(create_user_params)
     if user.save
       render json: user, status: 201, location: [:api, user]
     else
@@ -15,10 +15,30 @@ class API::UsersController < ApplicationController
     end
   end
 
+  def update
+    user = User.find(params[:id])
+
+    if user.update(update_user_params)
+      render json: user, status: 200, location: [:api, user]
+    else
+      render json: { errors: user.errors }, status: 422
+    end
+  end
+
+  def destroy
+    user = User.find(params[:id])
+    user.destroy
+    head 204
+  end
+
   private
 
-    def user_params
-      params.permit(:username, :email, :password, :password_confirmation)
+    def create_user_params
+      params.permit(:uid, :publicname, :firstname, :lastname, :username, :email, :password, :password_confirmation, :birth, :city, :country, :phone, :avatar, :gender, :active)
+    end
+
+    def update_user_params
+      params.permit(:publicname, :firstname, :lastname, :username, :email, :password, :password_confirmation, :birth, :city, :country, :phone, :avatar, :gender, :active)
     end
 
 end

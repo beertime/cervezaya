@@ -1,3 +1,3 @@
 class SizeSerializer < ActiveModel::Serializer
-  attributes :id, :icon, :volume
+  attributes :id, :name, :icon, :volume
 end

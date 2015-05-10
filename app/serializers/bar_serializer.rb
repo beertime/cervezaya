@@ -1,16 +1,14 @@
 class BarSerializer < ActiveModel::Serializer
 
-  attributes :id, :name, :description,
-    :photo_small, :photo_medium, :photo_large, :address, :phone, :rank,
-    :latitude, :longitude, :favorite, :product_image_small,
-    :product_image_medium, :product_image_large, :product_name, :product_price
+  attributes :id, :name, :address, :region, :phone, :rank, :latitude, :longitude,
+    :photo_small, :photo_medium, :photo_large,
+    :user_favorite,
+    :user_rank,
+    :product_name, :product_price,
+    :product_image_small, :product_image_medium, :product_image_large
 
   def address
     "#{object.address.split(',')[0]}, #{object.address.split(',')[1]}"
-  end
-
-  def favorite
-    false
   end
 
   def photo_small
@@ -27,6 +25,14 @@ class BarSerializer < ActiveModel::Serializer
 
   def rank
     object.rank || 0
+  end
+
+  def user_favorite
+    false
+  end
+
+  def user_rank
+    0
   end
 
   def product_image_small

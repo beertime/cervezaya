@@ -22,6 +22,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'kaminari'
 gem 'active_model_serializers'
 gem 'puma'
+gem 'geocoder'
 
 group :development, :test do
   gem 'sqlite3'

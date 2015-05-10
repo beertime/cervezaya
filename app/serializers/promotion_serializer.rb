@@ -1,5 +1,5 @@
 class PromotionSerializer < ActiveModel::Serializer
-  attributes :id, :title, :start_date, :end_date, :recurrent
+  attributes :id, :title, :description, :image, :start_date, :end_date, :recurrent
   has_one :bar
 
   def start_date

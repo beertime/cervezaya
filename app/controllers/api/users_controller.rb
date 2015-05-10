@@ -3,7 +3,7 @@ class API::UsersController < ApplicationController
   respond_to :json
 
   def show
-    respond_with User.find(params[:id])
+    render User.find(params[:id]), status: 200
   end
 
   def create

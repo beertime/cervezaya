@@ -20,4 +20,8 @@ class API::BarsController < ApplicationController
     render json: bars, status: 200
   end
 
+  def show
+    render json: Bar.find(params[:id]), status: 200
+  end
+
 end

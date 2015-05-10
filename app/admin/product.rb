@@ -1,5 +1,5 @@
 ActiveAdmin.register Product do
 
-  permit_params :price, :published, :brand_id, :size_id
+  permit_params :price, :published, :brand_id, :size_id, :bar_id
 
 end

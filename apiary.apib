@@ -3,6 +3,7 @@ FORMAT: 1A
 # CervezaYa API
 
 Documentación de la API para CervezaYa app.
+
 URL: http://api.cervezaya.com
 
 ## Usuarios [/users]
@@ -411,7 +412,7 @@ Se ordenan por fecha, del más reciente al más antiguo.
         ]
 
 
-## Promociones [/promociones]
+## Promociones [/promotions]
 
 ### Mostrar todas las promociones [GET]
 
@@ -425,39 +426,39 @@ Se ordenan por fecha, del más reciente al más antiguo.
 
 + Response 200 (application/json)
 
-    [
-        {
-            "id": 1,
-            "title": "Promotion 1",
-            "description": "Lorem ipsum",
-            "image_small": "",
-            "image_medium": "",
-            "image_large": "",
-            "start_date": "2015-05-09 00:00",
-            "end_date": "2015-05-25 23:59",
-            "recurrent": true,
-            "bar": {
-                "id": 3,
-                "name": "Burbujas",
-                "address": "Calle Radio Sevilla,  30",
-                "region": "Sevilla",
-                "phone": "652 345 195",
-                "rank": 0,
-                "latitude": 37.3880527,
-                "longitude": 6.00323509999999,
-                "photo_small": "",
-                "photo_medium": "",
-                "photo_large": "",
-                "user_favorite": false,
-                "user_rank": 0,
-                "product_name": null,
-                "product_price": 0,
-                "product_image_small": null,
-                "product_image_medium": null,
-                "product_image_large": null
+        [
+            {
+                "id": 1,
+                "title": "Promotion 1",
+                "description": "Lorem ipsum",
+                "image_small": "",
+                "image_medium": "",
+                "image_large": "",
+                "start_date": "2015-05-09 00:00",
+                "end_date": "2015-05-25 23:59",
+                "recurrent": true,
+                "bar": {
+                    "id": 3,
+                    "name": "Burbujas",
+                    "address": "Calle Radio Sevilla,  30",
+                    "region": "Sevilla",
+                    "phone": "652 345 195",
+                    "rank": 0,
+                    "latitude": 37.3880527,
+                    "longitude": 6.00323509999999,
+                    "photo_small": "",
+                    "photo_medium": "",
+                    "photo_large": "",
+                    "user_favorite": false,
+                    "user_rank": 0,
+                    "product_name": null,
+                    "product_price": 0,
+                    "product_image_small": null,
+                    "product_image_medium": null,
+                    "product_image_large": null
+                }
             }
-        }
-    ]
+        ]
 
 
 ## Tipos [/types]

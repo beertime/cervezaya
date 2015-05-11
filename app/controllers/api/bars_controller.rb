@@ -5,7 +5,7 @@ class API::BarsController < ApplicationController
     limit = (params[:limit] || 25).to_i
     distance = params[:distance] || 1
 
-    bars = Bar.includes(:products).limit(limit).offset(offset)
+    bars = Bar.limit(limit).offset(offset)
 
     unless params[:latitude].blank? and params[:longitude].blank?
       bars = bars.near([params[:latitude], params[:longitude]], distance)

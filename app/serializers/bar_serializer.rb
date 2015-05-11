@@ -48,7 +48,7 @@ class BarSerializer < ActiveModel::Serializer
   end
 
   def product_name
-    # object.products.joins(:brand).first.brand.name
+    # object.products.first
   end
 
   def product_price

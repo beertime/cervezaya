@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150504212231) do
+ActiveRecord::Schema.define(version: 20150513183615) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -70,6 +70,16 @@ ActiveRecord::Schema.define(version: 20150504212231) do
   add_index "brands_types", ["brand_id"], name: "index_brands_types_on_brand_id"
   add_index "brands_types", ["type_id"], name: "index_brands_types_on_type_id"
 
+  create_table "favorites", force: :cascade do |t|
+    t.integer  "bar_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "favorites", ["bar_id"], name: "index_favorites_on_bar_id"
+  add_index "favorites", ["user_id"], name: "index_favorites_on_user_id"
+
   create_table "franchises", force: :cascade do |t|
     t.string   "name"
     t.string   "photo"
@@ -117,6 +127,16 @@ ActiveRecord::Schema.define(version: 20150504212231) do
   end
 
   add_index "promotions", ["bar_id"], name: "index_promotions_on_bar_id"
+
+  create_table "recents", force: :cascade do |t|
+    t.integer  "bar_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "recents", ["bar_id"], name: "index_recents_on_bar_id"
+  add_index "recents", ["user_id"], name: "index_recents_on_user_id"
 
   create_table "sizes", force: :cascade do |t|
     t.string   "name"

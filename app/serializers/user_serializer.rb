@@ -6,6 +6,6 @@ class UserSerializer < ActiveModel::Serializer
   end
 
   def avatar
-    "#{object.avatar.small}"
+    object.avatar.small.try(:image)
   end
 end

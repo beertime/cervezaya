@@ -1,6 +1,7 @@
 class Brand < ActiveRecord::Base
 
   has_and_belongs_to_many :types
+  belongs_to :product
 
   validates :name, presence: true
   validates_length_of :color, :minimum => 7, :maximum => 7, :allow_blank => true

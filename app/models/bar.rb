@@ -2,6 +2,7 @@ class Bar < ActiveRecord::Base
 
   belongs_to :franchise
   has_many :products
+  # has_and_belongs_to_many :favorites
 
   validates :name, presence: true
 

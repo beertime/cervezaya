@@ -11,15 +11,15 @@ class PromotionSerializer < ActiveModel::Serializer
   end
 
   def image_small
-    "#{object.image.small}"
+    object.image.small.try(:image)
   end
 
   def image_medium
-    "#{object.image.medium}"
+    object.image.medium.try(:image)
   end
 
   def image_large
-    "#{object.image.large}"
+    object.image.large.try(:image)
   end
 
 end

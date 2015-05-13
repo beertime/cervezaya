@@ -21,14 +21,12 @@ gem 'country_select'
 gem 'bcrypt', '~> 3.1.7'
 gem 'kaminari'
 gem 'active_model_serializers'
-gem 'puma'
 gem 'geocoder'
 
 group :development, :test do
+  gem 'spring'
   gem 'sqlite3'
-  gem 'foreman'
   gem 'capistrano', '~> 3.1'
-  gem 'capistrano3-puma', require: false
   gem 'capistrano-rails', '~> 1.1', require: false
   gem 'capistrano-bundler', '~> 1.1', require: false
   gem 'capistrano-rbenv', '~> 2.0', require: false
@@ -36,4 +34,5 @@ end
 
 group :production do
   gem 'pg'
+  gem 'puma'
 end

@@ -5,39 +5,39 @@ class BrandSerializer < ActiveModel::Serializer
     :image_shadow_small, :image_shadow_medium, :image_shadow_large
 
   def image_small
-    "#{object.image.small}"
+    object.image.small.try(:image)
   end
 
   def image_medium
-    "#{object.image.medium}"
+    object.image.medium.try(:image)
   end
 
   def image_large
-    "#{object.image.large}"
+    object.image.large.try(:image)
   end
 
   def image_alt_small
-    "#{object.alt_image.small}"
+    object.alt_image.small.try(:image)
   end
 
   def image_alt_medium
-    "#{object.alt_image.medium}"
+    object.alt_image.medium.try(:image)
   end
 
   def image_alt_large
-    "#{object.alt_image.large}"
+    object.alt_image.large.try(:image)
   end
 
   def image_shadow_small
-    "#{object.shadow_image.small}"
+    object.shadow_image.small.try(:image)
   end
 
   def image_shadow_medium
-    "#{object.shadow_image.medium}"
+    object.shadow_image.medium.try(:image)
   end
 
   def image_shadow_large
-    "#{object.shadow_image.large}"
+    object.shadow_image.large.try(:image)
   end
 
 end

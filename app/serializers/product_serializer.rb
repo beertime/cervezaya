@@ -13,39 +13,39 @@ class ProductSerializer < ActiveModel::Serializer
   end
 
   def image_small
-    "#{object.brand.image.small}"
+    object.brand.try(:image).try(:small).try(:image).try(:url)
   end
 
   def image_medium
-    "#{object.brand.image.medium}"
+    object.brand.try(:image).try(:medium).try(:image).try(:url)
   end
 
   def image_large
-    "#{object.brand.image.large}"
+    object.brand.try(:image).try(:large).try(:image).try(:url)
   end
 
   def image_alt_small
-    "#{object.brand.image.small}"
+    object.brand.try(:alt_image).try(:small).try(:image).try(:url)
   end
 
   def image_alt_medium
-    "#{object.brand.image.medium}"
+    object.brand.try(:alt_image).try(:medium).try(:image).try(:url)
   end
 
   def image_alt_large
-    "#{object.brand.image.large}"
+    object.brand.try(:alt_image).try(:large).try(:image).try(:url)
   end
 
   def image_shadow_small
-    "#{object.brand.image.small}"
+    object.brand.try(:shadow_image).try(:small).try(:image).try(:url)
   end
 
   def image_shadow_medium
-    "#{object.brand.image.medium}"
+    object.brand.try(:shadow_image).try(:medium).try(:image).try(:url)
   end
 
   def image_shadow_large
-    "#{object.brand.image.large}"
+    object.brand.try(:shadow_image).try(:large).try(:image).try(:url)
   end
 
   def size_icon

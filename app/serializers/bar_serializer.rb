@@ -27,11 +27,11 @@ class BarSerializer < ActiveModel::Serializer
   end
 
   def user_favorite
-    false
+    Bar.get_user_favorite(object.id)
   end
 
   def user_rank
-    0
+    Bar.get_user_rank(object.id)
   end
 
   def product_image_small

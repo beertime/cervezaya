@@ -8,15 +8,31 @@ class API::BarsController < ApplicationController
 
     bars = Bar.limit(limit).offset(offset)
 
+    # Georeference
     unless params[:latitude].blank? and params[:longitude].blank?
       bars = bars.near([params[:latitude], params[:longitude]], distance)
     end
+
+    # Query search
+    if params[:q]
+      bars = bars.where("name LIKE '%#{params[:q]}%'")
+    end
+
+    # User match
+    bars.set_user(params[:user_id] || nil)
 
     # unless params[:price].blank?
     #   bars.where(published: true)
     # else
     #   bars.where(published: true)
     # end
+
+    # Sort
+    if params[:sort] == 'rank'
+      bars.sort_by { |b| b.rank.to_i }
+    elsif params[:sort] == 'price'
+      bars.sort_by { |b| b.products.first.try(:price).to_i }
+    end
 
     render json: bars, status: 200
   end

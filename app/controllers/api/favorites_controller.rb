@@ -1,11 +1,16 @@
 class API::FavoritesController < ApplicationController
 
+  # GET /users/:user_id/favorites
   def index
-    render json: Favorite.all, status: 200
+    user = User.find(params[:user_id])
+    favorites = user.favorites
+    render json: favorites, status: 200
   end
 
+  # POST /users/:user_id/favorites
   def create
-    favorite = Favorite.new(create_favorite_params)
+    user = User.find(params[:user_id])
+    favorite = user.favorites.build(create_favorite_params)
     if favorite.save
       render json: favorite, status: 201
     else
@@ -13,8 +18,10 @@ class API::FavoritesController < ApplicationController
     end
   end
 
+  # DELETE /users/:user_id/favorites/:id
   def destroy
-    favorite = Favorite.find(params[:id])
+    user = User.find(params[:user_id])
+    favorite = user.favorites.find(params[:id])
     favorite.destroy
     head 204
   end
@@ -22,7 +29,7 @@ class API::FavoritesController < ApplicationController
   private
 
     def create_favorite_params
-      params.permit(:bar_id, :user_id)
+      params.permit(:bar_id)
     end
 
 end

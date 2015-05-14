@@ -1,4 +1,5 @@
 class UserSerializer < ActiveModel::Serializer
+
   attributes :id, :uid, :email, :publicname, :name, :avatar, :gender, :birth, :city, :country
 
   def name
@@ -8,4 +9,5 @@ class UserSerializer < ActiveModel::Serializer
   def avatar
     object.avatar.small.try(:image)
   end
+
 end

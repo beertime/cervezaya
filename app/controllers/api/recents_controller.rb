@@ -1,11 +1,16 @@
 class API::RecentsController < ApplicationController
 
+  # GET /users/:user_id/recents
   def index
-    render json: Recent.all, status: 200
+    user = User.find(params[:user_id])
+    recents = user.recents
+    render json: recents, status: 200
   end
 
+  # POST /users/:user_id/recents
   def create
-    recent = Recent.new(create_recent_params)
+    user = User.find(params[:user_id])
+    recent = user.recents.build(create_recent_params)
     if recent.save
       render json: recent, status: 201
     else
@@ -13,16 +18,10 @@ class API::RecentsController < ApplicationController
     end
   end
 
-  def destroy
-    recent = Recent.find(params[:id])
-    recent.destroy
-    head 204
-  end
-
   private
 
     def create_recent_params
-      params.permit(:bar_id, :user_id)
+      params.permit(:bar_id)
     end
 
 end

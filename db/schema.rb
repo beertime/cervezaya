@@ -90,11 +90,11 @@ ActiveRecord::Schema.define(version: 20150514205129) do
 
   create_table "opinions", force: :cascade do |t|
     t.string   "comment"
-    t.boolean  "published"
+    t.boolean  "published",  default: false
     t.integer  "bar_id"
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   add_index "opinions", ["bar_id"], name: "index_opinions_on_bar_id"
@@ -141,6 +141,7 @@ ActiveRecord::Schema.define(version: 20150514205129) do
   add_index "promotions", ["bar_id"], name: "index_promotions_on_bar_id"
 
   create_table "ranks", force: :cascade do |t|
+    t.integer  "value"
     t.integer  "user_id"
     t.integer  "bar_id"
     t.datetime "created_at", null: false

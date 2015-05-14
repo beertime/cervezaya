@@ -11,6 +11,7 @@ class API::RanksController < ApplicationController
   def create
     user = User.find(params[:user_id])
     rank = user.ranks.build(create_rank_params)
+    Bar.update_rank(params[:bar_id], params[:value])
     if rank.save
       render json: rank, status: 201
     else

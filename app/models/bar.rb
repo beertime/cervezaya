@@ -20,4 +20,10 @@ class Bar < ActiveRecord::Base
 
   paginates_per 25
 
+  def self.update_rank(bar_id, rank)
+    bar = self.find(bar_id)
+    result = (bar.rank + rank.to_i) / 2
+    bar.update_attributes(rank: result)
+  end
+
 end

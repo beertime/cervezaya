@@ -2,6 +2,7 @@ class API::PromotionsController < ApplicationController
 
   respond_to :json
 
+  # GET /bars/:id/opinions
   def index
     start_date = params[:start_date]
     end_date = params[:end_date]

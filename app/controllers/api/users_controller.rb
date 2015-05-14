@@ -2,10 +2,12 @@ class API::UsersController < ApplicationController
 
   respond_to :json
 
+  # GET /users/:id
   def show
     render json: User.find(params[:id]), status: 200
   end
 
+  # POST /users
   def create
     user = User.new(create_user_params)
     if user.save
@@ -15,6 +17,7 @@ class API::UsersController < ApplicationController
     end
   end
 
+  # PUT /users/:id
   def update
     user = User.find(params[:id])
 
@@ -25,6 +28,7 @@ class API::UsersController < ApplicationController
     end
   end
 
+  # DELETE /users/:id
   def destroy
     user = User.find(params[:id])
     user.destroy

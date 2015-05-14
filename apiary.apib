@@ -99,98 +99,243 @@ URL: http://api.cervezaya.com
 + Response 204
 
 
-## Favoritos [/users/:id/favorites]
+## Favoritos de usuario [/users/:user_id/favorites]
 
-### DEPRECATED - Mostrar favoritos de usuario [GET]
+### Mostrar favoritos de usuario [GET]
 
 + Response 200 (application/json)
 
         [
             {
-                "_id": "545fff9564e112f35346b192",
-                "name": "La Escondida",
-                "address": "Calle Cardenal Bueno Monreal, 30",
-                "photo": "1bf31998a6c19d4e2192772e74dbab5e.png",
-                "latitude": 37.3692168,
-                "longitude": -5.9797449,
-                "rank": 6,
-                "product_brand_name": "Cruzcampo",
-                "product_brand_image": "804d213e6f4e614650ed05058551a6b1.png",
-                "product_price": 1
+                "id": 1,
+                "bar": {
+                    "id": 1,
+                    "name": "La Escondida",
+                    "address": "Calle Cardenal Bueno Monreal,  30",
+                    "region": "Sevilla",
+                    "phone": "954 614 879",
+                    "rank": 6,
+                    "latitude": 37.3692168,
+                    "longitude": -5.9797449,
+                    "photo_small": "",
+                    "photo_medium": "",
+                    "photo_large": "",
+                    "user_favorite": false,
+                    "user_rank": 0,
+                    "product_name": "Alhambra",
+                    "product_price": 2.0,
+                    "product_image_small": null,
+                    "product_image_medium": null,
+                    "product_image_large": null
+                }
             }
         ]
 
-### DEPRECATED - Crear favorito de usuario [POST]
+### Crear favorito de usuario [POST]
 
 + Parameters
 
-    + bar (string) - ID del bar
+    + bar_id (number) - ID del bar
 
 + Response 201 (application/json)
 
-        [
-            {
-                "_id": "545fff9564e112f35346b192",
+        {
+            "id": 1,
+            "bar": {
+                "id": 1,
                 "name": "La Escondida",
-                "address": "Calle Cardenal Bueno Monreal, 30",
-                "photo": "1bf31998a6c19d4e2192772e74dbab5e.png",
+                "address": "Calle Cardenal Bueno Monreal,  30",
+                "region": "Sevilla",
+                "phone": "954 614 879",
+                "rank": 6,
                 "latitude": 37.3692168,
                 "longitude": -5.9797449,
-                "rank": 6,
-                "product_brand_name": "Cruzcampo",
-                "product_brand_image": "804d213e6f4e614650ed05058551a6b1.png",
-                "product_price": 1
+                "photo_small": "",
+                "photo_medium": "",
+                "photo_large": "",
+                "user_favorite": false,
+                "user_rank": 0,
+                "product_name": "Alhambra",
+                "product_price": 2.0,
+                "product_image_small": null,
+                "product_image_medium": null,
+                "product_image_large": null
             }
-        ]
+        }
 
-### DEPRECATED - Eliminar favorito del usuario [DELETE]
+## Favorito de usuario [/users/:user_id/favorites/:id]
+
+### Eliminar favorito del usuario [DELETE]
 
 + Response 204
 
-## Historial de usuario [/users/:id/recents]
 
+## Historial de usuario [/users/:user_id/recents]
 
-### DEPRECATED - Mostrar historial de usuario [GET]
+### Mostrar historial de usuario [GET]
 
 + Response 200 (application/json)
 
         [
             {
-                "_id": "545fff9564e112f35346b192",
-                "name": "La Escondida",
-                "address": "Calle Cardenal Bueno Monreal, 30",
-                "photo": "1bf31998a6c19d4e2192772e74dbab5e.png",
-                "latitude": 37.3692168,
-                "longitude": -5.9797449,
-                "rank": 6,
-                "product_brand_name": "Cruzcampo",
-                "product_brand_image": "804d213e6f4e614650ed05058551a6b1.png",
-                "product_price": 1
+                "id": 1,
+                "bar": {
+                    "id": 1,
+                    "name": "La Escondida",
+                    "address": "Calle Cardenal Bueno Monreal,  30",
+                    "region": "Sevilla",
+                    "phone": "954 614 879",
+                    "rank": 6,
+                    "latitude": 37.3692168,
+                    "longitude": -5.9797449,
+                    "photo_small": "",
+                    "photo_medium": "",
+                    "photo_large": "",
+                    "user_favorite": false,
+                    "user_rank": 0,
+                    "product_name": "Alhambra",
+                    "product_price": 2.0,
+                    "product_image_small": null,
+                    "product_image_medium": null,
+                    "product_image_large": null
+                }
             }
         ]
 
-### DEPRECATED - Crear historial o reciente de usuario [POST]
+### Crear historial o reciente de usuario [POST]
 
 + Parameters
 
-    + bar (string) - ID del bar
+    + bar_id (number) - ID del bar
 
 + Response 201 (application/json)
 
-        [
-            {
-                "_id": "545fff9564e112f35346b192",
+        {
+            "id": 1,
+            "user_id": 1,
+            "bar": {
+                "id": 1,
                 "name": "La Escondida",
-                "address": "Calle Cardenal Bueno Monreal, 30",
-                "photo": "1bf31998a6c19d4e2192772e74dbab5e.png",
+                "address": "Calle Cardenal Bueno Monreal,  30",
+                "region": "Sevilla",
+                "phone": "954 614 879",
+                "rank": 6,
                 "latitude": 37.3692168,
                 "longitude": -5.9797449,
-                "rank": 6,
-                "product_brand_name": "Cruzcampo",
-                "product_brand_image": "804d213e6f4e614650ed05058551a6b1.png",
-                "product_price": 1
+                "photo_small": "",
+                "photo_medium": "",
+                "photo_large": "",
+                "user_favorite": false,
+                "user_rank": 0,
+                "product_name": "Alhambra",
+                "product_price": 2.0,
+                "product_image_small": null,
+                "product_image_medium": null,
+                "product_image_large": null
             }
-        ]
+        }
+
+
+## Valoraciones de usuario [/users/:user_id/ranks]
+
+### Crear valoración de bar por usuario [POST]
+
++ Parameters
+
+    + value (number) - Valoración de 1 a 10
+    + bar_id (number) - ID de bar
+
++ Response 201 (application/json)
+
+        {
+            "id": 1,
+            "value": 1,
+            "bar": {
+                "id": 1,
+                "name": "La Escondida",
+                "address": "Calle Cardenal Bueno Monreal,  30",
+                "region": "Sevilla",
+                "phone": "954 614 879",
+                "rank": 6,
+                "latitude": 37.3692168,
+                "longitude": -5.9797449,
+                "photo_small": "",
+                "photo_medium": "",
+                "photo_large": "",
+                "user_favorite": false,
+                "user_rank": 0,
+                "product_name": "Alhambra",
+                "product_price": 2.0,
+                "product_image_small": null,
+                "product_image_medium": null,
+                "product_image_large": null
+            }
+        }
+
+## Valoración de usuario [/users/:user_id/ranks/:id]
+
+### Mostrar valoración de bar por ususario [GET]
+
++ Response 200 (application/json)
+
+        {
+            "id": 1,
+            "value": 1,
+            "bar": {
+                "id": 1,
+                "name": "La Escondida",
+                "address": "Calle Cardenal Bueno Monreal,  30",
+                "region": "Sevilla",
+                "phone": "954 614 879",
+                "rank": 6,
+                "latitude": 37.3692168,
+                "longitude": -5.9797449,
+                "photo_small": "",
+                "photo_medium": "",
+                "photo_large": "",
+                "user_favorite": false,
+                "user_rank": 0,
+                "product_name": "Alhambra",
+                "product_price": 2.0,
+                "product_image_small": null,
+                "product_image_medium": null,
+                "product_image_large": null
+            }
+        }
+
+### Editar valoración de bar [PUT]
+
++ Parameters
+
+    + value (number) - Valoración de 1 a 10
+
++ Response 200 (application/json)
+
+        {
+            "id": 1,
+            "value": 1,
+            "bar": {
+                "id": 1,
+                "name": "La Escondida",
+                "address": "Calle Cardenal Bueno Monreal,  30",
+                "region": "Sevilla",
+                "phone": "954 614 879",
+                "rank": 6,
+                "latitude": 37.3692168,
+                "longitude": -5.9797449,
+                "photo_small": "",
+                "photo_medium": "",
+                "photo_large": "",
+                "user_favorite": false,
+                "user_rank": 0,
+                "product_name": "Alhambra",
+                "product_price": 2.0,
+                "product_image_small": null,
+                "product_image_medium": null,
+                "product_image_large": null
+            }
+        }
+
 
 ## Bares [/bars]
 
@@ -241,10 +386,6 @@ URL: http://api.cervezaya.com
 
 ### Mostrar detalle de un único bar [GET]
 
-+ Parameters
-
-    + user (string) - ID del usuario
-
 + Response 200 (application/json)
 
         {
@@ -282,134 +423,62 @@ URL: http://api.cervezaya.com
             ]
         }
 
-## Comentarios [/comments]
 
-### DEPRECATED - Mostrar todos los comentario [GET]
+## Comentarios de bar [/bars/:bar_id/opinions]
 
-+ Parameters
-
-    + bar (string) - ID del bar
-    + user (string) - ID del usuario
+### Mostrar todos los comentarios de bar [GET]
 
 + Response 200 (application/json)
 
         [
             {
-                "_id": "550e99b2a9d1f1e710ec911f",
-                "__v": 0,
+                "id": 1,
                 "comment": "Lorem ipsum",
-                "userphoto": "http://cdn.cervezaya.com/photo.png",
-                "username": "juanmuestra",
-                "publicname": "Juan Muestra",
-                "user": "000c5ba104e197041d40ca04",
-                "bar": "0000004064e112f35346b19a",
-                "timevalue": 17,
-                "timeunit": "minute",
-                "updatedAt": "2015-03-22T10:30:10.937Z",
-                "createdAt": "2015-03-22T10:30:10.937Z",
-                "published": true
+                "time_value": 32,
+                "time_unit": "minute",
+                "user": {
+                    "id": 1,
+                    "uid": null,
+                    "email": "user@example.com",
+                    "publicname": null,
+                    "name": " ",
+                    "avatar": null,
+                    "gender": null,
+                    "birth": null,
+                    "city": null,
+                    "country": null
+                }
             }
         ]
 
-### DEPRECATED -Crear comentario [POST]
+### Crear comentario para bar [POST]
 
 + Parameters
 
     + comment (string) - Campo obligatorio
-    + user (string) - ID del usuario
-    + bar (string) - ID del bar
+    + user_id (number) - ID del usuario
     + published (boolean) - Por defecto 'true'
 
-+ Response 200 (application/json)
-
-        [
-            {
-                "_id": "550e99b2a9d1f1e710ec911f",
-                "__v": 0,
-                "comment": "Lorem ipsum",
-                "userphoto": "http://cdn.cervezaya.com/photo.png",
-                "username": "juanmuestra",
-                "publicname": "Juan Muestra",
-                "user": "000c5ba104e197041d40ca04",
-                "bar": "0000004064e112f35346b19a",
-                "timevalue": 17,
-                "timeunit": "minute",
-                "updatedAt": "2015-03-22T10:30:10.937Z",
-                "createdAt": "2015-03-22T10:30:10.937Z",
-                "published": true
-            }
-        ]
-
-
-## Valoraciones [/ratings]
-
-### DEPRECATED - Mostrar todas las valoraciones de bares [GET]
-
-+ Parameters
-
-    + bar (string) - ID del bar
-    + user (string) - ID del usuario
-
-+ Response 200 (application/json)
-
-        [
-            {
-                "_id": "550d68f409009cf929d0828d",
-                "bar": "545fff9564e112f35346b192",
-                "rating": 7,
-                "user": "000c7ff5155086ec1e5059e1",
-                "__v": 0,
-                "updatedAt": "2015-03-21T12:49:56.665Z",
-                "createdAt": "2015-03-21T12:49:56.665Z",
-                "published": true
-            }
-        ]
-
-### DEPRECATED - Crear valoración de bar [POST]
-
-+ Parameters
-
-    + bar (string) - ID del bar
-    + user (string) - ID del usuario
-    + rating (number) - Valoración de 1 a 10
-
 + Response 201 (application/json)
 
-        [
-            {
-                "_id": "550d68f409009cf929d0828d",
-                "bar": "545fff9564e112f35346b192",
-                "rating": 7,
-                "user": "000c7ff5155086ec1e5059e1",
-                "__v": 0,
-                "updatedAt": "2015-03-21T12:49:56.665Z",
-                "createdAt": "2015-03-21T12:49:56.665Z",
-                "published": true
+        {
+            "id": 1,
+            "comment": "Lorem ipsum",
+            "time_value": 32,
+            "time_unit": "minute",
+            "user": {
+                "id": 1,
+                "uid": null,
+                "email": "user@example.com",
+                "publicname": null,
+                "name": " ",
+                "avatar": null,
+                "gender": null,
+                "birth": null,
+                "city": null,
+                "country": null
             }
-        ]
-
-## Valoración [/ratings/:id]
-
-### DEPRECATED - Editar valoración de bar [PUT]
-
-+ Parameters
-
-    + rating (number) - Valoración de 1 a 10
-
-+ Response 201 (application/json)
-
-        [
-            {
-                "_id": "550d68f409009cf929d0828d",
-                "bar": "545fff9564e112f35346b192",
-                "rating": 7,
-                "user": "000c7ff5155086ec1e5059e1",
-                "__v": 0,
-                "updatedAt": "2015-03-21T12:49:56.665Z",
-                "createdAt": "2015-03-21T12:49:56.665Z",
-                "published": true
-            }
-        ]
+        }
 
 
 ## Promociones [/promotions]

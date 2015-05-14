@@ -1,8 +1,16 @@
 class Bar < ActiveRecord::Base
 
+  has_many :favorites
+  has_many :users, through: :favorites
+  has_many :recents
+  has_many :users, through: :recents
+  has_many :ranks
+  has_many :users, through: :ranks
+  has_many :opinions
+  has_many :users, through: :opinions
+
   belongs_to :franchise
   has_many :products
-  # has_and_belongs_to_many :favorites
 
   validates :name, presence: true
 

@@ -1,13 +1,9 @@
 Rails.application.routes.draw do
 
-  namespace :api do
-  get 'bars/show'
-  end
-
   root 'admin/dashboard#index'
 
+  devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-  devise_for :users, ActiveAdmin::Devise.config
 
   namespace :api, constraints: { subdomain: 'api' }, path: '/', defaults: { format: :json } do
 

@@ -28,6 +28,25 @@ ActiveRecord::Schema.define(version: 20150514205129) do
   add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace"
   add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id"
 
+  create_table "admin_users", force: :cascade do |t|
+    t.string   "name"
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true
+  add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
+
   create_table "bars", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
@@ -178,35 +197,26 @@ ActiveRecord::Schema.define(version: 20150514205129) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                  default: "",    null: false
-    t.string   "encrypted_password",     default: "",    null: false
-    t.string   "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,     null: false
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "uid"
+    t.string   "push_uid"
+    t.string   "facebook_uid"
+    t.string   "google_uid"
+    t.string   "email"
     t.string   "username"
     t.string   "publicname"
-    t.string   "firstname"
-    t.string   "lastname"
     t.string   "avatar"
     t.string   "gender"
     t.string   "country"
     t.string   "city"
     t.date     "birth"
     t.boolean  "active"
-    t.boolean  "admin",                  default: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-  add_index "users", ["uid"], name: "index_users_on_uid", unique: true
+  add_index "users", ["facebook_uid"], name: "index_users_on_facebook_uid", unique: true
+  add_index "users", ["google_uid"], name: "index_users_on_google_uid", unique: true
+  add_index "users", ["push_uid"], name: "index_users_on_push_uid", unique: true
   add_index "users", ["username"], name: "index_users_on_username", unique: true
 
 end

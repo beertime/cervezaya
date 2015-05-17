@@ -12,30 +12,28 @@ URL: http://api.cervezaya.com
 
 + Parameters
 
-    + uid (string) - Campo obligatorio y único
+    + push_uid (string)
+    + facebook_uid (string)
+    + google_uid (string)
     + username (string) - Campo único
     + email (string) - Campo obligatorio y único
-    + firstname (string)
-    + lastname (string)
     + publicname (string)
-    + phone (string)
     + avatar (string)
     + gender (string)
     + country (string)
     + city (string)
     + birth (date)
     + active (boolean) - Por defecto 'true'
-    + password (string) - Opcional
-    + password_confirmation (string) - Opcional
 
 + Response 201 (application/json)
 
         {
             "id": 1,
-            "uid": null,
+            "push_uid": null,
+            "facebook_uid": null,
+            "google_uid": null,
             "email": "admin@example.com",
             "publicname": null,
-            "name": " ",
             "avatar": "",
             "gender": null,
             "birth": null,
@@ -51,10 +49,11 @@ URL: http://api.cervezaya.com
 
         {
             "id": 1,
-            "uid": null,
+            "push_uid": null,
+            "facebook_uid": null,
+            "google_uid": null,
             "email": "admin@example.com",
             "publicname": null,
-            "name": " ",
             "avatar": "",
             "gender": null,
             "birth": null,
@@ -66,12 +65,12 @@ URL: http://api.cervezaya.com
 
 + Parameters
 
+    + push_uid (string)
+    + facebook_uid (string)
+    + google_uid (string)
     + username (string) - Campo único
     + email (string) - Campo obligatorio y único
-    + firstname (string)
-    + lastname (string)
     + publicname (string)
-    + phone (string)
     + avatar (string)
     + gender (string)
     + country (string)
@@ -83,10 +82,11 @@ URL: http://api.cervezaya.com
 
         {
             "id": 1,
-            "uid": null,
+            "push_uid": null,
+            "facebook_uid": null,
+            "google_uid": null,
             "email": "admin@example.com",
             "publicname": null,
-            "name": " ",
             "avatar": "",
             "gender": null,
             "birth": null,

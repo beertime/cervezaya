@@ -1,10 +1,6 @@
 class UserSerializer < ActiveModel::Serializer
 
-  attributes :id, :uid, :email, :publicname, :name, :avatar, :gender, :birth, :city, :country
-
-  def name
-    "#{object.firstname} #{object.lastname}"
-  end
+  attributes :id, :push_uid, :facebook_uid, :google_uid, :email, :publicname, :avatar, :gender, :birth, :city, :country
 
   def avatar
     object.avatar.small.try(:image)

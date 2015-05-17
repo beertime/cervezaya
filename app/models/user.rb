@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   has_many :opinions
   has_many :bars, through: :opinions
 
-  mount_uploader :avatar, AvatarUploader
+  mount_uploader :custom_avatar, AvatarUploader
 
   validates :email, presence: true
 

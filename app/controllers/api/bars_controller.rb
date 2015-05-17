@@ -21,9 +21,7 @@ class API::BarsController < ApplicationController
     # User match
     bars.set_user(params[:user_id] || nil)
 
-    # unless params[:price].blank?
-    #   bars.where(published: true)
-    # else
+    # unless params[:min_price].blank?
     #   bars.where(published: true)
     # end
 

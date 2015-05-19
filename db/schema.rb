@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150517174012) do
+ActiveRecord::Schema.define(version: 20150518220113) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -120,14 +120,14 @@ ActiveRecord::Schema.define(version: 20150517174012) do
   add_index "opinions", ["user_id"], name: "index_opinions_on_user_id"
 
   create_table "products", force: :cascade do |t|
-    t.float    "price"
-    t.boolean  "published",    default: false
+    t.decimal  "price",        precision: 5, scale: 2, default: 0.0,   null: false
+    t.boolean  "published",                            default: false
     t.integer  "brand_id"
     t.integer  "size_id"
     t.integer  "franchise_id"
     t.integer  "bar_id"
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
+    t.datetime "created_at",                                           null: false
+    t.datetime "updated_at",                                           null: false
   end
 
   add_index "products", ["bar_id"], name: "index_products_on_bar_id"

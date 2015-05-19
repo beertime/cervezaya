@@ -5,11 +5,11 @@ class ProductSerializer < ActiveModel::Serializer
     :image_shadow_small, :image_shadow_medium, :image_shadow_large
 
   def brand_name
-    object.brand.name
+    object.brand.try(:name)
   end
 
   def brand_color
-    object.brand.color
+    object.brand.try(:color)
   end
 
   def image_small
@@ -49,6 +49,6 @@ class ProductSerializer < ActiveModel::Serializer
   end
 
   def size_icon
-    object.size.icon
+    object.size.try(:icon)
   end
 end

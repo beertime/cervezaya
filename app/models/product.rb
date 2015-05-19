@@ -10,6 +10,4 @@ class Product < ActiveRecord::Base
   accepts_nested_attributes_for :bar, allow_destroy: true
   accepts_nested_attributes_for :franchise, allow_destroy: true
 
-  serialize :price
-
 end

@@ -25,15 +25,36 @@ class BarSerializer < ActiveModel::Serializer
   end
 
   def product_image
-    object.products.first.try(:brand).try(:image).to_s.split('/').last
+    products = object.products
+    if products.count > 0
+      brand = products.first.try(:brand)
+      if brand
+        brand.try(:image).try(:url)
+      end
+    else
+      nil
+    end
   end
 
   def product_name
-    object.products.first.try(:brand).try(:name)
+    products = object.products
+    if products.count > 0
+      products.first.try(:brand)
+      if brand
+        brand.try(:name)
+      end
+    else
+      nil
+    end
   end
 
   def product_price
-    object.products.first.try(:price)
+    products = object.products
+    if products.count > 0
+      products.first.try(:price)
+    else
+      nil
+    end
   end
 
 end

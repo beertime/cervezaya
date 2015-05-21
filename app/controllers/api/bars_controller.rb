@@ -19,9 +19,7 @@ class API::BarsController < ApplicationController
     end
 
     # User match
-    if params[:user_id]
-      bars.set_user(params[:user_id] || nil)
-    end
+    bars.set_user(params[:user_id] || nil)
     # unless params[:min_price].blank?
     #   bars.where(published: true)
     # end
@@ -38,9 +36,7 @@ class API::BarsController < ApplicationController
 
   # GET /bars/:id
   def show
-    if params[:user_id]
-      Bar.set_user(params[:user_id])
-    end
+    Bar.set_user(params[:user_id] || nil)
     render json: Bar.find(params[:id]), status: 200, serializer: BarDetailSerializer
   end
 

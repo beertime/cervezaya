@@ -57,12 +57,12 @@ class FavoriteSerializer < ActiveModel::Serializer
   end
 
   def product_image
-    products = object.bar.try(:products)
-    if products.count > 0
-      products.first.try(:brand).try(:image).try(:url)
-    else
-      nil
-    end
+    # products = object.bar.try(:products)
+    # if products.count > 0
+    #   products.first.try(:brand).try(:image).try(:url)
+    # else
+    #   nil
+    # end
   end
 
   def product_name

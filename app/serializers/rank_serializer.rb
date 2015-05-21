@@ -68,7 +68,10 @@ class RankSerializer < ActiveModel::Serializer
   def product_name
     products = object.bar.try(:products)
     if products.count > 0
-      products.first.try(:brand).try(:name)
+      brand = products.first.try(:brand)
+      if brand
+        brand.try(:name)
+      end
     else
       nil
     end
@@ -82,4 +85,5 @@ class RankSerializer < ActiveModel::Serializer
       nil
     end
   end
+
 end

@@ -27,7 +27,10 @@ class BarSerializer < ActiveModel::Serializer
   def product_image
     products = object.products
     if products.count > 0
-      products.first.try(:brand).try(:image).try(:url)
+      brand = products.first.try(:brand)
+      if brand
+        brand.try(:image).try(:url)
+      end
     else
       nil
     end
@@ -36,7 +39,10 @@ class BarSerializer < ActiveModel::Serializer
   def product_name
     products = object.products
     if products.count > 0
-      products.first.try(:brand).try(:name)
+      products.first.try(:brand)
+      if brand
+        brand.try(:name)
+      end
     else
       nil
     end

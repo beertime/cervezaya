@@ -2,7 +2,7 @@ role :app, %w{ubuntu@cervezaya}
 role :web, %w{ubuntu@cervezaya}
 role :db,  %w{ubuntu@cervezaya}
 
-server 'cervezayadev', user: 'ubuntu', roles: %w{web app}
+server 'cervezaya-staging', user: 'ubuntu', roles: %w{web app}
 
 set :ssh_options, {
   keys: %w(~/.ssh/teysa.pem),

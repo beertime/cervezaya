@@ -68,7 +68,7 @@ class FavoriteSerializer < ActiveModel::Serializer
   def product_name
     products = object.bar.try(:products)
     if products.count > 0
-      products.first
+      products.first.try(:brand)
     #   products.first.try(:brand).try(:name)
     else
       nil

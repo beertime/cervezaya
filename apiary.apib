@@ -357,7 +357,7 @@ URL: http://api.cervezaya.com
     + max_distance (number) - Máxima distancia
     + min_price (number) - Mínimo precio
     + max_price (number) - Máximo precio
-    + user (string) - ID de usuario
+    + user_id (number) - ID de usuario
     + icon (array[number]) - Número de icono
     + brand (array[string]) - ID de marcas
     + type (array[string]) - ID de tipos
@@ -393,6 +393,10 @@ URL: http://api.cervezaya.com
 ## Bar [/bars/:id]
 
 ### Mostrar detalle de un único bar [GET]
+
++ Parameters
+
+    + user_id (number) - ID de usuario
 
 + Response 200 (application/json)
 

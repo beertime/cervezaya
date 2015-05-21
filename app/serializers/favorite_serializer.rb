@@ -61,7 +61,7 @@ class FavoriteSerializer < ActiveModel::Serializer
   end
 
   def product_name
-    object.bar.try(:products).first.try(:brand).try(:name)
+    # object.bar.try(:products).first.try(:brand).try(:name)
     # object.bar.products.first.brand.try(:name)
   end
 

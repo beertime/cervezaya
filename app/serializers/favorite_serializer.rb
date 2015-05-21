@@ -57,7 +57,7 @@ class FavoriteSerializer < ActiveModel::Serializer
   end
 
   def product_image
-    object.bar.try(:products).first
+    object.bar.try(:products)
     # object.bar.try(:products).first.try(:brand).try(:image).try(:url)
   end
 

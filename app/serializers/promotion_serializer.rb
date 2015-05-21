@@ -1,5 +1,7 @@
 class PromotionSerializer < ActiveModel::Serializer
-  attributes :id, :title, :description, :image_small, :image_medium, :image_large, :start_date, :end_date, :recurrent
+  attributes :id, :title, :description, :image,
+    :start_date, :end_date, :recurrent
+
   has_one :bar
 
   def start_date
@@ -10,16 +12,8 @@ class PromotionSerializer < ActiveModel::Serializer
     "#{object.end_date} #{object.end_hour.strftime("%H:%M")}"
   end
 
-  def image_small
-    object.image.small.try(:image)
-  end
-
-  def image_medium
-    object.image.medium.try(:image)
-  end
-
-  def image_large
-    object.image.large.try(:image)
+  def image
+    object.image.small.url.to_s.split('/').last
   end
 
 end

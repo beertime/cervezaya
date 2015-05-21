@@ -115,27 +115,21 @@ URL: http://api.cervezaya.com
 
         [
             {
+                "favorite_id": 1,
                 "id": 1,
-                "bar": {
-                    "id": 1,
-                    "name": "La Escondida",
-                    "address": "Calle Cardenal Bueno Monreal,  30",
-                    "region": "Sevilla",
-                    "phone": "954 614 879",
-                    "rank": 6,
-                    "latitude": 37.3692168,
-                    "longitude": -5.9797449,
-                    "photo_small": "",
-                    "photo_medium": "",
-                    "photo_large": "",
-                    "user_favorite": false,
-                    "user_rank": 0,
-                    "product_name": "Alhambra",
-                    "product_price": 2.0,
-                    "product_image_small": null,
-                    "product_image_medium": null,
-                    "product_image_large": null
-                }
+                "name": "La Escondida",
+                "address": "Calle Cardenal Bueno Monreal,  30",
+                "region": "Sevilla",
+                "phone": "954 614 879",
+                "rank": 6,
+                "latitude": 37.3692168,
+                "longitude": -5.9797449,
+                "photo": "",
+                "user_favorite": false,
+                "user_rank": 0,
+                "product_name": "Alhambra",
+                "product_price": 2.0,
+                "product_image": null
             }
         ]
 
@@ -148,27 +142,21 @@ URL: http://api.cervezaya.com
 + Response 201 (application/json)
 
         {
+            "favorite_id": 1,
             "id": 1,
-            "bar": {
-                "id": 1,
-                "name": "La Escondida",
-                "address": "Calle Cardenal Bueno Monreal,  30",
-                "region": "Sevilla",
-                "phone": "954 614 879",
-                "rank": 6,
-                "latitude": 37.3692168,
-                "longitude": -5.9797449,
-                "photo_small": "",
-                "photo_medium": "",
-                "photo_large": "",
-                "user_favorite": false,
-                "user_rank": 0,
-                "product_name": "Alhambra",
-                "product_price": 2.0,
-                "product_image_small": null,
-                "product_image_medium": null,
-                "product_image_large": null
-            }
+            "name": "La Escondida",
+            "address": "Calle Cardenal Bueno Monreal,  30",
+            "region": "Sevilla",
+            "phone": "954 614 879",
+            "rank": 6,
+            "latitude": 37.3692168,
+            "longitude": -5.9797449,
+            "photo": "",
+            "user_favorite": false,
+            "user_rank": 0,
+            "product_name": "Alhambra",
+            "product_price": 2.0,
+            "product_image": null
         }
 
 ## Favorito de usuario [/users/:user_id/favorites/:id]
@@ -186,27 +174,21 @@ URL: http://api.cervezaya.com
 
         [
             {
+                "recent_id": 1,
                 "id": 1,
-                "bar": {
-                    "id": 1,
-                    "name": "La Escondida",
-                    "address": "Calle Cardenal Bueno Monreal,  30",
-                    "region": "Sevilla",
-                    "phone": "954 614 879",
-                    "rank": 6,
-                    "latitude": 37.3692168,
-                    "longitude": -5.9797449,
-                    "photo_small": "",
-                    "photo_medium": "",
-                    "photo_large": "",
-                    "user_favorite": false,
-                    "user_rank": 0,
-                    "product_name": "Alhambra",
-                    "product_price": 2.0,
-                    "product_image_small": null,
-                    "product_image_medium": null,
-                    "product_image_large": null
-                }
+                "name": "La Escondida",
+                "address": "Calle Cardenal Bueno Monreal,  30",
+                "region": "Sevilla",
+                "phone": "954 614 879",
+                "rank": 6,
+                "latitude": 37.3692168,
+                "longitude": -5.9797449,
+                "photo": "",
+                "user_favorite": false,
+                "user_rank": 0,
+                "product_name": "Alhambra",
+                "product_price": 2.0,
+                "product_image": null
             }
         ]
 
@@ -219,28 +201,21 @@ URL: http://api.cervezaya.com
 + Response 201 (application/json)
 
         {
+            "recent_id": 1,
             "id": 1,
-            "user_id": 1,
-            "bar": {
-                "id": 1,
-                "name": "La Escondida",
-                "address": "Calle Cardenal Bueno Monreal,  30",
-                "region": "Sevilla",
-                "phone": "954 614 879",
-                "rank": 6,
-                "latitude": 37.3692168,
-                "longitude": -5.9797449,
-                "photo_small": "",
-                "photo_medium": "",
-                "photo_large": "",
-                "user_favorite": false,
-                "user_rank": 0,
-                "product_name": "Alhambra",
-                "product_price": 2.0,
-                "product_image_small": null,
-                "product_image_medium": null,
-                "product_image_large": null
-            }
+            "name": "La Escondida",
+            "address": "Calle Cardenal Bueno Monreal,  30",
+            "region": "Sevilla",
+            "phone": "954 614 879",
+            "rank": 6,
+            "latitude": 37.3692168,
+            "longitude": -5.9797449,
+            "photo": "",
+            "user_favorite": false,
+            "user_rank": 0,
+            "product_name": "Alhambra",
+            "product_price": 2.0,
+            "product_image": null
         }
 
 
@@ -255,10 +230,9 @@ URL: http://api.cervezaya.com
 
 + Response 201 (application/json)
 
-        {
-            "id": 1,
-            "value": 1,
-            "bar": {
+        [
+            {
+                "rank_id": 1,
                 "id": 1,
                 "name": "La Escondida",
                 "address": "Calle Cardenal Bueno Monreal,  30",
@@ -267,18 +241,14 @@ URL: http://api.cervezaya.com
                 "rank": 6,
                 "latitude": 37.3692168,
                 "longitude": -5.9797449,
-                "photo_small": "",
-                "photo_medium": "",
-                "photo_large": "",
+                "photo": "",
                 "user_favorite": false,
                 "user_rank": 0,
                 "product_name": "Alhambra",
                 "product_price": 2.0,
-                "product_image_small": null,
-                "product_image_medium": null,
-                "product_image_large": null
+                "product_image": null
             }
-        }
+        ]
 
 ## Valoración de usuario [/users/:user_id/ranks/:id]
 
@@ -287,28 +257,22 @@ URL: http://api.cervezaya.com
 + Response 200 (application/json)
 
         {
+            "rank_id": 1,
             "id": 1,
-            "value": 1,
-            "bar": {
-                "id": 1,
-                "name": "La Escondida",
-                "address": "Calle Cardenal Bueno Monreal,  30",
-                "region": "Sevilla",
-                "phone": "954 614 879",
-                "rank": 6,
-                "latitude": 37.3692168,
-                "longitude": -5.9797449,
-                "photo_small": "",
-                "photo_medium": "",
-                "photo_large": "",
-                "user_favorite": false,
-                "user_rank": 0,
-                "product_name": "Alhambra",
-                "product_price": 2.0,
-                "product_image_small": null,
-                "product_image_medium": null,
-                "product_image_large": null
-            }
+            "value": 0,
+            "name": "La Escondida",
+            "address": "Calle Cardenal Bueno Monreal,  30",
+            "region": "Sevilla",
+            "phone": "954 614 879",
+            "rank": 6,
+            "latitude": 37.3692168,
+            "longitude": -5.9797449,
+            "photo": "",
+            "user_favorite": false,
+            "user_rank": 0,
+            "product_name": "Alhambra",
+            "product_price": 2.0,
+            "product_image": null
         }
 
 ### Editar valoración de bar [PUT]
@@ -320,28 +284,22 @@ URL: http://api.cervezaya.com
 + Response 200 (application/json)
 
         {
+            "rank_id": 1,
             "id": 1,
-            "value": 1,
-            "bar": {
-                "id": 1,
-                "name": "La Escondida",
-                "address": "Calle Cardenal Bueno Monreal,  30",
-                "region": "Sevilla",
-                "phone": "954 614 879",
-                "rank": 6,
-                "latitude": 37.3692168,
-                "longitude": -5.9797449,
-                "photo_small": "",
-                "photo_medium": "",
-                "photo_large": "",
-                "user_favorite": false,
-                "user_rank": 0,
-                "product_name": "Alhambra",
-                "product_price": 2.0,
-                "product_image_small": null,
-                "product_image_medium": null,
-                "product_image_large": null
-            }
+            "value": 0,
+            "name": "La Escondida",
+            "address": "Calle Cardenal Bueno Monreal,  30",
+            "region": "Sevilla",
+            "phone": "954 614 879",
+            "rank": 6,
+            "latitude": 37.3692168,
+            "longitude": -5.9797449,
+            "photo": "",
+            "user_favorite": false,
+            "user_rank": 0,
+            "product_name": "Alhambra",
+            "product_price": 2.0,
+            "product_image": null
         }
 
 
@@ -377,16 +335,12 @@ URL: http://api.cervezaya.com
                 "rank": 6,
                 "latitude": 37.3692168,
                 "longitude": 5.9797449,
-                "photo_small": "",
-                "photo_medium": "",
-                "photo_large": "",
+                "photo": "",
                 "user_favorite": false,
                 "user_rank": 6,
                 "product_name": null,
                 "product_price": 0,
-                "product_image_small": null,
-                "product_image_medium": null,
-                "product_image_large": null
+                "product_image": null
             }
         ]
 
@@ -410,9 +364,7 @@ URL: http://api.cervezaya.com
             "rank": 6,
             "latitude": 37.3692168,
             "longitude": 5.9797449,
-            "photo_small": "",
-            "photo_medium": "",
-            "photo_large": "",
+            "photo": "",
             "user_favorite": false,
             "user_rank": 0,
             "products": [
@@ -422,15 +374,9 @@ URL: http://api.cervezaya.com
                     "brand_name": "Alhambra",
                     "brand_color": "#2b8b2d",
                     "size_icon": 4,
-                    "image_small": "",
-                    "image_medium": "",
-                    "image_large": "",
-                    "image_alt_small": "",
-                    "image_alt_medium": "",
-                    "image_alt_large": "",
-                    "image_shadow_small": "",
-                    "image_shadow_medium": "",
-                    "image_shadow_large": ""
+                    "image": "",
+                    "image_alt": "",
+                    "image_shadow": ""
                 }
             ]
         }
@@ -527,16 +473,12 @@ URL: http://api.cervezaya.com
                     "rank": 0,
                     "latitude": 37.3880527,
                     "longitude": 6.00323509999999,
-                    "photo_small": "",
-                    "photo_medium": "",
-                    "photo_large": "",
+                    "photo": "",
                     "user_favorite": false,
                     "user_rank": 0,
                     "product_name": null,
                     "product_price": 0,
-                    "product_image_small": null,
-                    "product_image_medium": null,
-                    "product_image_large": null
+                    "product_image": null
                 }
             }
         ]
@@ -582,14 +524,8 @@ URL: http://api.cervezaya.com
                 "id": 1,
                 "name": "Albero",
                 "color": "#8d8e1e",
-                "image_small": "",
-                "image_medium": "",
-                "image_large": "",
-                "image_alt_small": "",
-                "image_alt_medium": "",
-                "image_alt_large": "",
-                "image_shadow_small": "",
-                "image_shadow_medium": "",
-                "image_shadow_large": ""
+                "image": "",
+                "image_alt": "",
+                "image_shadow": ""
             }
         ]

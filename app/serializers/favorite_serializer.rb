@@ -1,5 +1,15 @@
 class FavoriteSerializer < ActiveModel::Serializer
-  attributes :id, :bar_id, :name, :address, :region, :phone, :rank, :latitude, :longitude, :photo
+  attributes :favorite_id, :id, :name, :address, :region, :phone, :rank, :latitude, :longitude, :photo,
+    :user_favorite, :user_rank,
+    :product_name, :product_price, :product_image
+
+  def favorite_id
+    object.id
+  end
+
+  def id
+    object.bar_id
+  end
 
   def address
     "#{object.address.split(',')[0]}, #{object.address.split(',')[1]}"
@@ -35,6 +45,27 @@ class FavoriteSerializer < ActiveModel::Serializer
 
   def photo
     object.bar.try(:photo).try(:url).to_s.split('/').last
+  end
+
+  def user_favorite
+    true
+  end
+
+  def user_rank
+    # Bar.get_user_rank(object.bar_id)
+    nil
+  end
+
+  def product_image
+    object.bar.products.first.brand.try(:image).to_s.split('/').last
+  end
+
+  def product_name
+    object.bar.products.first.brand.try(:name)
+  end
+
+  def product_price
+    object.bar.products.first.brand.try(:price)
   end
 
 end

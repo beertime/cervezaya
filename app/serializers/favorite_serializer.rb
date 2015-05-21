@@ -1,5 +1,4 @@
 class FavoriteSerializer < ActiveModel::Serializer
-  # attributes :id
-  embed :ids
+  attributes :id
   has_one :bar
 end

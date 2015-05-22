@@ -31,7 +31,7 @@ class BarDetailSerializer < ActiveModel::Serializer
     if favorite
       favorite.id
     else
-      false
+      nil
     end
   end
 

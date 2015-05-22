@@ -1,6 +1,6 @@
-role :app, %w{ubuntu@cervezaya}
-role :web, %w{ubuntu@cervezaya}
-role :db,  %w{ubuntu@cervezaya}
+role :app, %w{ubuntu@cervezaya-staging}
+role :web, %w{ubuntu@cervezaya-staging}
+role :db,  %w{ubuntu@cervezaya-staging}
 
 set :branch, :develop
 

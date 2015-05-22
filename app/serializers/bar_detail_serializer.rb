@@ -1,7 +1,7 @@
 class BarDetailSerializer < ActiveModel::Serializer
 
   attributes :id, :name, :description, :address, :region, :phone, :rank, :latitude, :longitude, :photo,
-    :user_favorite, :user_rank
+    :user_favorite, :user_favorite_id, :user_rank
 
   has_many :products
 
@@ -18,7 +18,21 @@ class BarDetailSerializer < ActiveModel::Serializer
   end
 
   def user_favorite
-    Bar.get_user_favorite(object.id)
+    favorite = Bar.get_user_favorite(object.id)
+    if favorite
+      favorite.count > 0
+    else
+      false
+    end
+  end
+
+  def user_favorite_id
+    favorite = Bar.get_user_favorite(object.id)[0]
+    if favorite
+      favorite.id
+    else
+      false
+    end
   end
 
   def user_rank

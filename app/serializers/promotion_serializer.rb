@@ -13,7 +13,7 @@ class PromotionSerializer < ActiveModel::Serializer
   end
 
   def image
-    object.image.small.url.to_s.split('/').last
+    object.image.url.to_s.split('/').last
   end
 
 end

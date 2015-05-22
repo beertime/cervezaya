@@ -57,35 +57,25 @@ class FavoriteSerializer < ActiveModel::Serializer
   end
 
   def product_image
-    # products = object.bar.try(:products)
-    # if products.count > 0
-    #   products.first.try(:brand).try(:image).try(:url)
-    # else
-    #   nil
-    # end
+    if object.bar
+      object.bar.products.first.try(:brand).try(:image).try(:url)
+    else
+      nil
+    end
   end
 
   def product_name
-    # object.bar.products
-    # if products.count > 0
-    #   brand = products.first.try(:brand)
-    #   if brand
-    #     brand.try(:name)
-    #   end
-    # else
-    #   nil
-    # end
+    if object.bar
+      object.bar.products.first.try(:brand).try(:brand)
+    else
+      nil
+    end
   end
 
   def product_price
-    if (object.bar)
-      object.bar.products.first.price
+    if object.bar
+      object.bar.products.first.try(:price)
     end
-    # if products.count > 0
-    #   products.first.try(:price)
-    # else
-    #   nil
-    # end
   end
 
 end

@@ -57,32 +57,24 @@ class RecentSerializer < ActiveModel::Serializer
   end
 
   def product_image
-    products = object.bar.try(:products)
-    if products.count > 0
-      products.first.try(:brand).try(:image).try(:url)
+    if object.bar
+      object.bar.products.first.try(:brand).try(:image).try(:url)
     else
       nil
     end
   end
 
   def product_name
-    products = object.bar.try(:products)
-    if products.count > 0
-      brand = products.first.try(:brand)
-      if brand
-        brand.try(:name)
-      end
+    if object.bar
+      object.bar.products.first.try(:brand).try(:brand)
     else
       nil
     end
   end
 
   def product_price
-    products = object.bar.try(:products)
-    if products.count > 0
-      products.first.try(:price)
-    else
-      nil
+    if object.bar
+      object.bar.products.first.try(:price)
     end
   end
 

@@ -2,7 +2,11 @@ class BarSerializer < ActiveModel::Serializer
 
   attributes :id, :name, :address, :region, :phone, :rank, :latitude, :longitude, :photo,
     :user_favorite, :user_rank,
-    :product_name, :product_price, :product_image
+    :product_name, :product_price, :product_image, :is_franchise
+
+  def is_franchise
+    object.franchise.try(:id) != nil
+  end
 
   def address
     "#{object.address.split(',')[0]}, #{object.address.split(',')[1]}"
@@ -13,11 +17,20 @@ class BarSerializer < ActiveModel::Serializer
   end
 
   def photo
-    object.photo.try(:url).to_s.split('/').last
+    unless object.photo
+      object.photo.try(:url).to_s.split('/').last
+    else
+      object.franchise.try(:photo).try(:url).to_s.split('/').last
+    end
   end
 
   def user_favorite
-    Bar.get_user_favorite(object.id)
+    favorite = Bar.get_user_favorite(object.id)
+    if favorite
+      favorite.count > 0
+    else
+      false
+    end
   end
 
   def user_rank

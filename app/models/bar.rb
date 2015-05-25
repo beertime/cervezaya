@@ -34,7 +34,7 @@ class Bar < ActiveRecord::Base
 
   def self.get_user_favorite(bar_id)
     if @user
-      Favorite.where(bar_id: bar_id).where(user_id: @user.id)
+      Favorite.where(bar_id: bar_id).where(user_id: @user.id).count > 0
     else
       false
     end

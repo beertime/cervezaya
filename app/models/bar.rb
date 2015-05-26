@@ -23,7 +23,7 @@ class Bar < ActiveRecord::Base
   end
 
   def self.sort_by_price()
-    self.includes(:products)
+    self.joins(:products)
       .order('products.price ASC')
       .where.not('products.price': nil)
       .where(franchise: nil)
@@ -36,7 +36,6 @@ class Bar < ActiveRecord::Base
   end
 
   def self.set_user(user_id)
-    logger.debug '=====>' + user_id
     @user = user_id ? User.find_by_id(user_id) : nil
   end
 

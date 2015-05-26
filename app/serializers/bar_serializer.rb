@@ -31,9 +31,9 @@ class BarSerializer < ActiveModel::Serializer
 
   def product_image
     if object.franchise
-      object.franchise.try(:products).first.try(:brand).try(:image).try(:url)
+      object.franchise.try(:products).first.try(:brand).try(:image).try(:url).to_s.split('/').last
     else
-      object.products.first.try(:brand).try(:image).try(:url)
+      object.products.first.try(:brand).try(:image).try(:url).to_s.split('/').last
     end
   end
 

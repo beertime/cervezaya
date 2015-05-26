@@ -66,4 +66,8 @@ class Bar < ActiveRecord::Base
     end
   end
 
+  def self.fiter_by_brands(brand_ids)
+    self
+  end
+
 end

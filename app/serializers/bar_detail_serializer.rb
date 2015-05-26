@@ -3,6 +3,8 @@ class BarDetailSerializer < ActiveModel::Serializer
   attributes :id, :name, :description, :address, :region, :phone, :rank, :latitude, :longitude, :photo,
     :user_favorite, :user_favorite_id, :user_rank, :products, :is_franchise
 
+  has_many :products
+
   def is_franchise
     object.franchise.try(:id) != nil
   end

@@ -1,6 +1,12 @@
 class ProductSerializer < ActiveModel::Serializer
-  attributes :id, :price, :brand_name, :brand_color, :size_icon, :size_volume,
+  attributes :id, :price,
+    :brand_name, :brand_color,
+    :size_icon, :size_volume,
     :image, :image_alt, :image_shadow
+
+  def price
+    object.price.to_f
+  end
 
   def brand_name
     object.brand.try(:name)
@@ -8,6 +14,10 @@ class ProductSerializer < ActiveModel::Serializer
 
   def brand_color
     object.brand.try(:color)
+  end
+
+  def brand_icon
+    object.s.try(:icon)
   end
 
   def image

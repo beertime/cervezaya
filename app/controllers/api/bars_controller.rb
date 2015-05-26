@@ -17,12 +17,17 @@ class API::BarsController < ApplicationController
       bars = bars.near([params[:latitude], params[:longitude]], distance)
     end
 
-    # # Query search
+    # Query search
     if params.has_key?(:q)
       bars = bars.where("name LIKE '%#{params[:q]}%'")
     end
 
-    # # Sort
+    # Filters
+    # if params.has_key?(:brand_ids)
+    #   bars.fiter_by_brands(params[:brand_ids])
+    # end
+
+    # Sort
     if params.has_key?(:sort) and /rank|price/.match(params[:sort])
       if params[:sort] == 'rank'
         bars = bars.sort_by_rank()

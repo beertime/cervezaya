@@ -32,25 +32,15 @@ class BarDetailSerializer < ActiveModel::Serializer
   end
 
   def user_favorite
-    favorite = Bar.get_user_favorite(object.id)
-    if favorite
-      favorite.count > 0
-    else
-      false
-    end
-  end
-
-  def user_favorite_id
-    favorite = Bar.get_user_favorite(object.id)
-    if favorite and favorite[0]
-      favorite.id
-    else
-      nil
-    end
+    Bar.get_user_favorite(object.id)
   end
 
   def user_rank
     Bar.get_user_rank(object.id)
+  end
+
+  def user_favorite_id
+    Bar.get_user_favorite_id(object.id)
   end
 
 end

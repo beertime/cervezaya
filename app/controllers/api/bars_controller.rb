@@ -36,7 +36,7 @@ class API::BarsController < ApplicationController
 
   # GET /bars/:id
   def show
-    Bar.set_user(params[:user_id] || nil)
+    Bar.set_user(params[:user_id])
     render json: Bar.find(params[:id]), status: 200, serializer: BarDetailSerializer
   end
 

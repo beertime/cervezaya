@@ -1,5 +1,7 @@
 class Product < ActiveRecord::Base
 
+  default_scope { order('price ASC') }
+
   belongs_to :brand
   belongs_to :size
   belongs_to :bar

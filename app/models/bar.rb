@@ -18,7 +18,16 @@ class Bar < ActiveRecord::Base
 
   geocoded_by :address, :latitude  => :latitude, :longitude => :longitude
 
-  paginates_per 25
+  def self.sort_by_rank()
+    self.where.not(rank: nil).order(rank: :desc)
+  end
+
+  def self.sort_by_price()
+    self.includes(:products)
+      .order('products.price ASC')
+      .where.not('products.price': nil)
+      .where(franchise: nil)
+  end
 
   def self.update_rank(bar_id, rank)
     bar = self.find(bar_id)
@@ -27,17 +36,7 @@ class Bar < ActiveRecord::Base
   end
 
   def self.set_user(user_id)
-    if user_id
-      @user = User.find(user_id)
-    end
-  end
-
-  def self.get_user_favorite(bar_id)
-    if @user
-      Favorite.where(bar_id: bar_id).where(user_id: @user.id).count > 0
-    else
-      false
-    end
+    @user = user_id ? User.find(user_id) : nil
   end
 
   def self.get_user_rank(bar_id)
@@ -47,6 +46,14 @@ class Bar < ActiveRecord::Base
       size > 0 ? ranks.sum / size : nil
     else
       nil
+    end
+  end
+
+  def self.get_user_favorite(bar_id)
+    if @user
+      Favorite.where(bar_id: bar_id).where(user_id: @user.id).count > 0
+    else
+      false
     end
   end
 

@@ -14,7 +14,7 @@ class BarSerializer < ActiveModel::Serializer
   end
 
   def photo
-    unless object.photo
+    if object.photo
       object.photo.try(:url).to_s.split('/').last
     else
       object.franchise.try(:photo).try(:url).to_s.split('/').last

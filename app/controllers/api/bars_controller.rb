@@ -20,9 +20,9 @@ class API::BarsController < ApplicationController
     # Query search
     if params.has_key?(:q)
       if Rails.env.production?
-        bars = bars.where("name ILIKE '%#{params[:q]}%'")
+        bars = bars.where("name ILIKE '%#{params[:q]}%' OR address ILIKE '%#{params[:q]}%'")
       else
-        bars = bars.where("name LIKE '%#{params[:q]}%'")
+        bars = bars.where("name LIKE '%#{params[:q]}%' OR address LIKE '%#{params[:q]}%'")
       end
     end
 

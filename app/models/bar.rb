@@ -18,7 +18,16 @@ class Bar < ActiveRecord::Base
 
   geocoded_by :address, :latitude  => :latitude, :longitude => :longitude
 
-  paginates_per 25
+  def self.sort_by_rank()
+    self.where.not(rank: nil).order(rank: :desc)
+  end
+
+  def self.sort_by_price()
+    self.joins(:products)
+      .order('products.price ASC')
+      .where.not('products.price': nil)
+      .where(franchise: nil)
+  end
 
   def self.update_rank(bar_id, rank)
     bar = self.find(bar_id)
@@ -27,8 +36,16 @@ class Bar < ActiveRecord::Base
   end
 
   def self.set_user(user_id)
-    if user_id
-      @user = User.find(user_id)
+    @user = user_id ? User.find_by_id(user_id) : nil
+  end
+
+  def self.get_user_rank(bar_id)
+    if @user
+      ranks = Rank.where(bar_id: bar_id).where(user_id: @user.id).pluck(:value)
+      size = ranks.count
+      size > 0 ? ranks.sum / size : 0
+    else
+      0
     end
   end
 
@@ -40,14 +57,17 @@ class Bar < ActiveRecord::Base
     end
   end
 
-  def self.get_user_rank(bar_id)
+  def self.get_user_favorite_id(bar_id)
     if @user
-      ranks = Rank.where(bar_id: bar_id).where(user_id: @user.id).pluck(:value)
-      size = ranks.count
-      size > 0 ? ranks.sum / size : nil
+      favorite = Favorite.where(bar_id: bar_id).where(user_id: @user.id)
+      favorite.count > 0 ? favorite[0].id : nil
     else
       nil
     end
+  end
+
+  def self.fiter_by_brands(brand_ids)
+    self
   end
 
 end

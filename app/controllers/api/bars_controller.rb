@@ -2,41 +2,50 @@ class API::BarsController < ApplicationController
 
   # GET /bars
   def index
-    offset = (params[:offset] || 0).to_i
-    limit = (params[:limit] || 25).to_i
-    distance = params[:distance] || 1
+    limit = params.has_key?(:limit) ? params[:limit] : 25
+    offset = params.has_key?(:offset) ? params[:offset] : 0
+    distance = params.has_key?(:distance) ? params[:distance] : 10
 
+    # User match
+    Bar.set_user(params[:user_id])
+
+    # Limit and offset
     bars = Bar.limit(limit).offset(offset)
 
     # Georeference
-    unless params[:latitude].blank? and params[:longitude].blank?
+    if params.has_key?(:latitude) and params.has_key?(:longitude)
       bars = bars.near([params[:latitude], params[:longitude]], distance)
     end
 
     # Query search
-    if params[:q]
-      bars = bars.where("name LIKE '%#{params[:q]}%'")
+    if params.has_key?(:q)
+      if Rails.env.production
+        bars = bars.where("name ILIKE '%#{params[:q]}%'")
+      else
+        bars = bars.where("name LIKE '%#{params[:q]}%'")
+      end
     end
 
-    # User match
-    bars.set_user(params[:user_id] || nil)
-    # unless params[:min_price].blank?
-    #   bars.where(published: true)
+    # Filters
+    # if params.has_key?(:brand_ids)
+    #   bars.fiter_by_brands(params[:brand_ids])
     # end
 
     # Sort
-    if params[:sort] == 'rank'
-      bars.sort_by { |b| b.rank.to_i }
-    elsif params[:sort] == 'price'
-      bars.sort_by { |b| b.products.first.try(:price).to_i }
+    if params.has_key?(:sort) and /rank|price/.match(params[:sort])
+      if params[:sort] == 'rank'
+        bars = bars.sort_by_rank()
+      elsif params[:sort] == 'price'
+        bars = bars.sort_by_price()
+      end
     end
 
-    render json: bars, status: 200
+    render json: bars.where(published: true), status: 200
   end
 
   # GET /bars/:id
   def show
-    Bar.set_user(params[:user_id] || nil)
+    Bar.set_user(params[:user_id])
     render json: Bar.find(params[:id]), status: 200, serializer: BarDetailSerializer
   end
 

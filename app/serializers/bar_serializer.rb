@@ -1,12 +1,9 @@
 class BarSerializer < ActiveModel::Serializer
 
-  attributes :id, :name, :address, :region, :phone, :rank, :latitude, :longitude, :photo,
+  attributes :id, :name, :address, :region, :phone,
+    :rank, :latitude, :longitude, :photo,
     :user_favorite, :user_rank,
     :product_name, :product_price, :product_image, :is_franchise
-
-  def is_franchise
-    object.franchise.try(:id) != nil
-  end
 
   def address
     "#{object.address.split(',')[0]}, #{object.address.split(',')[1]}"
@@ -25,12 +22,7 @@ class BarSerializer < ActiveModel::Serializer
   end
 
   def user_favorite
-    favorite = Bar.get_user_favorite(object.id)
-    if favorite
-      favorite.count > 0
-    else
-      false
-    end
+    Bar.get_user_favorite(object.id)
   end
 
   def user_rank
@@ -39,9 +31,9 @@ class BarSerializer < ActiveModel::Serializer
 
   def product_image
     if object.franchise
-      object.franchise.try(:products).first.try(:brand).try(:image).try(:url)
+      object.franchise.try(:products).first.try(:brand).try(:image).try(:url).to_s.split('/').last
     else
-      object.products.first.try(:brand).try(:image).try(:url)
+      object.products.first.try(:brand).try(:image).try(:url).to_s.split('/').last
     end
   end
 
@@ -55,10 +47,14 @@ class BarSerializer < ActiveModel::Serializer
 
   def product_price
     if object.franchise
-      object.franchise.try(:products).first.try(:price)
+      object.franchise.try(:products).first.try(:price).to_f
     else
-      object.products.first.try(:price)
+      object.products.first.try(:price).to_f
     end
+  end
+
+  def is_franchise
+    object.franchise.try(:id) != nil
   end
 
 end

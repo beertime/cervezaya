@@ -19,7 +19,11 @@ class API::BarsController < ApplicationController
 
     # Query search
     if params.has_key?(:q)
-      bars = bars.where("name LIKE '%#{params[:q]}%'")
+      if Rails.env.production
+        bars = bars.where("name ILIKE '%#{params[:q]}%'")
+      else
+        bars = bars.where("name LIKE '%#{params[:q]}%'")
+      end
     end
 
     # Filters

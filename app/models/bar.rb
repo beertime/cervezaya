@@ -43,9 +43,9 @@ class Bar < ActiveRecord::Base
     if @user
       ranks = Rank.where(bar_id: bar_id).where(user_id: @user.id).pluck(:value)
       size = ranks.count
-      size > 0 ? ranks.sum / size : nil
+      size > 0 ? ranks.sum / size : 0
     else
-      nil
+      0
     end
   end
 

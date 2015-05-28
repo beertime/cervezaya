@@ -49,6 +49,15 @@ class Bar < ActiveRecord::Base
     end
   end
 
+  def self.get_user_rank_id(bar_id)
+    if @user
+      rank = Rank.where(bar_id: bar_id).where(user_id: @user.id).first
+      rank ? rank.id : nil 
+    else
+       nil
+     end
+  end
+
   def self.get_user_favorite(bar_id)
     if @user
       Favorite.where(bar_id: bar_id).where(user_id: @user.id).count > 0

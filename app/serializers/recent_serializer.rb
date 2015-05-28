@@ -1,7 +1,7 @@
 class RecentSerializer < ActiveModel::Serializer
   attributes :recent_id, :id, :name, :address, :region, :phone, :rank, :latitude, :longitude, :photo,
     :user_favorite, :user_rank,
-    :product_name, :product_price, :product_image
+    :product_name, :product_price, :product_image, :is_franchise
 
   def recent_id
     object.id
@@ -76,6 +76,10 @@ class RecentSerializer < ActiveModel::Serializer
     if object.bar
       object.bar.products.first.try(:price)
     end
+  end
+
+  def is_franchise
+    object.bar.try(:franchise).try(:id) != nil
   end
 
 end

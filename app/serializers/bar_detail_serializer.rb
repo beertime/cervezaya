@@ -33,16 +33,16 @@ class BarDetailSerializer < ActiveModel::Serializer
     object.rank || 0
   end
 
-  def user_favorite
-    Bar.get_user_favorite(object.id)
-  end
-
   def user_rank
     Bar.get_user_rank(object.id)
   end
 
   def user_rank_id
     Bar.get_user_rank_id(object.id)
+  end
+
+  def user_favorite
+    Bar.get_user_favorite(object.id)
   end
 
   def user_favorite_id

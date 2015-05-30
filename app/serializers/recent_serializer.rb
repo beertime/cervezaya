@@ -1,6 +1,6 @@
 class RecentSerializer < ActiveModel::Serializer
   attributes :recent_id, :id, :name, :address, :region, :phone, :rank, :latitude, :longitude, :photo,
-    :user_favorite, :user_rank,
+    :user_favorite, :user_rank, :user_rank_id,
     :product_name, :product_price, :product_image, :franchise_id, :is_franchise
 
   def recent_id
@@ -33,6 +33,10 @@ class RecentSerializer < ActiveModel::Serializer
 
   def rank
     object.bar.try(:rank) || 0
+  end
+
+  def user_rank_id
+    Bar.get_user_rank_id(object.id)
   end
 
   def latitude

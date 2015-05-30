@@ -1,6 +1,6 @@
 class RankSerializer < ActiveModel::Serializer
   attributes :rank_id, :id, :name, :address, :region, :phone, :rank, :latitude, :longitude, :photo, :value,
-    :user_favorite, :user_rank,
+    :user_favorite, :user_rank, :user_rank_id,
     :product_name, :product_price, :product_image, :franchise_id, :is_franchise
 
   def rank_id
@@ -57,6 +57,10 @@ class RankSerializer < ActiveModel::Serializer
 
   def user_rank
     Bar.get_user_rank(object.bar.id)
+  end
+
+  def user_rank_id
+    Bar.get_user_rank_id(object.id)
   end
 
   def product_brand_id

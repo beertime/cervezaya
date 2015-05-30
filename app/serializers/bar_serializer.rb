@@ -2,7 +2,7 @@ class BarSerializer < ActiveModel::Serializer
 
   attributes :id, :name, :address, :region, :phone,
     :rank, :latitude, :longitude, :photo,
-    :user_favorite, :user_rank,
+    :user_favorite, :user_rank, :user_rank_id,
     :product_brand_id, :product_name, :product_price, :product_image,
     :franchise_id, :is_franchise
 
@@ -24,6 +24,10 @@ class BarSerializer < ActiveModel::Serializer
 
   def user_favorite
     Bar.get_user_favorite(object.id)
+  end
+
+  def user_rank_id
+    Bar.get_user_rank_id(object.id)
   end
 
   def user_rank

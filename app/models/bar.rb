@@ -23,10 +23,8 @@ class Bar < ActiveRecord::Base
   end
 
   def self.sort_by_price()
-    self.includes(:products)
+    self.includes(:products).where.not('products.price': nil)
       .order('products.price ASC')
-      .where.not('products.price': nil)
-      .where(franchise: nil)
   end
 
   def self.update_rank(bar_id, rank)

@@ -12,7 +12,7 @@ class API::BarsController < ApiController
     Bar.set_user(params[:user_id])
 
     # Limit and offset
-    bars = Bar.limit(limit).offset(offset)
+    bars = Bar.includes(:products).limit(limit).offset(offset)
 
     # Query search
     if params.has_key?(:q)
@@ -36,6 +36,11 @@ class API::BarsController < ApiController
       bars = bars.filter_by_icons(params[:icons])
     end
 
+    # Georeference
+    # if params.has_key?(:latitude) and params.has_key?(:longitude)
+    #   bars = bars.near([params[:latitude], params[:longitude]], max_distance || distance)
+    # end
+
     # Sort
     if params.has_key?(:sort) and /rank|price/.match(params[:sort])
       if params[:sort] == 'rank'
@@ -47,11 +52,6 @@ class API::BarsController < ApiController
 
     # Always show published bars
     bars = bars.where(published: true)
-
-    # Georeference
-    if params.has_key?(:latitude) and params.has_key?(:longitude)
-      bars = bars.near([params[:latitude], params[:longitude]], max_distance || distance, order: 'distance')
-    end
 
     render json: bars, status: 200
   end

@@ -1,11 +1,15 @@
 class ProductSerializer < ActiveModel::Serializer
   attributes :id, :price,
-    :brand_name, :brand_color,
+    :brand_id, :brand_name, :brand_color,
     :size_icon, :size_volume,
     :image, :image_alt, :image_shadow
 
   def price
     object.price.to_f
+  end
+
+  def brand_id
+    object.brand.id
   end
 
   def brand_name

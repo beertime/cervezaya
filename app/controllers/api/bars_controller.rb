@@ -49,14 +49,14 @@ class API::BarsController < ApiController
     bars = bars.where(published: true)
 
     # Georeference
-    if params.has_key?(:latitude) and params.has_key?(:longitude)
-      near_bars = bars.near([params[:latitude], params[:longitude]], max_distance || distance, order: 'distance').to_a
-      if min_distance
-        bars = near_bars.keep_if { |bar| bar.distance.to_f >= min_distance }
-      else
-        bars = near_bars
-      end
-    end
+    # if params.has_key?(:latitude) and params.has_key?(:longitude)
+    #   near_bars = bars.near([params[:latitude], params[:longitude]], max_distance || distance, order: 'distance').to_a
+    #   if min_distance
+    #     bars = near_bars.keep_if { |bar| bar.distance.to_f >= min_distance }
+    #   else
+    #     bars = near_bars
+    #   end
+    # end
 
     render json: bars, status: 200
   end

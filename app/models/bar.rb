@@ -23,7 +23,7 @@ class Bar < ActiveRecord::Base
   end
 
   def self.sort_by_price()
-    self.joins(:products)
+    self.includes(:products)
       .order('products.price ASC')
       .where.not('products.price': nil)
       .where(franchise: nil)
@@ -52,7 +52,7 @@ class Bar < ActiveRecord::Base
   def self.get_user_rank_id(bar_id)
     if @user
       rank = Rank.where(bar_id: bar_id).where(user_id: @user.id).first
-      rank ? rank.id : nil 
+      rank ? rank.id : nil
     else
        nil
      end
@@ -76,7 +76,26 @@ class Bar < ActiveRecord::Base
   end
 
   def self.fiter_by_brands(brand_ids)
-    self
+    self.joins(:products).where({ products: { brand: brand_ids } })
+  end
+
+  def self.fiter_by_sizes(sizes_ids)
+    self.joins(:products).where({ products: { brand: { size: sizes_ids } } })
+  end
+
+  # def self.fiter_by_icons(icon_ids)
+  #   self.joins(:products).where({ products: { brand: { size: { icon: icon_ids } } } })
+  # end
+
+  def self.where_min_max_price(min_price, max_price)
+    bars = self.joins(:products)
+    if min_price
+      bars = bars.where('products.price >= ?', min_price.to_f)
+    end
+    if max_price
+      bars = bars.where('products.price <= ?', max_price.to_f)
+    end
+    bars.distinct
   end
 
 end

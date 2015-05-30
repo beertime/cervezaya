@@ -235,25 +235,23 @@ Necesitas autorizarte con los HEADERS:
 
 + Response 201 (application/json)
 
-        [
-            {
-                "rank_id": 1,
-                "id": 1,
-                "name": "La Escondida",
-                "address": "Calle Cardenal Bueno Monreal,  30",
-                "region": "Sevilla",
-                "phone": "954 614 879",
-                "rank": 6,
-                "latitude": 37.3692168,
-                "longitude": -5.9797449,
-                "photo": "",
-                "user_favorite": false,
-                "user_rank": 0,
-                "product_name": "Alhambra",
-                "product_price": 2.0,
-                "product_image": null
-            }
-        ]
+        {
+            "rank_id": 1,
+            "id": 1,
+            "name": "La Escondida",
+            "address": "Calle Cardenal Bueno Monreal,  30",
+            "region": "Sevilla",
+            "phone": "954 614 879",
+            "rank": 6,
+            "latitude": 37.3692168,
+            "longitude": -5.9797449,
+            "photo": "",
+            "user_favorite": false,
+            "user_rank": 0,
+            "product_name": "Alhambra",
+            "product_price": 2.0,
+            "product_image": null
+        }
 
 ## Valoración de usuario [/users/:user_id/ranks/:id]
 
@@ -538,3 +536,20 @@ Necesitas autorizarte con los HEADERS:
                 "image_shadow": ""
             }
         ]
+
+## Contacto del usuario o Feedback [/contacts]
+
+### Mostrar todas las promociones [GET]
+
++ Parameters
+
+    + user_id (number) - ID del usuario
+    + message (string) - texto
+
++ Response 200 (application/json)
+
+        {
+          "id": 1,
+          "user_id": 1,
+          "message": "Lorem ipsum"
+        }

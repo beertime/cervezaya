@@ -24,6 +24,8 @@ Rails.application.routes.draw do
       resources :ranks, :only => [:show, :create]
     end
 
+    resources :contacts, :only => [:create]
+
   end
 
 end

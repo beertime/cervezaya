@@ -27,9 +27,17 @@ class API::BarsController < ApiController
     end
 
     # Filters
-    # if params.has_key?(:brand_ids)
-    #   bars.fiter_by_brands(params[:brand_ids])
-    # end
+    if params.has_key?(:min_price) or params.has_key?(:max_price)
+      bars = bars.where_min_max_price(params[:min_price] || nil, params[:max_price] || nil)
+    end
+
+    if params.has_key?(:brand_ids)
+      bars = bars.fiter_by_brands(params[:brand_ids])
+    end
+
+    if params.has_key?(:sizes_id)
+      bars = bars.fiter_by_sizes(params[:sizes_id])
+    end
 
     # Sort
     if params.has_key?(:sort) and /rank|price/.match(params[:sort])

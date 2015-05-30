@@ -1,7 +1,7 @@
 class RankSerializer < ActiveModel::Serializer
   attributes :rank_id, :id, :name, :address, :region, :phone, :rank, :latitude, :longitude, :photo, :value,
     :user_favorite, :user_rank,
-    :product_name, :product_price, :product_image, :is_franchise
+    :product_name, :product_price, :product_image, :franchise_id, :is_franchise
 
   def rank_id
     object.id
@@ -89,6 +89,10 @@ class RankSerializer < ActiveModel::Serializer
     else
       object.bar.products.first.try(:price).to_f
     end
+  end
+
+  def franchise_id
+    object.bar.franchise.try(:id)
   end
 
   def is_franchise

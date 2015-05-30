@@ -1,7 +1,7 @@
 class FavoriteSerializer < ActiveModel::Serializer
   attributes :favorite_id, :id, :name, :address, :region, :phone, :rank, :latitude, :longitude, :photo,
     :user_favorite, :user_rank,
-    :product_name, :product_price, :product_image, :is_franchise
+    :product_name, :product_price, :product_image, :franchise_id, :is_franchise
 
   def favorite_id
     object.id
@@ -89,6 +89,10 @@ class FavoriteSerializer < ActiveModel::Serializer
     else
       object.bar.products.first.try(:price).to_f
     end
+  end
+
+  def franchise_id
+    object.bar.franchise.try(:id)
   end
 
   def is_franchise

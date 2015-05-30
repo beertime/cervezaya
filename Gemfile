@@ -22,10 +22,10 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'kaminari'
 gem 'active_model_serializers'
 gem 'geocoder'
+gem 'pg'
 
 group :development, :test do
   gem 'spring'
-  gem 'sqlite3'
   gem 'capistrano', '~> 3.1'
   gem 'capistrano-rails', '~> 1.1', require: false
   gem 'capistrano-bundler', '~> 1.1', require: false
@@ -33,6 +33,5 @@ group :development, :test do
 end
 
 group :production do
-  gem 'pg'
   gem 'puma'
 end

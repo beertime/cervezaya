@@ -1,6 +1,6 @@
 class BarDetailSerializer < ActiveModel::Serializer
 
-  attributes :id, :name, :description, :address, :region, :phone, :rank, :latitude, :longitude, :photo,
+  attributes :id, :name, :description, :address, :region, :phone, :rank, :latitude, :longitude,
     :user_favorite, :user_favorite_id, :user_rank, :user_rank_id, :products, :is_franchise
 
   has_many :products
@@ -19,14 +19,6 @@ class BarDetailSerializer < ActiveModel::Serializer
 
   def address
     "#{object.address.split(',')[0]}, #{object.address.split(',')[1]}"
-  end
-
-  def photo
-    if object.photo
-      object.photo.try(:url).to_s.split('/').last
-    else
-      object.franchise.try(:photo).try(:url).to_s.split('/').last
-    end
   end
 
   def rank

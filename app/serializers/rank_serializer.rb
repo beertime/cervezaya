@@ -44,7 +44,7 @@ class RankSerializer < ActiveModel::Serializer
   end
 
   def photo
-    if object.bar.photo
+    if object.bar.photo.try(:url)
       object.bar.photo.try(:url).to_s.split('/').last
     else
       object.bar.franchise.try(:photo).try(:url).to_s.split('/').last

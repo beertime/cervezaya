@@ -2,9 +2,8 @@ class API::BarsController < ApiController
 
   # GET /bars
   def index
-    limit = params.has_key?(:limit) ? params[:limit] : 25
-    offset = params.has_key?(:offset) ? params[:offset] : 0
-    distance = params.has_key?(:distance) ? params[:distance] : 10
+    limit = params.has_key?(:limit) ? params[:limit].to_i : 25
+    offset = params.has_key?(:offset) ? params[:offset].to_i : 0
     min_distance = params.has_key?(:min_distance) ? params[:min_distance].to_f : nil
     max_distance = params.has_key?(:max_distance) ? params[:max_distance].to_f : nil
 
@@ -37,9 +36,9 @@ class API::BarsController < ApiController
     end
 
     # Georeference
-    # if params.has_key?(:latitude) and params.has_key?(:longitude)
-    #   bars = bars.near([params[:latitude], params[:longitude]], max_distance || distance)
-    # end
+    if params.has_key?(:latitude) and params.has_key?(:longitude)
+      bars = bars.filter_by_lat_lng([params[:latitude].to_f, params[:longitude].to_f], min_distance, max_distance)
+    end
 
     # Sort
     if params.has_key?(:sort) and /rank|price/.match(params[:sort])

@@ -1,5 +1,11 @@
 class Bar < ActiveRecord::Base
 
+  acts_as_mappable :default_units => :kms,
+    :default_formula => :sphere,
+    :distance_field_name => :distance,
+    :lat_column_name => :latitude,
+    :lng_column_name => :longitude
+
   has_many :favorites
   has_many :users, through: :favorites
   has_many :recents
@@ -16,7 +22,13 @@ class Bar < ActiveRecord::Base
 
   mount_uploader :photo, BarUploader
 
-  geocoded_by :address, :latitude  => :latitude, :longitude => :longitude
+  def self.filter_by_lat_lng(origin, min_distance, max_distance)
+    if min_distance and max_distance
+      self.in_range(min_distance..max_distance, origin: origin).by_distance(origin: origin)
+    else
+      self.within(max_distance || 25, origin: origin).by_distance(origin: origin)
+    end
+  end
 
   def self.sort_by_rank()
     self.where.not(rank: nil).order(rank: :desc)

@@ -21,7 +21,7 @@ gem 'country_select'
 gem 'bcrypt', '~> 3.1.7'
 gem 'kaminari'
 gem 'active_model_serializers'
-gem 'geocoder'
+gem 'geokit-rails', github: 'geokit/geokit-rails'
 gem 'pg'
 
 group :development, :test do

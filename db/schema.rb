@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150518220113) do
+ActiveRecord::Schema.define(version: 20150530114934) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -42,8 +42,10 @@ ActiveRecord::Schema.define(version: 20150518220113) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "authentication_token"
   end
 
+  add_index "admin_users", ["authentication_token"], name: "index_admin_users_on_authentication_token"
   add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
 
@@ -120,14 +122,14 @@ ActiveRecord::Schema.define(version: 20150518220113) do
   add_index "opinions", ["user_id"], name: "index_opinions_on_user_id"
 
   create_table "products", force: :cascade do |t|
-    t.decimal  "price",        precision: 5, scale: 2, default: 0.0,   null: false
-    t.boolean  "published",                            default: false
+    t.decimal  "price",        precision: 10, scale: 2, default: 0.0,   null: false
+    t.boolean  "published",                             default: false
     t.integer  "brand_id"
     t.integer  "size_id"
     t.integer  "franchise_id"
     t.integer  "bar_id"
-    t.datetime "created_at",                                           null: false
-    t.datetime "updated_at",                                           null: false
+    t.datetime "created_at",                                            null: false
+    t.datetime "updated_at",                                            null: false
   end
 
   add_index "products", ["bar_id"], name: "index_products_on_bar_id"

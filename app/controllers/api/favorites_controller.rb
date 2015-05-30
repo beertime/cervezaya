@@ -1,4 +1,4 @@
-class API::FavoritesController < ApplicationController
+class API::FavoritesController < ApiController
 
   # GET /users/:user_id/favorites
   def index

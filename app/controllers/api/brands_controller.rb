@@ -1,4 +1,4 @@
-class API::BrandsController < ApplicationController
+class API::BrandsController < ApiController
 
   # GET /brands/:id
   def index

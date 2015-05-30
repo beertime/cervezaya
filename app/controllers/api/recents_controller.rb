@@ -1,4 +1,4 @@
-class API::RecentsController < ApplicationController
+class API::RecentsController < ApiController
 
   # GET /users/:user_id/recents
   def index

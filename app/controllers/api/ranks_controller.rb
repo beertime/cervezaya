@@ -1,4 +1,4 @@
-class API::RanksController < ApplicationController
+class API::RanksController < ApiController
 
   # GET /users/:user_id/ranks/:id
   def show

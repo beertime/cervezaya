@@ -1,4 +1,4 @@
-class API::BarsController < ApplicationController
+class API::BarsController < ApiController
 
   # GET /bars
   def index

@@ -44,37 +44,50 @@ class RecentSerializer < ActiveModel::Serializer
   end
 
   def photo
-    object.bar.try(:photo).try(:url).to_s.split('/').last
+    if object.bar.photo
+      object.bar.photo.try(:url).to_s.split('/').last
+    else
+      object.bar.franchise.try(:photo).try(:url).to_s.split('/').last
+    end
   end
 
   def user_favorite
-    true
+    Bar.get_user_favorite(object.bar.id)
   end
 
   def user_rank
-    # Bar.get_user_rank(object.bar_id)
-    nil
+    Bar.get_user_rank(object.bar.id)
+  end
+
+  def product_brand_id
+    if object.bar.franchise
+      object.bar.franchise.try(:products).first.try(:brand).try(:id)
+    else
+      object.bar.products.first.try(:brand).try(:id)
+    end
   end
 
   def product_image
-    if object.bar
-      object.bar.products.first.try(:brand).try(:image).try(:url)
+    if object.bar.franchise
+      object.bar.franchise.try(:products).first.try(:brand).try(:image).try(:url).to_s.split('/').last
     else
-      nil
+      object.bar.products.first.try(:brand).try(:image).try(:url).to_s.split('/').last
     end
   end
 
   def product_name
-    if object.bar
-      object.bar.products.first.try(:brand).try(:brand)
+    if object.bar.franchise
+      object.bar.franchise.try(:products).first.try(:brand).try(:name)
     else
-      nil
+      object.bar.products.first.try(:brand).try(:name)
     end
   end
 
   def product_price
-    if object.bar
-      object.bar.products.first.try(:price)
+    if object.bar.franchise
+      object.bar.franchise.try(:products).first.try(:price).to_f
+    else
+      object.bar.products.first.try(:price).to_f
     end
   end
 

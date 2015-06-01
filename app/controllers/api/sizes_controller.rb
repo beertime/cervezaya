@@ -1,4 +1,4 @@
-class API::SizesController < ApplicationController
+class API::SizesController < ApiController
 
   # GET /sizes
   def index

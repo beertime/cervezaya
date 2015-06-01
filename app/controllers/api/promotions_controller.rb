@@ -1,4 +1,4 @@
-class API::PromotionsController < ApplicationController
+class API::PromotionsController < ApiController
 
   respond_to :json
 

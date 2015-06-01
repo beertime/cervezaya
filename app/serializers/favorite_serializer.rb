@@ -1,7 +1,7 @@
 class FavoriteSerializer < ActiveModel::Serializer
   attributes :favorite_id, :id, :name, :address, :region, :phone, :rank, :latitude, :longitude, :photo,
-    :user_favorite, :user_rank,
-    :product_name, :product_price, :product_image
+    :user_favorite, :user_rank, :user_rank_id,
+    :product_name, :product_price, :product_image, :franchise_id, :is_franchise
 
   def favorite_id
     object.id
@@ -44,38 +44,63 @@ class FavoriteSerializer < ActiveModel::Serializer
   end
 
   def photo
-    object.bar.try(:photo).try(:url).to_s.split('/').last
+    if object.bar.photo.try(:url)
+      object.bar.photo.try(:url).to_s.split('/').last
+    else
+      object.bar.franchise.try(:photo).try(:url).to_s.split('/').last
+    end
   end
 
   def user_favorite
-    true
+    Bar.get_user_favorite(object.bar.id)
   end
 
   def user_rank
-    # Bar.get_user_rank(object.bar_id)
-    nil
+    Bar.get_user_rank(object.bar.id)
+  end
+
+  def user_rank_id
+    Bar.get_user_rank_id(object.id)
+  end
+
+  def product_brand_id
+    if object.bar.franchise
+      object.bar.franchise.try(:products).first.try(:brand).try(:id)
+    else
+      object.bar.products.first.try(:brand).try(:id)
+    end
   end
 
   def product_image
-    if object.bar
-      object.bar.products.first.try(:brand).try(:image).try(:url)
+    if object.bar.franchise
+      object.bar.franchise.try(:products).first.try(:brand).try(:image).try(:url).to_s.split('/').last
     else
-      nil
+      object.bar.products.first.try(:brand).try(:image).try(:url).to_s.split('/').last
     end
   end
 
   def product_name
-    if object.bar
-      object.bar.products.first.try(:brand).try(:brand)
+    if object.bar.franchise
+      object.bar.franchise.try(:products).first.try(:brand).try(:name)
     else
-      nil
+      object.bar.products.first.try(:brand).try(:name)
     end
   end
 
   def product_price
-    if object.bar
-      object.bar.products.first.try(:price)
+    if object.bar.franchise
+      object.bar.franchise.try(:products).first.try(:price).to_f
+    else
+      object.bar.products.first.try(:price).to_f
     end
+  end
+
+  def franchise_id
+    object.bar.franchise.try(:id)
+  end
+
+  def is_franchise
+    object.bar.try(:franchise).try(:id) != nil
   end
 
 end

@@ -1,9 +1,9 @@
-class API::FavoritesController < ApplicationController
+class API::FavoritesController < ApiController
 
   # GET /users/:user_id/favorites
   def index
     user = User.find(params[:user_id])
-    favorites = user.favorites
+    favorites = user.favorites.order('updated_at DESC')
     render json: favorites, status: 200
   end
 

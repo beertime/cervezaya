@@ -1,9 +1,9 @@
-class API::RecentsController < ApplicationController
+class API::RecentsController < ApiController
 
   # GET /users/:user_id/recents
   def index
     user = User.find(params[:user_id])
-    recents = user.recents
+    recents = user.recents.order('updated_at DESC')
     render json: recents, status: 200
   end
 

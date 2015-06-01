@@ -11,7 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150518220113) do
+ActiveRecord::Schema.define(version: 20150530154129) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+  enable_extension "postgis"
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -24,9 +28,9 @@ ActiveRecord::Schema.define(version: 20150518220113) do
     t.datetime "updated_at"
   end
 
-  add_index "active_admin_comments", ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id"
-  add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace"
-  add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id"
+  add_index "active_admin_comments", ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id", using: :btree
+  add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace", using: :btree
+  add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id", using: :btree
 
   create_table "admin_users", force: :cascade do |t|
     t.string   "name"
@@ -42,10 +46,12 @@ ActiveRecord::Schema.define(version: 20150518220113) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "authentication_token"
   end
 
-  add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true
-  add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
+  add_index "admin_users", ["authentication_token"], name: "index_admin_users_on_authentication_token", using: :btree
+  add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true, using: :btree
+  add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "bars", force: :cascade do |t|
     t.string   "name"
@@ -66,7 +72,7 @@ ActiveRecord::Schema.define(version: 20150518220113) do
     t.datetime "updated_at",                   null: false
   end
 
-  add_index "bars", ["franchise_id"], name: "index_bars_on_franchise_id"
+  add_index "bars", ["franchise_id"], name: "index_bars_on_franchise_id", using: :btree
 
   create_table "brands", force: :cascade do |t|
     t.string   "name"
@@ -86,8 +92,17 @@ ActiveRecord::Schema.define(version: 20150518220113) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "brands_types", ["brand_id"], name: "index_brands_types_on_brand_id"
-  add_index "brands_types", ["type_id"], name: "index_brands_types_on_type_id"
+  add_index "brands_types", ["brand_id"], name: "index_brands_types_on_brand_id", using: :btree
+  add_index "brands_types", ["type_id"], name: "index_brands_types_on_type_id", using: :btree
+
+  create_table "contacts", force: :cascade do |t|
+    t.text     "message"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "contacts", ["user_id"], name: "index_contacts_on_user_id", using: :btree
 
   create_table "favorites", force: :cascade do |t|
     t.integer  "bar_id"
@@ -96,8 +111,8 @@ ActiveRecord::Schema.define(version: 20150518220113) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "favorites", ["bar_id"], name: "index_favorites_on_bar_id"
-  add_index "favorites", ["user_id"], name: "index_favorites_on_user_id"
+  add_index "favorites", ["bar_id"], name: "index_favorites_on_bar_id", using: :btree
+  add_index "favorites", ["user_id"], name: "index_favorites_on_user_id", using: :btree
 
   create_table "franchises", force: :cascade do |t|
     t.string   "name"
@@ -116,24 +131,24 @@ ActiveRecord::Schema.define(version: 20150518220113) do
     t.datetime "updated_at",                 null: false
   end
 
-  add_index "opinions", ["bar_id"], name: "index_opinions_on_bar_id"
-  add_index "opinions", ["user_id"], name: "index_opinions_on_user_id"
+  add_index "opinions", ["bar_id"], name: "index_opinions_on_bar_id", using: :btree
+  add_index "opinions", ["user_id"], name: "index_opinions_on_user_id", using: :btree
 
   create_table "products", force: :cascade do |t|
-    t.decimal  "price",        precision: 5, scale: 2, default: 0.0,   null: false
-    t.boolean  "published",                            default: false
+    t.decimal  "price",        precision: 10, scale: 2, default: 0.0,   null: false
+    t.boolean  "published",                             default: false
     t.integer  "brand_id"
     t.integer  "size_id"
     t.integer  "franchise_id"
     t.integer  "bar_id"
-    t.datetime "created_at",                                           null: false
-    t.datetime "updated_at",                                           null: false
+    t.datetime "created_at",                                            null: false
+    t.datetime "updated_at",                                            null: false
   end
 
-  add_index "products", ["bar_id"], name: "index_products_on_bar_id"
-  add_index "products", ["brand_id"], name: "index_products_on_brand_id"
-  add_index "products", ["franchise_id"], name: "index_products_on_franchise_id"
-  add_index "products", ["size_id"], name: "index_products_on_size_id"
+  add_index "products", ["bar_id"], name: "index_products_on_bar_id", using: :btree
+  add_index "products", ["brand_id"], name: "index_products_on_brand_id", using: :btree
+  add_index "products", ["franchise_id"], name: "index_products_on_franchise_id", using: :btree
+  add_index "products", ["size_id"], name: "index_products_on_size_id", using: :btree
 
   create_table "promotions", force: :cascade do |t|
     t.string   "title",       default: "",    null: false
@@ -157,7 +172,7 @@ ActiveRecord::Schema.define(version: 20150518220113) do
     t.datetime "updated_at",                  null: false
   end
 
-  add_index "promotions", ["bar_id"], name: "index_promotions_on_bar_id"
+  add_index "promotions", ["bar_id"], name: "index_promotions_on_bar_id", using: :btree
 
   create_table "ranks", force: :cascade do |t|
     t.integer  "value"
@@ -167,8 +182,8 @@ ActiveRecord::Schema.define(version: 20150518220113) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "ranks", ["bar_id"], name: "index_ranks_on_bar_id"
-  add_index "ranks", ["user_id"], name: "index_ranks_on_user_id"
+  add_index "ranks", ["bar_id"], name: "index_ranks_on_bar_id", using: :btree
+  add_index "ranks", ["user_id"], name: "index_ranks_on_user_id", using: :btree
 
   create_table "recents", force: :cascade do |t|
     t.integer  "bar_id"
@@ -177,8 +192,8 @@ ActiveRecord::Schema.define(version: 20150518220113) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "recents", ["bar_id"], name: "index_recents_on_bar_id"
-  add_index "recents", ["user_id"], name: "index_recents_on_user_id"
+  add_index "recents", ["bar_id"], name: "index_recents_on_bar_id", using: :btree
+  add_index "recents", ["user_id"], name: "index_recents_on_user_id", using: :btree
 
   create_table "sizes", force: :cascade do |t|
     t.string   "name"
@@ -187,6 +202,13 @@ ActiveRecord::Schema.define(version: 20150518220113) do
     t.boolean  "published",  default: false
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
+  end
+
+  create_table "spatial_ref_sys", primary_key: "srid", force: :cascade do |t|
+    t.string  "auth_name", limit: 256
+    t.integer "auth_srid"
+    t.string  "srtext",    limit: 2048
+    t.string  "proj4text", limit: 2048
   end
 
   create_table "types", force: :cascade do |t|
@@ -214,10 +236,12 @@ ActiveRecord::Schema.define(version: 20150518220113) do
     t.string   "custom_avatar"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["facebook_uid"], name: "index_users_on_facebook_uid", unique: true
-  add_index "users", ["google_uid"], name: "index_users_on_google_uid", unique: true
-  add_index "users", ["push_uid"], name: "index_users_on_push_uid", unique: true
-  add_index "users", ["username"], name: "index_users_on_username", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["facebook_uid"], name: "index_users_on_facebook_uid", unique: true, using: :btree
+  add_index "users", ["google_uid"], name: "index_users_on_google_uid", unique: true, using: :btree
+  add_index "users", ["push_uid"], name: "index_users_on_push_uid", unique: true, using: :btree
+  add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
 
+  add_foreign_key "brands_types", "brands"
+  add_foreign_key "brands_types", "types"
 end

@@ -53,9 +53,6 @@ class API::BarsController < ApiController
       end
     end
 
-    # Always show published bars
-    bars = bars.where(published: true)
-
     render json: bars, status: 200
   end
 

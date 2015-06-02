@@ -1,5 +1,7 @@
 class Bar < ActiveRecord::Base
 
+  default_scope { where(published: true) }
+
   acts_as_mappable :default_units => :kms,
     :default_formula => :sphere,
     :distance_field_name => :distance,
@@ -25,8 +27,12 @@ class Bar < ActiveRecord::Base
   def self.filter_by_lat_lng(origin, min_distance, max_distance)
     if min_distance and max_distance
       self.in_range(min_distance..max_distance, origin: origin).by_distance(origin: origin)
+    elsif max_distance and !min_distance
+      self.within(max_distance, origin: origin).by_distance(origin: origin)
+    elsif min_distance and !max_distance
+      self.beyond(min_distance, origin: origin).by_distance(origin: origin)
     else
-      self.within(max_distance || 25, origin: origin).by_distance(origin: origin)
+      self.by_distance(origin: origin)
     end
   end
 

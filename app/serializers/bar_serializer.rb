@@ -60,7 +60,7 @@ class BarSerializer < ActiveModel::Serializer
 
   def product_price
     if object.franchise
-      object.franchise.try(:products).first.try(:price).to_f
+      object.franchise.try(:products).order(':price').first.try(:price).to_f
     else
       object.products.first.try(:price).to_f
     end

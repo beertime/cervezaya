@@ -41,8 +41,9 @@ class Bar < ActiveRecord::Base
 
   def self.update_rank(bar_id, rank)
     bar = self.find(bar_id)
-    result = ((bar.rank || 0) + rank.to_i) / 2
-    bar.update_attributes(rank: result)
+    values = Rank.where(bar_id: bar_id).pluck(:value)
+    avg = values.push(rank.to_i).sum.to_f / values.size.to_f
+    bar.update_attributes(rank: avg.round)
   end
 
   def self.set_user(user_id)
@@ -85,8 +86,14 @@ class Bar < ActiveRecord::Base
     end
   end
 
-  def self.filter_by_brands(brand_ids)
-    self.joins(:products).where({ products: { brand: brand_ids } })
+  def self.filter_by_brands(brands_ids)
+    self.joins(:products).where({ products: { brand: brands_ids } })
+  end
+
+  def self.filter_by_types(types_ids)
+    types_ids = Type.where(id: types_ids).pluck(:id)
+    sizes_ids = Size.where(id: types_ids).pluck(:id)
+    self.joins(:products).where({ products: { size: sizes_ids } })
   end
 
   def self.filter_by_sizes(sizes_ids)
@@ -95,7 +102,6 @@ class Bar < ActiveRecord::Base
 
   def self.filter_by_icons(icons)
     sizes_ids = Size.where(id: icons).pluck(:id)
-    logger.debug sizes_ids
     self.joins(:products).where({ products: { size: sizes_ids } })
   end
 

@@ -24,15 +24,17 @@ class Bar < ActiveRecord::Base
 
   mount_uploader :photo, BarUploader
 
-  def self.filter_by_lat_lng(origin, min_distance, max_distance)
+  def self.filter_by_lat_lng(origin, min_distance, max_distance, ordered)
     if min_distance and max_distance
       self.in_range(min_distance..max_distance, origin: origin).by_distance(origin: origin)
     elsif max_distance and !min_distance
       self.within(max_distance, origin: origin).by_distance(origin: origin)
     elsif min_distance and !max_distance
       self.beyond(min_distance, origin: origin).by_distance(origin: origin)
-    else
+    elsif ordered
       self.by_distance(origin: origin)
+    else
+      self.in_range(0..20, origin: origin)
     end
   end
 

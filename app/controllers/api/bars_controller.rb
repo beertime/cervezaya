@@ -8,6 +8,7 @@ class API::BarsController < ApiController
     max_distance = params.has_key?(:max_distance) ? params[:max_distance].to_f : nil
     min_price = params.has_key?(:min_price) ? params[:min_price].to_f : nil
     max_price = params.has_key?(:max_price) ? params[:max_price].to_f : nil
+    is_sorted = params.has_key?(:sort) and /rank|price/.match(params[:sort])
 
     # User match
     Bar.set_user(params[:user_id])
@@ -43,11 +44,11 @@ class API::BarsController < ApiController
 
     # Georeference
     if params.has_key?(:latitude) and params.has_key?(:longitude)
-      bars = bars.filter_by_lat_lng([params[:latitude].to_f, params[:longitude].to_f], min_distance, max_distance)
+      bars = bars.filter_by_lat_lng([params[:latitude].to_f, params[:longitude].to_f], min_distance, max_distance, !is_sorted)
     end
 
     # Sort
-    if params.has_key?(:sort) and /rank|price/.match(params[:sort])
+    if is_sorted
       if params[:sort] == 'rank'
         bars = bars.sort_by_rank()
       elsif params[:sort] == 'price'

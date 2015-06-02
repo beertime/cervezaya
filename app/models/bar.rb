@@ -91,8 +91,7 @@ class Bar < ActiveRecord::Base
   end
 
   def self.filter_by_types(types_ids)
-    types_ids = Type.where(id: types_ids).pluck(:id)
-    sizes_ids = Size.where(id: types_ids).pluck(:id)
+    sizes_ids = Brand.includes(:types).where(types: { id: types_ids }).pluck(:id)
     self.joins(:products).where({ products: { size: sizes_ids } })
   end
 

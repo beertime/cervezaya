@@ -63,35 +63,35 @@ class RankSerializer < ActiveModel::Serializer
     Bar.get_user_rank_id(object.id)
   end
 
-  def product_brand_id
+  def product_image
     if object.bar.franchise
-      object.bar.franchise.try(:products).first.try(:brand).try(:id)
+      object.bar.franchise.try(:products).order(price: :asc).first.try(:brand).try(:image).try(:url).to_s.split('/').last
     else
-      object.bar.products.first.try(:brand).try(:id)
+      object.bar.products.order(price: :asc).first.try(:brand).try(:image).try(:url).to_s.split('/').last
     end
   end
 
-  def product_image
+  def product_brand_id
     if object.bar.franchise
-      object.bar.franchise.try(:products).first.try(:brand).try(:image).try(:url).to_s.split('/').last
+      object.bar.franchise.try(:products).order(price: :asc).first.try(:brand).try(:id)
     else
-      object.bar.products.first.try(:brand).try(:image).try(:url).to_s.split('/').last
+      object.bar.products.order(price: :asc).first.try(:brand).try(:id)
     end
   end
 
   def product_name
     if object.bar.franchise
-      object.bar.franchise.try(:products).first.try(:brand).try(:name)
+      object.bar.franchise.try(:products).order(price: :asc).first.try(:brand).try(:name)
     else
-      object.bar.products.first.try(:brand).try(:name)
+      object.bar.products.order(price: :asc).first.try(:brand).try(:name)
     end
   end
 
   def product_price
     if object.bar.franchise
-      object.bar.franchise.try(:products).first.try(:price).to_f
+      object.bar.franchise.try(:products).order(price: :asc).first.try(:price).to_f
     else
-      object.bar.products.first.try(:price).to_f
+      object.bar.products.order(price: :asc).first.try(:price).to_f
     end
   end
 

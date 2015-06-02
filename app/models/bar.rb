@@ -41,8 +41,9 @@ class Bar < ActiveRecord::Base
 
   def self.update_rank(bar_id, rank)
     bar = self.find(bar_id)
-    result = ((bar.rank || 0) + rank.to_i) / 2
-    bar.update_attributes(rank: result)
+    values = Rank.where(bar_id: bar_id).pluck(:value)
+    avg = values.push(rank.to_i).sum.to_f / values.size.to_f
+    bar.update_attributes(rank: avg.round)
   end
 
   def self.set_user(user_id)

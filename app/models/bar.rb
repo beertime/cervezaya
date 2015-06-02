@@ -86,8 +86,8 @@ class Bar < ActiveRecord::Base
     end
   end
 
-  def self.filter_by_brands(brand_ids)
-    self.joins(:products).where({ products: { brand: brand_ids } })
+  def self.filter_by_brands(brands_ids)
+    self.joins(:products).where({ products: { brand: brands_ids } })
   end
 
   def self.filter_by_sizes(sizes_ids)
@@ -96,7 +96,6 @@ class Bar < ActiveRecord::Base
 
   def self.filter_by_icons(icons)
     sizes_ids = Size.where(id: icons).pluck(:id)
-    logger.debug sizes_ids
     self.joins(:products).where({ products: { size: sizes_ids } })
   end
 

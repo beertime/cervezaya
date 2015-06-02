@@ -23,8 +23,8 @@ class API::BarsController < ApiController
       bars = bars.where_min_max_price(params[:min_price] || nil, params[:max_price] || nil)
     end
 
-    if params.has_key?(:brand_ids)
-      bars = bars.filter_by_brands(params[:brand_ids])
+    if params.has_key?(:brands_ids)
+      bars = bars.filter_by_brands(params[:brands_ids])
     end
 
     if params.has_key?(:sizes_id)

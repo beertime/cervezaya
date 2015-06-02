@@ -13,4 +13,12 @@ class Product < ActiveRecord::Base
   accepts_nested_attributes_for :bar, allow_destroy: true
   accepts_nested_attributes_for :franchise, allow_destroy: true
 
+  def self.get_cheapest(min_price, max_price)
+    products = self.where('price >= ?', min_price || 0)
+    if max_price
+      products = products.where('price <= ?', max_price)
+    end
+    products.order(price: :asc).first
+  end
+
 end

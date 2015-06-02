@@ -6,6 +6,8 @@ class API::BarsController < ApiController
     offset = params.has_key?(:offset) ? params[:offset].to_i : 0
     min_distance = params.has_key?(:min_distance) ? params[:min_distance].to_f : nil
     max_distance = params.has_key?(:max_distance) ? params[:max_distance].to_f : nil
+    min_price = params.has_key?(:min_price) ? params[:min_price].to_f : nil
+    max_price = params.has_key?(:max_price) ? params[:max_price].to_f : nil
 
     # User match
     Bar.set_user(params[:user_id])
@@ -19,8 +21,8 @@ class API::BarsController < ApiController
     end
 
     # Filters
-    if params.has_key?(:min_price) or params.has_key?(:max_price)
-      bars = bars.where_min_max_price(params[:min_price] || 0, params[:max_price] || nil)
+    if min_price or max_price
+      bars = bars.where_min_max_price(min_price || 0, max_price || nil)
     end
 
     if params.has_key?(:brands_ids)
@@ -53,7 +55,7 @@ class API::BarsController < ApiController
       end
     end
 
-    render json: bars, status: 200
+    render json: bars, status: 200, min_price: min_price, max_price: max_price
   end
 
   # GET /bars/:id

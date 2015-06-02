@@ -36,34 +36,42 @@ class BarSerializer < ActiveModel::Serializer
 
   def product_image
     if object.franchise
-      object.franchise.try(:products).order(price: :asc).first.try(:brand).try(:image).try(:url).to_s.split('/').last
+      products = object.franchise.try(:products)
     else
-      object.products.order(price: :asc).first.try(:brand).try(:image).try(:url).to_s.split('/').last
+      products = object.products
     end
+    products.get_cheapest(serialization_options[:min_price], serialization_options[:max_price])
+      .try(:brand).try(:image).try(:url).to_s.split('/').last
   end
 
   def product_brand_id
     if object.franchise
-      object.franchise.try(:products).order(price: :asc).first.try(:brand).try(:id)
+      products = object.franchise.try(:products)
     else
-      object.products.order(price: :asc).first.try(:brand).try(:id)
+      products = object.products
     end
+    products.get_cheapest(serialization_options[:min_price], serialization_options[:max_price])
+      .try(:brand).try(:id)
   end
 
   def product_name
     if object.franchise
-      object.franchise.try(:products).order(price: :asc).first.try(:brand).try(:name)
+      products = object.franchise.try(:products)
     else
-      object.products.order(price: :asc).first.try(:brand).try(:name)
+      products = object.products
     end
+    products.get_cheapest(serialization_options[:min_price], serialization_options[:max_price])
+      .try(:brand).try(:name)
   end
 
   def product_price
     if object.franchise
-      object.franchise.try(:products).order(price: :asc).first.try(:price).to_f
+      products = object.franchise.try(:products)
     else
-      object.products.order(price: :asc).first.try(:price).to_f
+      products = object.products
     end
+    products.get_cheapest(serialization_options[:min_price], serialization_options[:max_price])
+      .try(:price).to_f
   end
 
   def franchise_id

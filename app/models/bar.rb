@@ -112,7 +112,6 @@ class Bar < ActiveRecord::Base
     if max_price
       bars = bars.where('products.price <= ?', max_price.to_f)
     end
-    bars.distinct
   end
 
 end

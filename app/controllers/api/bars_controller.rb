@@ -31,6 +31,10 @@ class API::BarsController < ApiController
       bars = bars.filter_by_sizes(params[:sizes_id])
     end
 
+    if params.has_key?(:types_ids)
+      bars = bars.filter_by_types(params[:types_ids])
+    end
+
     if params.has_key?(:icons)
       bars = bars.filter_by_icons(params[:icons])
     end

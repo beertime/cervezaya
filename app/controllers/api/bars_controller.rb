@@ -56,7 +56,7 @@ class API::BarsController < ApiController
       end
     end
 
-    render json: bars, status: 200, min_price: min_price, max_price: max_price
+    render json: bars.distinct, status: 200, min_price: min_price, max_price: max_price
   end
 
   # GET /bars/:id

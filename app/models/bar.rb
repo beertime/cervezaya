@@ -90,6 +90,12 @@ class Bar < ActiveRecord::Base
     self.joins(:products).where({ products: { brand: brands_ids } })
   end
 
+  def self.filter_by_types(types_ids)
+    types_ids = Type.where(id: types_ids).pluck(:id)
+    sizes_ids = Size.where(id: types_ids).pluck(:id)
+    self.joins(:products).where({ products: { size: sizes_ids } })
+  end
+
   def self.filter_by_sizes(sizes_ids)
     self.joins(:products).where({ products: { size: sizes_ids } })
   end

@@ -2,7 +2,7 @@
 lock '3.4.0'
 
 set :application, 'cervezaya'
-set :repo_url, 'git@github.com:socialscreen/cervezaya.git'
+set :repo_url, 'git@github.com:beertime/cervezaya.git'
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp

@@ -16,31 +16,31 @@ class API::BarsController < ApiController
     # Limit and offset
     bars = Bar.includes(:products).limit(limit).offset(offset)
 
-    # Query search
-    # if params.has_key?(:q)
-    #   bars = bars.where("name ILIKE '%#{params[:q]}%' OR address ILIKE '%#{params[:q]}%'")
-    # end
+    Query search
+    if params.has_key?(:q)
+      bars = bars.where("name ILIKE '%#{params[:q]}%' OR address ILIKE '%#{params[:q]}%'")
+    end
 
-    # Filters
-    # if min_price or max_price
-    #   bars = bars.where_min_max_price(min_price || 0, max_price || nil)
-    # end
+    Filters
+    if min_price or max_price
+      bars = bars.where_min_max_price(min_price || 0, max_price || nil)
+    end
 
-    # if params.has_key?(:brands_ids)
-    #   bars = bars.filter_by_brands(params[:brands_ids])
-    # end
+    if params.has_key?(:brands_ids)
+      bars = bars.filter_by_brands(params[:brands_ids])
+    end
 
-    # if params.has_key?(:sizes_id)
-    #   bars = bars.filter_by_sizes(params[:sizes_id])
-    # end
+    if params.has_key?(:sizes_id)
+      bars = bars.filter_by_sizes(params[:sizes_id])
+    end
 
-    # if params.has_key?(:types_ids)
-    #   bars = bars.filter_by_types(params[:types_ids])
-    # end
+    if params.has_key?(:types_ids)
+      bars = bars.filter_by_types(params[:types_ids])
+    end
 
-    # if params.has_key?(:icons)
-    #   bars = bars.filter_by_icons(params[:icons])
-    # end
+    if params.has_key?(:icons)
+      bars = bars.filter_by_icons(params[:icons])
+    end
 
     # Georeference
     if params.has_key?(:latitude) and params.has_key?(:longitude)

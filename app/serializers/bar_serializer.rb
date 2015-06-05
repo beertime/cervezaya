@@ -6,6 +6,12 @@ class BarSerializer < ActiveModel::Serializer
     :product_brand_id, :product_name, :product_price, :product_image,
     :franchise_id, :is_franchise
 
+  has_many :products
+
+  def products
+    object.products.order('price')
+  end
+
   def address
     "#{object.address.split(',')[0]}, #{object.address.split(',')[1]}"
   end

@@ -16,12 +16,12 @@ class API::BarsController < ApiController
     # Limit and offset
     bars = Bar.includes(:products).limit(limit).offset(offset)
 
-    Query search
+    # Query search
     if params.has_key?(:q)
       bars = bars.where("name ILIKE '%#{params[:q]}%' OR address ILIKE '%#{params[:q]}%'")
     end
 
-    Filters
+    # Filters
     if min_price or max_price
       bars = bars.where_min_max_price(min_price || 0, max_price || nil)
     end

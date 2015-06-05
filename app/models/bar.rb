@@ -34,7 +34,7 @@ class Bar < ActiveRecord::Base
     elsif ordered
       self.by_distance(origin: origin)
     else
-      self.in_range(0..20, origin: origin)
+      self.in_range(0..500, origin: origin)
     end
   end
 

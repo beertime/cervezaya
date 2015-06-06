@@ -64,40 +64,40 @@ class FavoriteSerializer < ActiveModel::Serializer
   end
 
   def product_image
-    if object.franchise
-      products = object.franchise.try(:products)
+    if object.bar.franchise
+      products = object.bar.franchise.try(:products)
     else
-      products = object.products
+      products = object.bar.products
     end
     products.get_cheapest(0, nil)
       .try(:brand).try(:image).try(:url).to_s.split('/').last
   end
 
   def product_brand_id
-    if object.franchise
-      products = object.franchise.try(:products)
+    if object.bar.franchise
+      products = object.bar.franchise.try(:products)
     else
-      products = object.products
+      products = object.bar.products
     end
     products.get_cheapest(0, nil)
       .try(:brand).try(:id)
   end
 
   def product_name
-    if object.franchise
-      products = object.franchise.try(:products)
+    if object.bar.franchise
+      products = object.bar.franchise.try(:products)
     else
-      products = object.products
+      products = object.bar.products
     end
     products.get_cheapest(0, nil)
       .try(:brand).try(:name)
   end
 
   def product_price
-    if object.franchise
-      products = object.franchise.try(:products)
+    if object.bar.franchise
+      products = object.bar.franchise.try(:products)
     else
-      products = object.products
+      products = object.bar.products
     end
     products.get_cheapest(0, nil)
       .try(:price).to_f

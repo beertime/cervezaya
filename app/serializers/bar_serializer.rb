@@ -15,10 +15,10 @@ class BarSerializer < ActiveModel::Serializer
   end
 
   def photo
-    if object.photo.try(:url)
-      object.photo.try(:url).to_s.split('/').last
+    unless object.photo_identifier.blank?
+      object.photo_identifier
     else
-      object.franchise.try(:photo).try(:url).to_s.split('/').last
+      object.franchise.try(:photo_identifier)
     end
   end
 
@@ -41,7 +41,7 @@ class BarSerializer < ActiveModel::Serializer
       products = object.products
     end
     products.get_cheapest(serialization_options[:min_price], serialization_options[:max_price])
-      .try(:brand).try(:image).try(:url).to_s.split('/').last
+      .try(:brand).try(:image_identifier)
   end
 
   def product_brand_id

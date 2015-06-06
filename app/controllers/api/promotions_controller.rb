@@ -1,21 +1,19 @@
 class API::PromotionsController < ApiController
 
-  respond_to :json
-
-  # GET /bars/:id/opinions
+  # GET /promotions
   def index
-    start_date = params[:start_date]
-    end_date = params[:end_date]
     date = params[:date]
-    bar = params[:bar]
-    promotions = Promotion.where(published: true)
+    start_date = params[:start_date] || Time.now.to_date
+    end_date = params[:end_date]
 
     if !date.blank?
-      promotions = promotions.where('start_date <= ?', date)
+      promotions = Promotion.where('start_date <= ?', date)
         .where('end_date >= ?', date)
-    elsif !start_date.blank?
-      promotions = promotions.where('start_date <= ?', start_date)
-        .where('end_date >= ?', end_date || Time.now.to_date)
+    elsif !end_date.blank?
+      promotions = Promotion.where('start_date <= ?', start_date)
+        .where('end_date >= ?', end_date)
+    else
+      promotions = Promotion.where('start_date <= ?', start_date)
     end
 
     render json: promotions, status: 200

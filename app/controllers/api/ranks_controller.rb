@@ -2,8 +2,7 @@ class API::RanksController < ApiController
 
   # GET /users/:user_id/ranks/:id
   def show
-    user = User.find(params[:user_id])
-    rank = user.ranks.find(params[:id])
+    rank = Rank.select('id, value, bar_id, user_id').where(user_id: params[:user_id], id: params[:id]).take!
     render json: rank, status: 200
   end
 

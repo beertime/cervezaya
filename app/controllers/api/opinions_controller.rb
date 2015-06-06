@@ -2,8 +2,8 @@ class API::OpinionsController < ApiController
 
   # GET /bars/:bar_id/opinions
   def index
-    bar = Bar.find(params[:bar_id])
-    opinions = bar.opinions.where(published: true)
+    opinions = Opinion.select("id, comment, user_id, created_at")
+      .where(bar_id: params[:bar_id])
     render json: opinions, status: 200
   end
 

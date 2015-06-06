@@ -36,7 +36,7 @@ class Promotion < ActiveRecord::Base
   end
 
   def self.format_date(date, hour)
-    "#{date}T#{hour.strftime("%H:%M")}"
+    "#{date} #{hour.strftime("%H:%M")}"
   end
 
 end

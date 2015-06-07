@@ -1,13 +1,12 @@
 class BarSerializer < ActiveModel::Serializer
 
-  attributes :id, :name, :address, :region, :phone,
-    :rank, :latitude, :longitude, :photo,
-    :user_favorite, :user_rank, :user_rank_id,
+  attributes :id, :name, :address, :region, :phone, :rank, :latitude, :longitude, :photo,
     :product_brand_id, :product_name, :product_price, :product_image,
+    :user_favorite, :user_rank, :user_rank_id,
     :franchise_id, :is_franchise
 
   def address
-    "#{object.address.split(',')[0]}, #{object.address.split(',')[1]}"
+    "#{object.address.split(', ')[0]}, #{object.address.split(', ')[1]}"
   end
 
   def rank
@@ -22,64 +21,57 @@ class BarSerializer < ActiveModel::Serializer
     end
   end
 
-  def user_favorite
-    Bar.get_user_favorite(object.id)
-  end
-
-  def user_rank_id
-    Bar.get_user_rank_id(object.id)
-  end
-
-  def user_rank
-    Bar.get_user_rank(object.id)
-  end
-
-  def product_image
-    if object.franchise
-      products = object.franchise.try(:products)
-    else
-      products = object.products
-    end
-    products.get_cheapest(serialization_options[:min_price], serialization_options[:max_price])
-      .try(:brand).try(:image_identifier)
-  end
-
   def product_brand_id
-    if object.franchise
-      products = object.franchise.try(:products)
-    else
-      products = object.products
-    end
-    products.get_cheapest(serialization_options[:min_price], serialization_options[:max_price])
-      .try(:brand).try(:id)
+    products = get_products
+    products.first.try(:brand_id)
   end
 
   def product_name
-    if object.franchise
-      products = object.franchise.try(:products)
-    else
-      products = object.products
-    end
-    products.get_cheapest(serialization_options[:min_price], serialization_options[:max_price])
-      .try(:brand).try(:name)
+    products = get_products
+    products.first.try(:brand).try(:name)
   end
 
   def product_price
-    if object.franchise
-      products = object.franchise.try(:products)
-    else
-      products = object.products
-    end
-    products.get_cheapest(serialization_options[:min_price], serialization_options[:max_price])
-      .try(:price).to_f
+    products = get_products
+    products.first.try(:price).to_f
+  end
+
+  def product_image
+    products = get_products
+    products.first.try(:brand).try(:image_identifier)
+  end
+
+  def user_favorite
+    !Favorite.get_by_user_and_bar(serialization_options[:user], object.id).nil?
+  end
+
+  def user_rank_id
+    Rank.get_by_user_and_bar(serialization_options[:user], object.id).try(:id)
+  end
+
+  def user_rank
+    Rank.get_by_user_and_bar(serialization_options[:user], object.id).try(:value) or 0
   end
 
   def franchise_id
-    object.franchise.try(:id)
+    object.franchise ? object.franchise.id : nil
   end
 
   def is_franchise
-    object.franchise.try(:id) != nil
+    !object.franchise.nil?
   end
+
+  private
+
+    def get_products
+      products = object.franchise.nil? ? object.products : object.franchise.try(:products)
+      if serialization_options[:min_price]
+        products = products.where('price >= ?', serialization_options[:min_price])
+      end
+      if serialization_options[:max_price]
+        products = products.where('price <= ?', serialization_options[:max_price])
+      end
+      products
+    end
 
 end

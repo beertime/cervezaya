@@ -1,5 +1,5 @@
 class ProductSerializer < ActiveModel::Serializer
-  attributes :id, :price,
+  attributes :id, :price
     :brand_id, :brand_name, :brand_color,
     :size_icon, :size_volume,
     :image, :image_alt, :image_shadow
@@ -43,4 +43,5 @@ class ProductSerializer < ActiveModel::Serializer
   def size_volume
     object.size.try(:volume)
   end
+  
 end

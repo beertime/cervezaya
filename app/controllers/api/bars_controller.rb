@@ -2,67 +2,34 @@ class API::BarsController < ApiController
 
   # GET /bars
   def index
+    min_price = params.has_key?(:min_price) ? params[:min_price].to_f : nil
+    max_price = params.has_key?(:max_price) ? params[:max_price].to_f : nil
+
     limit = params.has_key?(:limit) ? params[:limit].to_i : 25
     offset = params.has_key?(:offset) ? params[:offset].to_i : 0
-    min_distance = params.has_key?(:min_distance) ? params[:min_distance].to_f : nil
-    max_distance = params.has_key?(:max_distance) ? params[:max_distance].to_f : nil
 
-    # User match
-    Bar.set_user(params[:user_id])
+    current_user = params.has_key?(:user_id) ? User.select('id').find(params[:user_id]) : nil
 
-    # Limit and offset
-    bars = Bar.includes(:products).limit(limit).offset(offset)
-
-    # Query search
-    if params.has_key?(:q)
-      bars = bars.where("name ILIKE '%#{params[:q]}%' OR address ILIKE '%#{params[:q]}%'")
-    end
+    bars = Bar.all
 
     # Filters
-    if params.has_key?(:min_price) or params.has_key?(:max_price)
-      bars = bars.where_min_max_price(params[:min_price] || 0, params[:max_price] || nil)
-    end
+    # params: latitude, longitude
+    bars = bars.filter_by_params(params)
 
-    if params.has_key?(:brands_ids)
-      bars = bars.filter_by_brands(params[:brands_ids])
-    end
+    # Sort by rank, price or distance params
+    # params: sort, latitude, longitude
+    bars = bars.sort_by_params(params)
 
-    if params.has_key?(:sizes_id)
-      bars = bars.filter_by_sizes(params[:sizes_id])
-    end
+    # Pagination
+    bars = bars.offset(offset).limit(limit)
 
-    if params.has_key?(:types_ids)
-      bars = bars.filter_by_types(params[:types_ids])
-    end
-
-    if params.has_key?(:icons)
-      bars = bars.filter_by_icons(params[:icons])
-    end
-
-    # Georeference
-    if params.has_key?(:latitude) and params.has_key?(:longitude)
-      bars = bars.filter_by_lat_lng([params[:latitude].to_f, params[:longitude].to_f], min_distance, max_distance)
-    end
-
-    # Sort
-    if params.has_key?(:sort) and /rank|price/.match(params[:sort])
-      if params[:sort] == 'rank'
-        bars = bars.sort_by_rank()
-      elsif params[:sort] == 'price'
-        bars = bars.sort_by_price()
-      end
-    end
-
-    # Always show published bars
-    bars = bars.where(published: true)
-
-    render json: bars, status: 200
+    render json: bars, status: 200, user: current_user, min_price: min_price, max_price: max_price
   end
 
   # GET /bars/:id
   def show
-    Bar.set_user(params[:user_id])
-    render json: Bar.find(params[:id]), status: 200, serializer: BarDetailSerializer
+    current_user = params.has_key?(:user_id) ? User.select('id').find(params[:user_id]) : nil
+    render json: Bar.find(params[:id]), status: 200, serializer: BarDetailSerializer, user: current_user
   end
 
 end

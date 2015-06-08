@@ -5,10 +5,6 @@ class BarDetailSerializer < ActiveModel::Serializer
 
   has_many :products
 
-  def is_franchise
-    object.franchise.try(:id) != nil
-  end
-
   def products
     if object.franchise
       object.franchise.try(:products)
@@ -25,20 +21,24 @@ class BarDetailSerializer < ActiveModel::Serializer
     object.rank || 0
   end
 
-  def user_rank
-    Bar.get_user_rank(object.id)
+  def user_rank_id
+    Rank.get_by_user_and_bar(serialization_options[:user], object.id).try(:id)
   end
 
-  def user_rank_id
-    Bar.get_user_rank_id(object.id)
+  def user_rank
+    Rank.get_by_user_and_bar(serialization_options[:user], object.id).try(:value) or 0
   end
 
   def user_favorite
-    Bar.get_user_favorite(object.id)
+    !Favorite.get_by_user_and_bar(serialization_options[:user], object.id).nil?
   end
 
   def user_favorite_id
-    Bar.get_user_favorite_id(object.id)
+    Favorite.get_by_user_and_bar(serialization_options[:user], object.id).try(:id)
+  end
+
+  def is_franchise
+    !object.franchise.nil?
   end
 
 end

@@ -43,4 +43,5 @@ class ProductSerializer < ActiveModel::Serializer
   def size_volume
     object.size.try(:volume)
   end
+
 end

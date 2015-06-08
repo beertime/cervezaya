@@ -2,8 +2,7 @@ class API::RecentsController < ApiController
 
   # GET /users/:user_id/recents
   def index
-    user = User.find(params[:user_id])
-    recents = user.recents.order('updated_at DESC')
+    recents = Recent.select('id, bar_id, user_id').where(user_id: params[:user_id])
     render json: recents, status: 200
   end
 

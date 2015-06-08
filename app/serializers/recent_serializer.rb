@@ -48,59 +48,57 @@ class RecentSerializer < ActiveModel::Serializer
   end
 
   def photo
-    if object.bar.photo.try(:url)
-      object.bar.photo.try(:url).to_s.split('/').last
+    unless object.bar.try(:photo_identifier).blank?
+      object.bar.try(:photo_identifier)
     else
-      object.bar.franchise.try(:photo).try(:url).to_s.split('/').last
+      object.bar.try(:franchise).try(:photo_identifier)
     end
-  end
-
-  def user_favorite
-    Bar.get_user_favorite(object.bar.id)
-  end
-
-  def user_rank
-    Bar.get_user_rank(object.bar.id)
   end
 
   def product_brand_id
-    if object.bar.franchise
-      object.bar.franchise.try(:products).first.try(:brand).try(:id)
-    else
-      object.bar.products.first.try(:brand).try(:id)
-    end
-  end
-
-  def product_image
-    if object.bar.franchise
-      object.bar.franchise.try(:products).first.try(:brand).try(:image).try(:url).to_s.split('/').last
-    else
-      object.bar.products.first.try(:brand).try(:image).try(:url).to_s.split('/').last
-    end
+    products = get_products
+    products.first.try(:brand_id)
   end
 
   def product_name
-    if object.bar.franchise
-      object.bar.franchise.try(:products).first.try(:brand).try(:name)
-    else
-      object.bar.products.first.try(:brand).try(:name)
-    end
+    products = get_products
+    products.first.try(:brand).try(:name)
   end
 
   def product_price
-    if object.bar.franchise
-      object.bar.franchise.try(:products).first.try(:price).to_f
-    else
-      object.bar.products.first.try(:price).to_f
-    end
+    products = get_products
+    products.first.try(:price).to_f
+  end
+
+  def product_image
+    products = get_products
+    products.first.try(:brand).try(:image_identifier)
+  end
+
+  def user_favorite
+    !Favorite.get_by_user_and_bar(serialization_options[:user], object.bar.id).nil?
+  end
+
+  def user_rank_id
+    Rank.get_by_user_and_bar(serialization_options[:user], object.bar.id).try(:id)
+  end
+
+  def user_rank
+    Rank.get_by_user_and_bar(serialization_options[:user], object.bar.id).try(:value) or 0
   end
 
   def franchise_id
-    object.bar.franchise.try(:id)
+    object.bar.franchise ? object.bar.franchise.id : nil
   end
 
   def is_franchise
-    object.bar.try(:franchise).try(:id) != nil
+    !object.bar.franchise.nil?
   end
+
+  private
+
+    def get_products
+      object.bar.franchise.nil? ? object.bar.try(:products) : object.bar.franchise.try(:products)
+    end
 
 end

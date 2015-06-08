@@ -28,8 +28,8 @@ class API::BarsController < ApiController
 
   # GET /bars/:id
   def show
-    Bar.set_user(params[:user_id])
-    render json: Bar.find(params[:id]), status: 200, serializer: BarDetailSerializer
+    current_user = params.has_key?(:user_id) ? User.select('id').find(params[:user_id]) : nil
+    render json: Bar.find(params[:id]), status: 200, serializer: BarDetailSerializer, user: current_user
   end
 
 end

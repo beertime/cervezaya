@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
 
-  constraints subdomain: /^admin|beta/ do
+  constraints subdomain: /^(admin|beta)/ do
     ActiveAdmin.routes(self)
     devise_for :admin_users, ActiveAdmin::Devise.config
   end
 
-  namespace :api, constraints: { subdomain: /^api|beta-api/ }, path: '/', defaults: { format: :json } do
+  namespace :api, constraints: { subdomain: /^(api|beta-api)/ }, path: '/', defaults: { format: :json } do
 
     with_options only: :index do |r|
       r.resources :types

@@ -113,7 +113,7 @@ class Bar < ActiveRecord::Base
   end
 
   def self.filter_by_icons(icons)
-    sizes_ids = Size.where(id: icons).pluck(:id)
+    sizes_ids = Size.where(icon: icons).pluck(:id)
     self.where({ products: { size: sizes_ids } })
   end
 

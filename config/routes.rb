@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   
-  constraints subdomain: 'admin' do
+  constraints subdomain: /[admin|beta]/ do
     ActiveAdmin.routes(self)
     devise_for :admin_users, ActiveAdmin::Devise.config
   end

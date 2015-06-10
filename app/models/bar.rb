@@ -35,7 +35,7 @@ class Bar < ActiveRecord::Base
     end
 
     if params.has_key?(:q)
-      bars = bars.where("name ILIKE '%#{params[:q]}%' OR address ILIKE '%#{params[:q]}%'")
+      bars = bars.where("unaccent(name) ILIKE '%#{params[:q]}%' OR unaccent(address) ILIKE unaccent('%#{params[:q]}%')")
     end
 
     if params.has_key?(:icons)

@@ -31,7 +31,7 @@ class Bar < ActiveRecord::Base
 
     if params.has_key?(:latitude) and params.has_key?(:longitude)
       origin = [params[:latitude], params[:longitude]]
-      self.filter_by_lat_lng(origin, params[:min_distance], params[:max_distance])
+      bars = self.filter_by_lat_lng(origin, params[:min_distance], params[:max_distance])
     end
 
     if params.has_key?(:q)
@@ -90,9 +90,9 @@ class Bar < ActiveRecord::Base
   def self.filter_by_lat_lng(origin, min_distance, max_distance)
     if min_distance and max_distance
       self.in_range(min_distance..max_distance, origin: origin)
-    elsif max_distance and !min_distance
+    elsif max_distance and min_distance.blank?
       self.within(max_distance, origin: origin)
-    elsif min_distance and !max_distance
+    elsif min_distance and max_distance.blank?
       self.beyond(min_distance, origin: origin)
     else
       self

@@ -83,7 +83,7 @@ class Bar < ActiveRecord::Base
       self.joins('LEFT JOIN products ON bars.id = products.bar_id OR bars.franchise_id = products.franchise_id')
       .group('bars.id').by_distance(origin: [params[:latitude].to_f, params[:longitude].to_f])
     else
-      self
+      self.includes(:products)
     end
   end
 
@@ -104,8 +104,8 @@ class Bar < ActiveRecord::Base
   end
 
   def self.filter_by_types(types_ids)
-    sizes_ids = Brand.includes(:types).where(types: { id: types_ids }).pluck(:id)
-    self.where({ products: { size: sizes_ids } })
+    brands_ids = Brand.includes(:brands_types).where(brands_types: { type_id: types_ids }).pluck(:id) 
+    self.where({ products: { brand: brands_ids } })
   end
 
   def self.filter_by_sizes(sizes_ids)

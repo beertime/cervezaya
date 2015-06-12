@@ -13,4 +13,12 @@ ActiveAdmin.register Franchise do
 
   active_admin_import
 
+  scope_to do
+    Class.new do
+      def self.franchises
+        Franchise.unscoped
+      end
+    end
+  end
+
 end

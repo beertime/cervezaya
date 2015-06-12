@@ -13,4 +13,12 @@ ActiveAdmin.register Brand do
 
   active_admin_import
 
+  scope_to do
+    Class.new do
+      def self.brands
+        Brand.unscoped
+      end
+    end
+  end
+
 end

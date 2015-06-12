@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
 
-  root 'admin/dashboard#index'
+  constraints subdomain: 'admin' do
+    ActiveAdmin.routes(self)
+    devise_for :admin_users, ActiveAdmin::Devise.config
+  end
 
-  devise_for :admin_users, ActiveAdmin::Devise.config
-  ActiveAdmin.routes(self)
-
-  namespace :api, constraints: { subdomain: /[api|beta-api]/ }, path: '/', defaults: { format: :json } do
+  namespace :api, constraints: { subdomain: 'api' }, path: '/', defaults: { format: :json } do
 
     with_options only: :index do |r|
       r.resources :types
@@ -27,5 +27,7 @@ Rails.application.routes.draw do
     resources :contacts, :only => [:create]
 
   end
+
+  root 'welcome#index'
 
 end

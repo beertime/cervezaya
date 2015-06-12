@@ -31,11 +31,11 @@ class Bar < ActiveRecord::Base
 
     if params.has_key?(:latitude) and params.has_key?(:longitude)
       origin = [params[:latitude], params[:longitude]]
-      self.filter_by_lat_lng(origin, params[:min_distance], params[:max_distance])
+      bars = self.filter_by_lat_lng(origin, params[:min_distance], params[:max_distance])
     end
 
     if params.has_key?(:q)
-      bars = bars.where("name ILIKE '%#{params[:q]}%' OR address ILIKE '%#{params[:q]}%'")
+      bars = bars.where("unaccent(name) ILIKE '%#{params[:q]}%' OR unaccent(address) ILIKE unaccent('%#{params[:q]}%')")
     end
 
     if params.has_key?(:icons)
@@ -83,16 +83,16 @@ class Bar < ActiveRecord::Base
       self.joins('LEFT JOIN products ON bars.id = products.bar_id OR bars.franchise_id = products.franchise_id')
       .group('bars.id').by_distance(origin: [params[:latitude].to_f, params[:longitude].to_f])
     else
-      self
+      self.includes(:products)
     end
   end
 
   def self.filter_by_lat_lng(origin, min_distance, max_distance)
     if min_distance and max_distance
       self.in_range(min_distance..max_distance, origin: origin)
-    elsif max_distance and !min_distance
+    elsif max_distance and min_distance.blank?
       self.within(max_distance, origin: origin)
-    elsif min_distance and !max_distance
+    elsif min_distance and max_distance.blank?
       self.beyond(min_distance, origin: origin)
     else
       self
@@ -104,8 +104,8 @@ class Bar < ActiveRecord::Base
   end
 
   def self.filter_by_types(types_ids)
-    sizes_ids = Brand.includes(:types).where(types: { id: types_ids }).pluck(:id)
-    self.where({ products: { size: sizes_ids } })
+    brands_ids = Brand.includes(:brands_types).where(brands_types: { type_id: types_ids }).pluck(:id) 
+    self.where({ products: { brand: brands_ids } })
   end
 
   def self.filter_by_sizes(sizes_ids)
@@ -113,7 +113,7 @@ class Bar < ActiveRecord::Base
   end
 
   def self.filter_by_icons(icons)
-    sizes_ids = Size.where(id: icons).pluck(:id)
+    sizes_ids = Size.where(icon: icons).pluck(:id)
     self.where({ products: { size: sizes_ids } })
   end
 

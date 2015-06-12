@@ -9,16 +9,11 @@ class API::UsersController < ApiController
 
   # POST /users
   def create
-    user = User.where(user_params).first
-    if user
-      render json: user, status: 200, location: [:api, user]
+    user = User.find_or_create_by(user_params)
+    if user.save
+      render json: user, status: 201, location: [:api, user]
     else
-      user = User.new(user_params)
-      if user.save
-        render json: user, status: 201, location: [:api, user]
-      else
-        render json: { errors: user.errors }, status: 422
-      end
+      render json: { errors: user.errors }, status: 422
     end
   end
 

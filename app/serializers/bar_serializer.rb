@@ -65,9 +65,9 @@ class BarSerializer < ActiveModel::Serializer
 
     def get_products
       products = object.franchise.nil? ? object.products : object.franchise.try(:products)
-      if serialization_options[:min_price]
-        products = products.where('price >= ?', serialization_options[:min_price])
-      end
+      # if serialization_options[:min_price]
+      #   products = products.where('price >= ?', serialization_options[:min_price])
+      # end
       if serialization_options[:max_price]
         products = products.where('price <= ?', serialization_options[:max_price])
       end

@@ -38,7 +38,7 @@ class BarSerializer < ActiveModel::Serializer
 
   def product_image
     products = get_products
-    products.first.try(:brand).try(:image_identifier)
+    products.first.try(:brand).try(:shadow_image_identifier)
   end
 
   def user_favorite

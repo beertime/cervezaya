@@ -58,9 +58,9 @@ class Bar < ActiveRecord::Base
       bars = bars.filter_by_icons(params[:icons])
     end
 
-    if params.has_key?(:min_price)
-      bars = bars.where('products.price >= ?', params[:min_price].to_f)
-    end
+    # if params.has_key?(:min_price)
+    #   bars = bars.where('products.price >= ?', params[:min_price].to_f)
+    # end
 
     if params.has_key?(:max_price)
       bars = bars.where('products.price <= ?', params[:max_price].to_f)
@@ -104,7 +104,7 @@ class Bar < ActiveRecord::Base
   end
 
   def self.filter_by_types(types_ids)
-    brands_ids = Brand.includes(:brands_types).where(brands_types: { type_id: types_ids }).pluck(:id) 
+    brands_ids = Brand.includes(:brands_types).where(brands_types: { type_id: types_ids }).pluck(:id)
     self.where({ products: { brand: brands_ids } })
   end
 

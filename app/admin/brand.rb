@@ -15,7 +15,7 @@ ActiveAdmin.register Brand do
       image_tag product.image
     end
     column :alt_image do |product|
-      image_tag product.alt_image
+      image_tag product.alt_image, style: "background-color: #{product.color}"
     end
     column :shadow_image do |product|
       image_tag product.shadow_image

@@ -25,15 +25,15 @@ class ProductSerializer < ActiveModel::Serializer
   end
 
   def image
-    object.brand.try(:image).try(:url).to_s.split('/').last
+    object.brand.try(:image_identifier)
   end
 
   def image_alt
-    object.brand.try(:image).try(:url).to_s.split('/').last
+    object.brand.try(:alt_image_identifier)
   end
 
   def image_shadow
-    object.brand.try(:image).try(:url).to_s.split('/').last
+    object.brand.try(:shadow_image_identifier)
   end
 
   def size_icon

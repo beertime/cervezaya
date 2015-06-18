@@ -1,5 +1,21 @@
 ActiveAdmin.register Franchise do
 
+  permit_params :name, :photo, :published
+
+  active_admin_import
+
+  index do
+    selectable_column
+    id_column
+    column :name
+    column :photo do |bar|
+      image_tag bar.photo
+    end
+    column :published
+    column :updated_at
+    actions
+  end
+
   form do |f|
     f.semantic_errors
     f.inputs
@@ -8,10 +24,6 @@ ActiveAdmin.register Franchise do
     end
     f.actions
   end
-
-  permit_params :name, :photo, :published
-
-  active_admin_import
 
   scope_to do
     Class.new do

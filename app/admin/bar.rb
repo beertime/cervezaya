@@ -9,14 +9,13 @@ ActiveAdmin.register Bar do
     selectable_column
     id_column
     column :name
-    column :photo
+    column :photo do |product|
+      image_tag product.photo
+    end
     column :region
     column :address
-    column :phone
-    column :email
     column :rank
     column :published
-    column :created_at
     column :updated_at
     actions
   end

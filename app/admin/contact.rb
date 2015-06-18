@@ -1,4 +1,5 @@
 ActiveAdmin.register Contact do
+
   permit_params :message, :user_id
 
   scope_to do

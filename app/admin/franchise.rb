@@ -9,7 +9,7 @@ ActiveAdmin.register Franchise do
     id_column
     column :name
     column :photo do |bar|
-      image_tag bar.photo
+      image_tag bar.photo.small
     end
     column :published
     column :updated_at

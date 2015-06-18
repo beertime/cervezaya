@@ -9,7 +9,7 @@ ActiveAdmin.register User do
     column :email
     column :usename
     column :avatar do |product|
-      image_tag product.avatar
+      image_tag product.avatar.small
     end
     column :gender
     column :city

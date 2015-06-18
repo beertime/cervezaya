@@ -12,13 +12,13 @@ ActiveAdmin.register Brand do
       span product.color, style: "color: #{product.color}"
     end
     column :image do |product|
-      image_tag product.image
+      image_tag product.image.small
     end
     column :alt_image do |product|
-      image_tag product.alt_image, style: "background-color: #{product.color}"
+      image_tag product.alt_image.small, style: "background-color: #{product.color}"
     end
     column :shadow_image do |product|
-      image_tag product.shadow_image
+      image_tag product.shadow_image.small
     end
     column :published
     column :updated_at

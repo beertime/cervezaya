@@ -10,7 +10,7 @@ ActiveAdmin.register Bar do
     id_column
     column :name
     column :photo do |product|
-      image_tag product.photo
+      image_tag product.photo.small
     end
     column :region
     column :address

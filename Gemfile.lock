@@ -52,6 +52,7 @@ GEM
       rubyzip (~> 1.0, >= 1.0.0)
     active_model_serializers (0.9.3)
       activemodel (>= 3.2)
+    active_skin (0.0.9)
     activejob (4.2.1)
       activesupport (= 4.2.1)
       globalid (>= 0.3.0)
@@ -257,6 +258,7 @@ PLATFORMS
 DEPENDENCIES
   active_admin_import (= 2.1.2)
   active_model_serializers
+  active_skin
   activeadmin!
   bcrypt (~> 3.1.7)
   capistrano (~> 3.1)

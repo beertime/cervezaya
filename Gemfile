@@ -20,6 +20,7 @@ gem 'mini_magick'
 gem 'country_select'
 gem 'bcrypt', '~> 3.1.7'
 gem 'active_model_serializers'
+gem 'active_skin'
 gem 'geokit-rails', github: 'geokit/geokit-rails'
 gem 'pg'
 

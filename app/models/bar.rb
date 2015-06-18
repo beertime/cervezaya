@@ -22,6 +22,8 @@ class Bar < ActiveRecord::Base
 
   validates :name, presence: true
 
+  accepts_nested_attributes_for :products, allow_destroy: true
+
   mount_uploader :photo, BarUploader
 
   # Filters

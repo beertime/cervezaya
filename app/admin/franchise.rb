@@ -1,6 +1,7 @@
 ActiveAdmin.register Franchise do
 
-  permit_params :name, :photo, :published
+  permit_params :name, :photo, :published,
+    products_attributes: [ :id, :price, :brand_id, :size_id, :published, :_destroy ]
 
   active_admin_import
 
@@ -19,8 +20,13 @@ ActiveAdmin.register Franchise do
   form do |f|
     f.semantic_errors
     f.inputs
-    f.inputs 'Cervezas' do
-      # f.has_many :products, heading: 'Cerveza', allow_destroy: true, new_record: true
+    f.inputs "Cervezas" do
+      f.has_many :products, heading: false, allow_destroy: true, new_record: true do |p|
+        p.input :price
+        p.input :brand
+        p.input :size
+        p.input :published
+      end
     end
     f.actions
   end

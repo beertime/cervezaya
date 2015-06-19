@@ -9,11 +9,16 @@ class API::UsersController < ApiController
 
   # POST /users
   def create
-    user = User.find_or_create_by(user_params)
-    if user.save
-      render json: user, status: 201, location: [:api, user]
+    user = User.find_by(find_user_params)
+    if user
+      render json: user, status: 200, location: [:api, user]
     else
-      render json: { errors: user.errors }, status: 422
+      user = User.new(user_params)
+      if user.save
+        render json: user, status: 201, location: [:api, user]
+      else
+        render json: { errors: user.errors }, status: 422
+      end
     end
   end
 
@@ -38,6 +43,10 @@ class API::UsersController < ApiController
 
     def user_params
       params.permit(:push_uid, :facebook_uid, :google_uid, :publicname, :username, :email, :birth, :city, :country, :avatar, :gender, :active)
+    end
+
+    def find_user_params
+      params.permit(:push_uid, :publicname, :username, :email, :birth, :city, :country, :avatar, :gender, :active)
     end
 
 end

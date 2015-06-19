@@ -8,8 +8,8 @@ ActiveAdmin.register User do
     id_column
     column :email
     column :usename
-    column :avatar do |product|
-      image_tag product.avatar.small
+    column :avatar do |user|
+      image_tag user.avatar
     end
     column :gender
     column :city

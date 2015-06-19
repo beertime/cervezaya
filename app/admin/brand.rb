@@ -27,7 +27,14 @@ ActiveAdmin.register Brand do
 
   form do |f|
     f.semantic_errors
-    f.inputs
+    f.inputs do
+      f.input :name
+      f.input :color, as: :string
+      f.input :image
+      f.input :alt_image
+      f.input :shadow_image
+      f.input :published
+    end
     f.inputs "Tipos" do
       f.input :type_ids, as: :check_boxes, collection: Type.all, label: "Tipo"
     end

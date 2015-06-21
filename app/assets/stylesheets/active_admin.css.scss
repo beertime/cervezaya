@@ -175,6 +175,7 @@ table.index_table th {
   text-shadow: none;
 }
 
+table.index_table tr.even td,
 table.index_table th.sorted-asc, table.index_table th.sorted-desc {
   background: $bg-color-4;
 }

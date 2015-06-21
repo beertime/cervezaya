@@ -13,25 +13,188 @@
 @import "active_admin/mixins";
 @import "active_admin/base";
 
-// Active Skin
-$skinActiveColor: #ffb300;
-$skinHeaderBck: #e19e00;
-$panelHeaderBck: #e19e00;
+$bg-color-1: #ffb300;
+$bg-color-2: #e19e00;
+$bg-color-3: #fff;
+$bg-color-4: #f6f6f6;
 
-@import "active_skin";
+$font-color-1: #fff;
+$font-color-2: #444;
+$font-color-3: #666;
 
+body {
+  font-size: 75%;
+  color: $font-color-2;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: $bg-color-2;
+}
+
+// Layout
 #header {
-  background-color: #fff;
+  background: $bg-color-2;
+  border-bottom-color: darken($bg-color-2, 10);
+  box-shadow: none;
+  text-shadow: darken($bg-color-2, 10) 0 1px 0;
 
-  h1.site_title {
-    background: none;
-    padding-left: 30px;
-    text-indent: 0;
+  h1, a, a:link {
+    color: $font-color-1;
+    font-weight: 600;
   }
+
+  ul.tabs > li a {
+    border-radius: 4px;
+    padding: 4px 10px;
+  }
+
+  ul.tabs > li:hover > a {
+    background-color: darken($bg-color-2, 10);
+  }
+
+  ul.tabs > li.current > a {
+    background-color: darken($bg-color-2, 10);
+  }
+}
+
+#title_bar {
+  background: $bg-color-3;
+  text-shadow: none;
+  border: 0;
 }
 
 .col img {
   display: inline-block;
   max-width: 100px;
   max-height: 50px;
+}
+
+#main_content_wrapper {
+  margin-bottom: 100px;
+}
+
+#sidebar {
+  .sidebar_section {
+    background: $bg-color-4;
+    box-shadow: none;
+  }
+  .sidebar_section > h3 {
+    background: $bg-color-2;
+    color: $font-color-1;
+    border: 0;
+    box-shadow: none;
+    text-shadow: darken($bg-color-2, 10) 0 1px 0;
+  }
+}
+
+#footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  padding: 10px 30px;
+  box-sizing: border-box;
+  border-top: 1px solid #eee;
+
+  background: $bg-color-3;
+}
+
+// Login
+body.logged_out h2 {
+  background: $bg-color-2;
+  text-shadow: darken($bg-color-2, 10) 0 1px 0;
+}
+
+// Buttons
+#title_bar .action_items span.action_item > a, #title_bar .action_items span.action_item > .dropdown_menu > a {
+  border-radius: 4px;
+  padding: 10px 17px;
+  border-color: darken($bg-color-2, 10);
+  box-shadow: none;
+  background: $bg-color-2;
+  color: $font-color-1;
+  text-shadow: darken($bg-color-2, 10) 0 1px 0
+}
+
+#title_bar .action_items span.action_item > a:not(.disabled):hover, #title_bar .action_items span.action_item > .dropdown_menu > a:not(.disabled):hover {
+  background-color: darken($bg-color-2, 10);
+  background-image: none;
+}
+
+a.button, a:link.button, a:visited.button, input[type=submit], input[type=button], button,
+form input[type=submit], form input[type=button], form button {
+  border-radius: 4px;
+  padding: 6px 16px;
+  border: 1px solid darken($bg-color-2, 10);
+  box-shadow: none;
+  background: $bg-color-2;
+  color: $font-color-1;
+  text-shadow: darken($bg-color-2, 10) 0 1px 0;
+}
+a.button:not(.disabled):hover, a:link.button:not(.disabled):hover, a:visited.button:not(.disabled):hover, input[type=submit]:not(.disabled):hover, input[type=button]:not(.disabled):hover, button:not(.disabled):hover,
+form input[type=submit]:not(.disabled):hover, form input[type=button]:not(.disabled):hover, form button:not(.disabled):hover, {
+  background-color: darken($bg-color-2, 10);
+  background-image: none;
+}
+
+form fieldset.buttons li.cancel a, form fieldset.actions li.cancel a,
+form.filter_form a.clear_filters_btn {
+  border-radius: 4px;
+  padding: 6px 16px;
+  border: 1px solid darken($bg-color-3, 20);
+  box-shadow: none;
+  background: $bg-color-3;
+}
+form fieldset.buttons li.cancel a:not(.disabled):hover, form fieldset.actions li.cancel a:not(.disabled):hover,
+form.filter_form a.clear_filters_btn:not(.disabled):hover {
+  background-color: darken($bg-color-3, 10);
+  background-image: none;
+}
+
+
+// Form
+form fieldset legend span {
+  background: $bg-color-2;
+  color: $font-color-1;
+  border: 0;
+  box-shadow: none;
+  text-shadow: darken($bg-color-2, 10) 0 1px 0;
+}
+
+// Table
+table.index_table th {
+  background: $bg-color-4;
+  box-shadow: none;
+  text-shadow: none;
+}
+
+table.index_table th.sorted-asc, table.index_table th.sorted-desc {
+  background: $bg-color-4;
+}
+
+table.index_table th a, table.index_table th a:link, table.index_table th a:visited {
+  color: $font-color-3;
+  text-shadow: darken($bg-color-4, 10) 0 1px 0;
+}
+
+// Pagination
+.pagination a,
+.pagination a, .pagination span.page.current {
+  background: $bg-color-4;
+  box-shadow: none;
+  color: $font-color-3;
+  text-shadow: darken($bg-color-4, 10) 0 1px 0;
+}
+
+.pagination span.page.current {
+  color: $font-color-1;
+  background: $bg-color-2;
+  border-color: darken($bg-color-2, 10);
+  text-shadow: darken($bg-color-2, 10) 0 1px 0;
+}
+
+.pagination a:not(.disabled):hover {
+  background-color: darken($bg-color-3, 10);
+  background-image: none;
 }

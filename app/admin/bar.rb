@@ -10,10 +10,9 @@ ActiveAdmin.register Bar do
     selectable_column
     id_column
     column :name
-    column :photo do |product|
-      image_tag product.photo.small
+    column :photo do |bar|
+      image_tag bar.photo.small
     end
-    column :region
     column :address
     column :rank
     column :published

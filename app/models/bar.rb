@@ -1,7 +1,5 @@
 class Bar < ActiveRecord::Base
 
-  default_scope { where(published: true) }
-
   acts_as_mappable :default_units => :kms,
     :default_formula => :sphere,
     :distance_field_name => :distance,

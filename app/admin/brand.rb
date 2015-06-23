@@ -41,12 +41,4 @@ ActiveAdmin.register Brand do
     f.actions
   end
 
-  scope_to do
-    Class.new do
-      def self.brands
-        Brand.unscoped
-      end
-    end
-  end
-
 end

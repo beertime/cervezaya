@@ -2,7 +2,8 @@ class API::FavoritesController < ApiController
 
   # GET /users/:user_id/favorites
   def index
-    favorites = Favorite.select('id, bar_id, user_id').where(user_id: params[:user_id])
+    favorites = Favorite.select('id, bar_id, user_id')
+      .where(user_id: params[:user_id])
     render json: favorites, status: 200
   end
 

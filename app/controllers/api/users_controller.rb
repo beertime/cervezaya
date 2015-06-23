@@ -46,7 +46,7 @@ class API::UsersController < ApiController
     end
 
     def find_user_params
-      params.permit(:push_uid, :publicname, :username, :email, :birth, :city, :country, :gender, :active)
+      params.permit(:push_uid, :email)
     end
 
 end

@@ -34,12 +34,4 @@ ActiveAdmin.register Bar do
     f.actions
   end
 
-  scope_to do
-    Class.new do
-      def self.bars
-        Bar.unscoped
-      end
-    end
-  end
-
 end

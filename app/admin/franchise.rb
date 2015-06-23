@@ -31,12 +31,4 @@ ActiveAdmin.register Franchise do
     f.actions
   end
 
-  scope_to do
-    Class.new do
-      def self.franchises
-        Franchise.unscoped
-      end
-    end
-  end
-
 end

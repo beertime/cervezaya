@@ -1,7 +1,5 @@
 class Opinion < ActiveRecord::Base
 
-  default_scope { where(published: true) }
-
   belongs_to :user
   belongs_to :bar
 

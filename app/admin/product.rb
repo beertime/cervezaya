@@ -15,12 +15,4 @@ ActiveAdmin.register Product do
     actions
   end
 
-  scope_to do
-    Class.new do
-      def self.products
-        Product.unscoped
-      end
-    end
-  end
-
 end

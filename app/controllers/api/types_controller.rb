@@ -2,7 +2,8 @@ class API::TypesController < ApiController
 
   # GET /types
   def index
-    render json: Type.select("id, name").all, status: 200
+    types = Type.select("id, name").all.where(published: true)
+    render json: types, status: 200
   end
 
 end

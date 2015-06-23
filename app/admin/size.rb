@@ -15,12 +15,4 @@ ActiveAdmin.register Size do
     actions
   end
 
-  scope_to do
-    Class.new do
-      def self.sizes
-        Size.unscoped
-      end
-    end
-  end
-
 end

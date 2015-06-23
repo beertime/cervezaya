@@ -19,7 +19,7 @@ class API::PromotionsController < ApiController
       promotions = promotions.where('start_date <= ?', start_date)
     end
 
-    render json: promotions, status: 200
+    render json: promotions.where(published: true), status: 200
   end
 
 end

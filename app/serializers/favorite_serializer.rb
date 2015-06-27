@@ -53,48 +53,48 @@ class FavoriteSerializer < ActiveModel::Serializer
 
   def product_brand_id
     products = get_products
-    products.first.try(:brand_id)
+    products.first.try(:brand_id) if products
   end
 
   def product_name
     products = get_products
-    products.first.try(:brand).try(:name)
+    products.first.try(:brand).try(:name) if products
   end
 
   def product_price
     products = get_products
-    products.first.try(:price).to_f
+    products.first.try(:price).to_f if products
   end
 
   def product_image
     products = get_products
-    products.first.try(:brand).try(:image_identifier)
+    products.first.try(:brand).try(:image_identifier) if products
   end
 
   def user_favorite
-    !Favorite.get_by_user_and_bar(serialization_options[:user], object.bar.id).nil?
+    !Favorite.get_by_user_and_bar(serialization_options[:user], object.bar_id).nil?
   end
 
   def user_rank_id
-    Rank.get_by_user_and_bar(serialization_options[:user], object.bar.id).try(:id)
+    Rank.get_by_user_and_bar(serialization_options[:user], object.bar_id).try(:id)
   end
 
   def user_rank
-    Rank.get_by_user_and_bar(serialization_options[:user], object.bar.id).try(:value) or 0
+    Rank.get_by_user_and_bar(serialization_options[:user],object.bar_id).try(:value) or 0
   end
 
   def franchise_id
-    object.bar.franchise ? object.bar.franchise.id : nil
+    object.bar.try(:franchise) ? object.bar.try(:franchise).id : nil
   end
 
   def is_franchise
-    !object.bar.franchise.nil?
+    !object.bar.try(:franchise).nil?
   end
 
   private
 
     def get_products
-      object.bar.franchise.nil? ? object.bar.try(:products) : object.bar.franchise.try(:products)
+      object.bar.try(:franchise).nil? ? object.bar.try(:products) : object.bar.try(:franchise).try(:products)
     end
 
 end

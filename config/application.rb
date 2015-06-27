@@ -24,6 +24,9 @@ module Cervezaya
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
 
+    # Adding bower to assets pippeline
+    config.assets.paths << Rails.root.join('vendor', 'assets', 'components')
+
     # Setup scaffold
     config.generators do |g|
       g.template_engine :slim

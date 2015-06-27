@@ -72,15 +72,15 @@ class FavoriteSerializer < ActiveModel::Serializer
   end
 
   def user_favorite
-    !Favorite.get_by_user_and_bar(serialization_options[:user], object.bar.id).nil?
+    !Favorite.get_by_user_and_bar(serialization_options[:user], object.bar_id).nil?
   end
 
   def user_rank_id
-    Rank.get_by_user_and_bar(serialization_options[:user], object.bar.id).try(:id)
+    Rank.get_by_user_and_bar(serialization_options[:user], object.bar_id).try(:id)
   end
 
   def user_rank
-    Rank.get_by_user_and_bar(serialization_options[:user], object.bar.id).try(:value) or 0
+    Rank.get_by_user_and_bar(serialization_options[:user],object.bar_id).try(:value) or 0
   end
 
   def franchise_id

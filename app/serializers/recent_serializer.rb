@@ -57,22 +57,22 @@ class RecentSerializer < ActiveModel::Serializer
 
   def product_brand_id
     products = get_products
-    products.first.try(:brand_id)
+    products.first.try(:brand_id) if products
   end
 
   def product_name
     products = get_products
-    products.first.try(:brand).try(:name)
+    products.first.try(:brand).try(:name) if products
   end
 
   def product_price
     products = get_products
-    products.first.try(:price).to_f
+    products.first.try(:price).to_f if products
   end
 
   def product_image
     products = get_products
-    products.first.try(:brand).try(:image_identifier)
+    products.first.try(:brand).try(:image_identifier) if products
   end
 
   def user_favorite
@@ -84,7 +84,7 @@ class RecentSerializer < ActiveModel::Serializer
   end
 
   def user_rank
-    Rank.get_by_user_and_bar(serialization_options[:user], object.bar_id).try(:value) or 0
+    Rank.get_by_user_and_bar(serialization_options[:user],object.bar_id).try(:value) or 0
   end
 
   def franchise_id

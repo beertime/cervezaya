@@ -53,22 +53,22 @@ class FavoriteSerializer < ActiveModel::Serializer
 
   def product_brand_id
     products = get_products
-    products.first.try(:brand_id) if products.length > 1
+    products.first.try(:brand_id) if products
   end
 
   def product_name
     products = get_products
-    products.first.try(:brand).try(:name) if products.length > 1
+    products.first.try(:brand).try(:name) if products
   end
 
   def product_price
     products = get_products
-    products.first.try(:price).to_f if products.length > 1
+    products.first.try(:price).to_f if products
   end
 
   def product_image
     products = get_products
-    products.first.try(:brand).try(:image_identifier) if products.length > 1
+    products.first.try(:brand).try(:image_identifier) if products
   end
 
   def user_favorite

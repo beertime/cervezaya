@@ -84,17 +84,17 @@ class FavoriteSerializer < ActiveModel::Serializer
   end
 
   def franchise_id
-    object.bar.franchise ? object.bar.franchise.id : nil
+    object.bar.try(:franchise) ? object.bar.try(:franchise).id : nil
   end
 
   def is_franchise
-    !object.bar.franchise.nil?
+    !object.bar.try(:franchise).nil?
   end
 
   private
 
     def get_products
-      object.bar.franchise.nil? ? object.bar.try(:products) : object.bar.franchise.try(:products)
+      object.bar.try(:franchise).nil? ? object.bar.try(:products) : object.bar.try(:franchise).try(:products)
     end
 
 end

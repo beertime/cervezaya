@@ -15,4 +15,19 @@ ActiveAdmin.register Product do
     actions
   end
 
+  # Bar.all.map{|b| ["#{b.name}, #{b.address}", b.id]}
+  form do |f|
+    f.semantic_errors
+    f.inputs do
+      f.input :brand
+      f.input :size
+      f.input :bar, label: 'Bar', as: :select,
+        collection: Bar.all.map{|b| ["#{b.name}, #{b.address.split(', ')[0]}, #{b.address.split(', ')[1]}", b.id]}
+      f.input :franchise
+      f.input :price
+      f.input :published
+    end
+    f.actions
+  end
+
 end

@@ -23,7 +23,7 @@ ActiveAdmin.register Franchise do
     f.inputs
     f.inputs "Bars" do
       f.has_many :bars, heading: false, allow_destroy: false, new_record: true do |p|
-        p.input :id, label: 'Bar', as: :select, collection: Bar.all
+        p.input :id, label: 'Bar', as: :select, collection: Bar.all.map{|b| ["#{b.name}, #{b.address.split(', ')[0]}, #{b.address.split(', ')[1]}", b.id]}
       end
     end
     f.inputs "Cervezas" do

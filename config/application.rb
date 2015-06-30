@@ -25,7 +25,7 @@ module Cervezaya
     config.active_record.raise_in_transactional_callbacks = true
 
     # Adding bower to assets pippeline
-    config.assets.paths << Rails.root.join('vendor', 'assets', 'components')
+    config.assets.paths << Rails.root.join('vendor', 'assets', 'bower_components')
 
     # Setup scaffold
     config.generators do |g|
@@ -33,5 +33,8 @@ module Cervezaya
       g.assets false
       g.helper false
     end
+
+    # Removing limit for multipart forms
+    Rack::Utils.multipart_part_limit = 0
   end
 end

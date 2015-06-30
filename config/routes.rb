@@ -30,4 +30,8 @@ Rails.application.routes.draw do
 
   root 'welcome#index'
 
+  get 'prensa', to: 'static#press'
+  get 'legal', to: 'static#legal'
+  get 'contacto', to: 'static#contact'
+
 end

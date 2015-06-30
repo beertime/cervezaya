@@ -8,5 +8,6 @@ class Franchise < ActiveRecord::Base
   mount_uploader :photo, BarUploader
 
   accepts_nested_attributes_for :products, allow_destroy: true
+  accepts_nested_attributes_for :bars, allow_destroy: true
 
 end

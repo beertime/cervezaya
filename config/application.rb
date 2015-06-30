@@ -33,5 +33,8 @@ module Cervezaya
       g.assets false
       g.helper false
     end
+
+    # Removing limit for multipart forms
+    Rack::Utils.multipart_part_limit = 0
   end
 end

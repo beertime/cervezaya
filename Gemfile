@@ -33,6 +33,11 @@ group :development, :test do
   gem 'capistrano-bower'
 end
 
+group :development, :test, :staging do
+  gem 'rails-perftest'
+  gem 'ruby-prof'
+end
+
 group :production do
   gem 'puma'
 end

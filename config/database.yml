@@ -18,7 +18,7 @@ test:
 
 staging:
   <<: *default
-  database: cervezaya_prod
+  database: cervezaya_staging
 
 production:
   <<: *default

@@ -24,6 +24,7 @@ gem 'active_model_serializers'
 gem 'geokit-rails', github: 'geokit/geokit-rails'
 gem 'pg'
 gem 'dotenv-rails'
+gem 'newrelic_rpm'
 
 group :development, :test do
   gem 'spring'

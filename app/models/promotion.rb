@@ -5,6 +5,7 @@ class Promotion < ActiveRecord::Base
   belongs_to :bar
 
   validates :title, presence: true
+  validates :bar, presence: true
 
   mount_uploader :image, PromotionUploader
 

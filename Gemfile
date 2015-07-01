@@ -23,6 +23,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'active_model_serializers'
 gem 'geokit-rails', github: 'geokit/geokit-rails'
 gem 'pg'
+gem 'dotenv-rails'
 
 group :development, :test do
   gem 'spring'

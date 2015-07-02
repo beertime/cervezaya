@@ -4,4 +4,223 @@
  *= require_self
  */
 
-body {}
+/*
+ @font-face {
+    font-family: 'open_sansregular';
+    src: font-url('OpenSans-Regular-webfont.eot');
+    src: font-url('OpenSans-Regular-webfont.eot?#iefix') format('embedded-opentype'),
+         font-url('OpenSans-Regular-webfont.woff') format('woff'),
+         font-url('OpenSans-Regular-webfont.ttf') format('truetype'),
+         font-url('OpenSans-Regular-webfont.svg#open_sansregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+*{font-family: 'open_sansregular';}
+/*** Start General CSS ***/
+.no-padding{
+  padding: 0;
+}
+
+.img-logo{
+  display: inline;
+}
+
+.content{
+  max-width: 1024px;
+  margin: 0 auto;
+}
+
+/*** End General CSS ***/
+/*** Start Home CSS ***/
+
+.header{
+  background: url('/assets/landing_header.png');
+  min-height: 600px;
+}
+
+.section-1{
+  min-height: 500px;
+}
+
+.section-2{
+  min-height: 380px;
+  background-color: #D98E2A;
+}
+
+.section-3{
+  background: url('/assets/landing_footer.png');
+  min-height: 650px;
+}
+
+.footer{
+  height: 100px;
+  background-color: #aaa;
+}
+
+.logo-header{
+  max-width: 120px;
+}
+
+/* Start Nav Bar */
+.content-header-navigation{
+  line-height: 150px;
+}
+
+.nav-items{
+  list-style: none;
+}
+
+.nav-items li{
+  float: left;
+  padding-left: 30px;
+}
+
+.nav-items li a{
+  color: #eee;
+  font-size: 17px;
+  text-decoration: none;
+}
+.nav-items li a:hover{
+  color: #fff;
+  padding-bottom: 10px;
+  border-bottom: 1px solid white;
+  text-shadow: 1px 1px 1px black;
+}
+/* End Nav Bar */
+.content-header-title{
+  text-align: center;
+  color: #fff;
+}
+.header-title {
+  font-size: 3em;
+}
+
+/* Start Store Boxes */
+.content-app-store, .content-play-store{
+  font-size: 1.2em;
+  text-align: center;
+  display: inline-block;
+  padding: 7px;
+  border-radius: 3px;
+  box-shadow: 0.5px 0.5px 1px #000;
+  cursor: pointer;
+}
+
+.content-app-store{
+  background-color: #D98E2A;
+  color: white;
+}
+
+.content-play-store{
+  background-color: #fff;
+  color: #888;
+}
+
+.content-app-store img, .content-play-store img{
+  width: 85%;
+}
+
+.content-header-link{
+  margin-top: 90px;
+}
+
+.box-special{
+  font-size: 1.3em;
+}
+/* End Store Boxes */
+/* Start One Sections */
+.text-phone-one h1{
+  margin: 40px 0;
+  color: #f19d2f;
+  font-size: 2.5em;
+}
+
+.text-phone-one p{
+  line-height: 1.7em;
+  padding-bottom: 10px;
+}
+
+.section-1 .img-phone .phone-one{
+  position: relative;
+  top: -78px;
+}
+
+.section-2 h1{
+  font-size: 3em;
+  color: #fff;
+  text-align: center;
+  letter-spacing: 3px;
+  padding-top: 50px;
+}
+.icons > div{
+  margin-top: 65px;
+}
+
+.icons i{
+  font-size: 6em;
+  display: block;
+  text-align: center;
+  color: #fff;
+}
+
+.icons p{
+  padding-top: 25px;
+  text-align: center;
+  margin: 0 25px;
+  color: #fff;
+}
+
+.text-phone-second p{
+    text-align: right;
+}
+
+.text-phone-second .title{
+  color: #f1a239;
+  font-size: 3em;
+  font-weight: 600;
+}
+
+.text-phone-second .subtitle{
+  color: #fff;
+  font-size: 1.7em;
+  line-height: 0em;
+  margin-bottom: 50px;
+}
+
+.section-3 .content{
+  margin-top: -10px;
+  padding-top: 5%;
+}
+
+.footer-links, .footer-social{
+  line-height: 100px;
+}
+
+.footer-links span{
+  float: right;
+  font-size: 1em;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.footer-links span:hover{
+  color: #8F6022;
+}
+
+.footer-links span:last-child{
+  margin-right: 65px;
+}
+
+.footer-social img{
+  width: 25px;
+  margin: 0 25px 10px 0;
+  cursor: pointer;
+}
+/* End One Sections */
+
+
+
+
+/*** End Home CSS ***/

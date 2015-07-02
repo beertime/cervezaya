@@ -1,6 +1,6 @@
 ActiveAdmin.register Bar do
 
-  permit_params :name, :description, :photo, :address, :region,
+  permit_params :name, :description, :photo, :address, :region, :email,
     :country, :postal, :phone, :rank, :latitude, :longitude, :published, :franchise_id,
     products_attributes: [ :id, :price, :brand_id, :size_id, :published, :_destroy ]
 

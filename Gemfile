@@ -23,6 +23,8 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'active_model_serializers'
 gem 'geokit-rails', github: 'geokit/geokit-rails'
 gem 'pg'
+gem 'dotenv-rails'
+gem 'newrelic_rpm'
 
 group :development, :test do
   gem 'spring'
@@ -31,6 +33,11 @@ group :development, :test do
   gem 'capistrano-bundler', '~> 1.1', require: false
   gem 'capistrano-rbenv', '~> 2.0', require: false
   gem 'capistrano-bower'
+end
+
+group :development, :test, :staging do
+  gem 'rails-perftest'
+  gem 'ruby-prof'
 end
 
 group :production do

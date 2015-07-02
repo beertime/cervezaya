@@ -21,6 +21,7 @@ class Bar < ActiveRecord::Base
   validates :name, presence: true
 
   accepts_nested_attributes_for :products, allow_destroy: true
+  accepts_nested_attributes_for :franchise, allow_destroy: true
 
   mount_uploader :photo, BarUploader
 
@@ -35,7 +36,13 @@ class Bar < ActiveRecord::Base
     end
 
     if params.has_key?(:q)
-      bars = bars.where("unaccent(name) ILIKE '%#{params[:q]}%' OR unaccent(address) ILIKE unaccent('%#{params[:q]}%')")
+      franchises_ids = Franchise.where("unaccent(name) ILIKE unaccent('%#{params[:q]}%')").pluck(:id)
+      bars = bars
+        .where("
+          unaccent(name) ILIKE unaccent('%#{params[:q]}%')
+          OR unaccent(address) ILIKE unaccent('%#{params[:q]}%')
+          OR franchise_id IN (#{franchises_ids.join(',')})
+        ")
     end
 
     if params.has_key?(:icons)

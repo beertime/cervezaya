@@ -18,3 +18,6 @@
 /public/uploads
 
 /vendor/assets/bower_components
+
+# Ignore dot-env file
+.env

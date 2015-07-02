@@ -27,6 +27,15 @@ module Cervezaya
     # Adding bower to assets pippeline
     config.assets.paths << Rails.root.join('vendor', 'assets', 'bower_components')
 
+    # Precompile additional assets
+    Rails.application.config.assets.precompile.push(Proc.new do |path|
+      File.extname(path).in? [
+        '.html', '.erb', '.haml', '.slim', # Templates
+        '.png',  '.gif', '.jpg', '.jpeg', '.svg', # Images
+        '.eot',  '.otf', '.svc', '.woff', '.woff2', '.ttf' # Fonts
+      ]
+    end)
+
     # Setup scaffold
     config.generators do |g|
       g.template_engine :slim

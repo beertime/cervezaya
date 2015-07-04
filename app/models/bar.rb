@@ -37,12 +37,19 @@ class Bar < ActiveRecord::Base
 
     if params.has_key?(:q)
       franchises_ids = Franchise.where("unaccent(name) ILIKE unaccent('%#{params[:q]}%')").pluck(:id)
-      bars = bars
-        .where("
-          unaccent(name) ILIKE unaccent('%#{params[:q]}%')
-          OR unaccent(address) ILIKE unaccent('%#{params[:q]}%')
-          OR franchise_id IN (#{franchises_ids.join(',')})
-        ")
+
+      if franchises_ids.count > 0
+        bars = bars
+          .where("
+            unaccent(name) ILIKE unaccent('%#{params[:q]}%')
+            OR unaccent(address) ILIKE unaccent('%#{params[:q]}%')
+            OR franchise_id IN (#{franchises_ids.join(',')})
+          ")
+      else
+        bars = bars
+          .where("unaccent(name) ILIKE unaccent('%#{params[:q]}%')
+            OR unaccent(address) ILIKE unaccent('%#{params[:q]}%')")
+      end
     end
 
     if params.has_key?(:icons)

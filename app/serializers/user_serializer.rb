@@ -4,7 +4,7 @@ class UserSerializer < ActiveModel::Serializer
     :publicname, :avatar, :custom_avatar, :gender, :birth, :city, :country
 
   def custom_avatar
-    object.custom_avatar_identifier
+    object.custom_avatar.small.url
   end
 
 end

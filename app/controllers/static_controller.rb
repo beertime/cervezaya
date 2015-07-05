@@ -5,4 +5,6 @@ class StaticController < ApplicationController
   end
   def legal
   end
+  def business
+  end
 end

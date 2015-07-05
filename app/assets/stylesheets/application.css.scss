@@ -57,6 +57,11 @@ body {
   min-height: 360px;
 }
 
+.header-legal{
+  background: asset-url('legal-bg.png');
+  background-repeat: no-repeat;
+  min-height: 360px;
+}
 
 .section-1{
   min-height: 475px;
@@ -233,31 +238,33 @@ body {
 
 .footer-social .icon {
   display: inline-block;
-  width: 36px;
-  height: 36px;
+  width: 30px;
+  height: 30px;
+  padding: 5px;
   margin-top: 32px;
   margin-bottom: 32px;
-  margin-right: 10px;
-
+  margin-right: 25px;
   text-indent: -9999px;
   line-height: 1;
   color: transparent;
-
   background-repeat: no-repeat;
+  border-radius: 3px;
 
   &.icon-twitter {
     background-image: asset-url("twitter.png");
-
+    background-position: center;
     &:hover {
       background-image: asset-url("twitterhover.png");
+      background-position: center;
     }
   }
 
   &.icon-instagram {
     background-image: asset-url("instagram.png");
-
+    background-position: center;
     &:hover {
       background-image: asset-url("instagramhover.png");
+      background-position: center;
     }
   }
 }
@@ -323,6 +330,12 @@ body {
 }
 /* End Section PRENSA */
 /* Start Section CONTACTO */
+
+.contact-content{
+  max-width: 940px;
+  margin: 0 auto;
+}
+
 .bar-owner{
   background: asset-url('owner.png');
   background-repeat: no-repeat;
@@ -342,11 +355,6 @@ body {
   background-position: center;
 }
 
-.contact-content{
-  max-width: 940px;
-  margin: 0 auto;
-}
-
 .title-contact{
   margin-top: 75px;
   margin-bottom: 35px;
@@ -364,11 +372,45 @@ body {
 }
 /* End Section CONTACTO */
 /* Start Section LEGAL */
-
-.container .legal h1{
-  color: #f19d2f;
+.legal-content{
+  max-width: 940px;
+  margin: 0 auto;
 }
 
+.legal h1{
+  color: #f19d2f;
+  font-size: 1.8em;
+  margin-top: 80px;
+}
+
+.legal .date{
+  color: #ccc;
+}
+
+.legal .first{
+  margin-top: 35px;
+}
+
+.legal p{
+  margin-top: 25px;
+  text-align: justify;
+}
+
+.legal p.level-one{
+  margin-left: 30px;
+}
+
+.legal p.level-two{
+  margin-left: 60px;
+}
+
+.legal p.level-three{
+  margin-left: 90px;
+}
+
+.legal p.level-four{
+  margin-left: 105px;
+}
 
 /* End Section LEGAL */
 

@@ -17,7 +17,7 @@ class PromotionSerializer < ActiveModel::Serializer
   end
 
   def current_iteration
-    Promotion.current_iteration(object)
+    Promotion.current_iteration(object, serialization_options[:date])
   end
 
 end

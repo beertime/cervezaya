@@ -17,9 +17,10 @@ class API::PromotionsController < ApiController
         .where('end_date >= ?', end_date)
     else
       promotions = promotions.where('start_date <= ?', start_date)
+        .where('end_date >= ?', Date.today)
     end
 
-    render json: promotions.where(published: true), status: 200
+    render json: promotions.where(published: true), status: 200, date: date || Date.today
   end
 
 end

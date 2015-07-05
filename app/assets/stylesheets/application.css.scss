@@ -231,7 +231,38 @@ body {
   padding-top: 5%;
 }
 
-.footer-links, .footer-social{
+.footer-social .icon {
+  display: inline-block;
+  width: 36px;
+  height: 36px;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  margin-right: 10px;
+
+  text-indent: -9999px;
+  line-height: 1;
+  color: transparent;
+
+  background-repeat: no-repeat;
+
+  &.icon-twitter {
+    background-image: asset-url("twitter.png");
+
+    &:hover {
+      background-image: asset-url("twitterhover.png");
+    }
+  }
+
+  &.icon-instagram {
+    background-image: asset-url("instagram.png");
+
+    &:hover {
+      background-image: asset-url("instagramhover.png");
+    }
+  }
+}
+
+.footer-links {
   line-height: 100px;
 }
 

@@ -9,7 +9,7 @@ class Promotion < ActiveRecord::Base
 
   mount_uploader :image, PromotionUploader
 
-  def self.current_iteration(promotion)
+  def self.current_iteration(promotion, date = Date.today)
     if promotion.recurrent
       days_availables = [
         promotion.sunday ? 0 : nil,
@@ -20,7 +20,13 @@ class Promotion < ActiveRecord::Base
         promotion.friday ? 5 : nil,
         promotion.saturday ? 6 : nil
       ]
-      date_range = Date.today..promotion.end_date
+
+      if promotion.end_date > date
+        date_range = date..promotion.end_date
+      else
+        return []
+      end
+
       result = date_range.select { |d| days_availables.include?(d.wday) }.first
 
       [

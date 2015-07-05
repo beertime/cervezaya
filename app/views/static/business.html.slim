@@ -3,24 +3,25 @@
     .content-header.content
       .content-header-navigation
         .img-logo
-          = link_to image_tag("logo250.png"), root_path
+          = link_to image_tag("logo.png"), root_path
         .hosteleros-link
           span HOSTELEROS
         ul.nav-items.pull-right
           li
             = link_to "PRENSA", prensa_path, class: 'navbar-link'
-          li
-            = link_to "BLOG", '#', class: 'navbar-link'
+          / li
+          /   = link_to "BLOG", '#', class: 'navbar-link'
           li
             = link_to "CONTACTO", contacto_path, class: 'navbar-link'
       .content-header-title
         h2.header-title Si tienes un bar, te interesa CervezaYa.
         h4 Introduce tu teléfono y contactaremos contigo para incluir tu negocio en nuestra aplicación.
       .content-header-form
-        .col-md-8.col-md-offset-2
-          input type="text" placeholder="Escribe tu teléfono..."
-          .button-send
-            span ENVIAR
+        .row
+          .col-md-8.col-md-offset-2
+            input type="text" placeholder="Escribe tu teléfono..."
+            .button-send
+              span ENVIAR
 
 
 // Start Section 1
@@ -42,14 +43,27 @@
     h1 Un nuevo paso para tu negocio
     .icons
       .col-md-3
-        img src="assets/crecimiento.png"/
+<<<<<<< HEAD
+        = image_tag "assets/crecimiento.png"
         p Aumenta tu número de clientes diario.
       .col-md-3
-        img src="assets/mundo.png"/
+        = image_tag "assets/mundo.png"
         p Amplia tu presencia en el mundo digital.
       .col-md-3
-        img src="assets/difusion.png"/
+        = image_tag "assets/difusion.png"
         p.special Difunde por toda la ciudad todas tus promociones.
       .col-md-3
-        img src="assets/opiniones.png"/
+        = image_tag "assets/opiniones.png"
+=======
+        = image_tag src="crecimiento.png"
+        p Aumenta tu número de clientes diario.
+      .col-md-3
+        = image_tag src="mundo.png"
+        p Amplia tu presencia en el mundo digital.
+      .col-md-3
+        = image_tag src="difusion.png"
+        p.special Difunde por toda la ciudad todas tus promociones.
+      .col-md-3
+        = image_tag src="opiniones.png"
+>>>>>>> origin/develop
         p Escucha la opinión de los clientes.

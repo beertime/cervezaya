@@ -21,8 +21,8 @@ class Promotion < ActiveRecord::Base
         promotion.saturday ? 6 : nil
       ]
 
-      if promotion.end_date > date
-        date_range = date..promotion.end_date
+      if promotion.end_date > date.to_date
+        date_range = date.to_date..promotion.end_date
       else
         return []
       end

@@ -21,3 +21,5 @@
 
 # Ignore dot-env file
 .env
+
+app/assets/stylesheets/application.css.scss

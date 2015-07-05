@@ -1,0 +1,55 @@
+.header-bares
+  nav.navbar
+    .content-header.content
+      .content-header-navigation
+        .img-logo
+          = link_to image_tag("logo250.png"), root_path
+        .hosteleros-link
+          span HOSTELEROS
+        ul.nav-items.pull-right
+          li
+            = link_to "PRENSA", prensa_path, class: 'navbar-link'
+          li
+            = link_to "BLOG", '#', class: 'navbar-link'
+          li
+            = link_to "CONTACTO", contacto_path, class: 'navbar-link'
+      .content-header-title
+        h2.header-title Si tienes un bar, te interesa CervezaYa.
+        h4 Introduce tu teléfono y contactaremos contigo para incluir tu negocio en nuestra aplicación.
+      .content-header-form
+        .col-md-8.col-md-offset-2
+          input type="text" placeholder="Escribe tu teléfono..."
+          .button-send
+            span ENVIAR
+
+
+// Start Section 1
+.section-1
+  .content
+    .col-md-4
+      .img-phone
+        = image_tag "phone_3.png", class: 'phone-one'
+    .col-md-8
+      .text-phone-one
+        h1 No te quedes atrás.
+        p A diario, miles de personas usan CervezaYa para descubrir nuevos bares a su alrededor. Todas esas personas desean consumir, están buscando un sitio donde beber cerveza.
+        p Ya hay más de mil bares en CervezaYa. De hecho, tu competencia está ya aquí. Salta al mundo digital y consigue nuevos clientes.
+        p En época de crisis, la gente recurre a nuevas plataformas como los móviles para consumir de manera inteligente. Como dueño de un bar, te interesa estar presente aquí.
+
+// Start Section 2
+.section-2-bares
+  .content
+    h1 Un nuevo paso para tu negocio
+    .icons
+      .col-md-3
+        img src="assets/crecimiento.png"/
+        p Aumenta tu número de clientes diario.
+      .col-md-3
+        img src="assets/mundo.png"/
+        p Amplia tu presencia en el mundo digital.
+      .col-md-3
+        img src="assets/difusion.png"/
+        p.special Difunde por toda la ciudad todas tus promociones.
+      .col-md-3
+        img src="assets/opiniones.png"/
+        p Escucha la opinión de los clientes.

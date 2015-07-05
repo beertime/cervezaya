@@ -29,6 +29,7 @@ body {
 }
 .img-logo a img{
   width: 155px;
+  margin-bottom: 15px;
 }
 
 .content{
@@ -41,6 +42,12 @@ body {
 
 .header{
   background: asset-url('landing_header.png');
+  background-repeat: no-repeat;
+  min-height: 600px;
+}
+
+.header-bares{
+  background: asset-url('landing_bares.png');
   background-repeat: no-repeat;
   min-height: 600px;
 }
@@ -70,6 +77,12 @@ body {
 .section-2{
   min-height: 380px;
   background-color: #D98E2A;
+}
+
+.section-2-bares{
+  min-height: 380px;
+  background-color: #22282d;
+  margin-bottom: -10px;
 }
 
 .section-3{
@@ -152,7 +165,7 @@ body {
   width: 85%;
 }
 
-.content-header-link{
+.content-header-link, .content-header-form{
   margin-top: 90px;
 }
 
@@ -179,7 +192,7 @@ body {
   top: -78px;
 }
 
-.section-2 h1{
+.section-2 h1, .section-2-bares h1{
   font-size: 3em;
   color: #fff;
   text-align: center;
@@ -411,8 +424,41 @@ body {
 .legal p.level-four{
   margin-left: 105px;
 }
-
 /* End Section LEGAL */
+/* Start Section BARES Y EMPRESAS */
 
+.content-header-form input{
+  border-radius: 3px;
+  min-width: 350px;
+  border: 0;
+  padding-left: 15px;
+  line-height: 40px;
+}
+.button-send {
+  display: inline;
+  margin-left: 50px;
+  min-height: 40px;
+  padding: 12px 70px;
+  border-radius: 3px;
+  background-color: #f19d2f;
+  box-shadow: 0.5px 2px 0px #cd811e;
+  color: #ddd;
+  cursor: pointer;
+  text-align: center;
+}
 
+.button-send:hover {
+  color: #fff;
+}
+
+.button-send span{
+  letter-spacing: 2px;
+}
+
+.hosteleros-link{
+  color: #fff;
+  display: inline;
+}
+
+/* End Section BARES Y EMPRESAS */
 /*** End Home CSS ***/

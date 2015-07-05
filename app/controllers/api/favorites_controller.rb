@@ -11,10 +11,15 @@ class API::FavoritesController < ApiController
   def create
     user = User.find(params[:user_id])
     favorite = user.favorites.build(create_favorite_params)
-    if favorite.save
-      render json: favorite, status: 201
+    favorite_exists = Favorite.where(bar_id: params[:bar_id]).take!
+    if favorite_exists
+      render json: favorite_exists, status: 201
     else
-      render json: { errors: favorite.errors }, status: 422
+      if favorite.save
+        render json: favorite, status: 201
+      else
+        render json: { errors: favorite.errors }, status: 422
+      end
     end
   end
 

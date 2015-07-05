@@ -1,1 +1,25 @@
-h1 Contact
+.header-contact
+  nav.navbar
+    .content-header.content
+      .content-header-navigation
+        .img-logo
+          = link_to image_tag("logo250.png"), root_path
+        ul.nav-items.pull-right
+          li
+            = link_to "PRENSA", prensa_path, class: 'navbar-link'
+          li
+            = link_to "BLOG", '#', class: 'navbar-link'
+          li
+            = link_to "CONTACTO", contacto_path, class: 'navbar-link'
+      .content-header-title
+        h2.header-title Contacto
+
+
+.contact-content
+  .bar-owner
+
+  p.title-contact Contáctanos por mail.
+
+  <p>Coméntanos cualquier cosa sobre la app: feedback, sugerencias... <span>feedback@cervezaya.com</span></p>
+
+  <p>Para cualquier asunto profesional: prensa, negocios...<span>contacto@cervezaya.com</span></p>

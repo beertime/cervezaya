@@ -1,3 +1,30 @@
+.header
+  nav.navbar
+    .content-header.content
+      .content-header-navigation
+        .img-logo
+          = link_to image_tag("logo250.png"), root_path
+        ul.nav-items.pull-right
+          li
+            = link_to "PRENSA", prensa_path, class: 'navbar-link'
+          li
+            = link_to "BLOG", '#', class: 'navbar-link'
+          li
+            = link_to "CONTACTO", contacto_path, class: 'navbar-link'
+      .content-header-title
+        h2.header-title La forma inteligente de beber cerveza.
+        h4 Dínos qué te apetece tomar y nosotros te diremos dónde.
+      .content-header-link
+        .row
+          .col-md-6.col-md-offset-3
+            .col-md-6
+              .content-app-store
+                = image_tag "appstore.png"
+            .col-md-6
+              .content-play-store
+                = image_tag "googleplay.png"
+
+
 // Start Section 1
 .section-1
   .content
@@ -11,23 +38,23 @@
         p CervezaYa encuentra los bares más cercanos en los que podrás disfrutar de la cerveza que quieres. Y no te preocupes por cómo ir al bar, la app te guiará.
         p Queremos que cambies tu manera de consumir cerveza: descubre nuevos sitios y consume de manera inteligente.
 
-// Start Section 2 
+// Start Section 2
 .section-2
   .content
-  h1 La revolución del cerveceo
-  .icons
-    .icon-heart.col-md-3
-      i.glyphicon.glyphicon-heart
-      p Encuentre tu cerveza justo como te gusta.
-    .icon-bear.col-md-3
-      i.glyphicon.glyphicon-heart
-      p Elige en qué bar quieres bebértela fresquita.
-    .icon-percentage.col-md-3
-      i.glyphicon.glyphicon-heart
-      p Te mostramos las mejores ofertas de la ciudad.
-    .icon-direction.col-md-3
-      i.glyphicon.glyphicon-heart
-      p ¡No te pierdas! Te guiamos hasta que llegues al bar.
+    h1 La revolución del cerveceo
+    .icons
+      .col-md-3
+        img src="assets/love.png"/
+        p Encuentre tu cerveza justo como te gusta.
+      .col-md-3
+        img src="assets/jarra.png"/
+        p Elige en qué bar quieres bebértela fresquita.
+      .col-md-3
+        img src="assets/promociones.png"/
+        p.special Te mostramos las mejores ofertas de la ciudad.
+      .col-md-3
+        img src="assets/irhacia.png"/
+        p.special ¡No te pierdas! Te guiamos hasta que llegues al bar.
 
 // Section 3
 .section-3

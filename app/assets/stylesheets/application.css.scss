@@ -371,6 +371,13 @@ body {
   height: 236px;
   width: 100%;
   border-radius: 5px;
+  position: relative;
+
+  a {
+    position: absolute;
+    width: 100%;
+    height:  100%;
+  }
 }
 
 .bar-owner:hover{

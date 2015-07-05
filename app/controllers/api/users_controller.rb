@@ -42,7 +42,7 @@ class API::UsersController < ApiController
   private
 
     def user_params
-      params.permit(:push_uid, :facebook_uid, :google_uid, :publicname, :username, :email, :birth, :city, :country, :avatar, :gender, :active)
+      params.permit(:push_uid, :facebook_uid, :google_uid, :publicname, :username, :email, :birth, :city, :country, :avatar, :custom_avatar, :gender, :active)
     end
 
     def find_user_params

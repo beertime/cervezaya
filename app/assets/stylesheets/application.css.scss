@@ -266,18 +266,21 @@ body {
   line-height: 100px;
 }
 
-.footer-links span{
+.footer-links a{
+  list-style: none;
+  color: #000;
   float: right;
   font-size: 1em;
   font-weight: 600;
-  cursor: pointer;
 }
 
-.footer-links span:hover{
-  color: #8F6022;
+.footer-links a:hover{
+  text-decoration: none;
+  text-shadow: 1px 1px 1px #000;
+  color: #F1A239;
 }
 
-.footer-links span:last-child{
+.footer-links a:last-child{
   margin-right: 65px;
 }
 
@@ -360,6 +363,14 @@ body {
   font-weight: 900;
 }
 /* End Section CONTACTO */
+/* Start Section LEGAL */
+
+.container .legal h1{
+  color: #f19d2f;
+}
+
+
+/* End Section LEGAL */
 
 
 /*** End Home CSS ***/

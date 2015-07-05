@@ -7,10 +7,11 @@
         ul.nav-items.pull-right
           li
             = link_to "PRENSA", prensa_path, class: 'navbar-link'
-          li
-            = link_to "BLOG", '#', class: 'navbar-link'
+          / li
+          /   = link_to "BLOG", '#', class: 'navbar-link'
           li
             = link_to "CONTACTO", contacto_path, class: 'navbar-link'
+
       .content-header-title
         h2.header-title Contacto
 
@@ -20,6 +21,10 @@
 
   p.title-contact Contáctanos por mail.
 
-  <p>Coméntanos cualquier cosa sobre la app: feedback, sugerencias... <span>feedback@cervezaya.com</span></p>
+  p
+  | Coméntanos cualquier cosa sobre la app: feedback, sugerencias...
+  span = link_to 'feedback@cervezaya.com', 'mailto:feedback@cervezaya.com'
 
-  <p>Para cualquier asunto profesional: prensa, negocios...<span>contacto@cervezaya.com</span></p>
+  p
+  | Para cualquier asunto profesional: prensa, negocios...
+  span = link_to 'contacto@cervezaya.com', 'mailto:contacto@cervezaya.com'

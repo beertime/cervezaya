@@ -3,7 +3,7 @@
     .content-header.content
       .content-header-navigation
         .img-logo
-          = link_to image_tag("logo250.png"), root_path
+          = link_to image_tag("logo.png"), root_path
         ul.nav-items.pull-right
           li
             = link_to "PRENSA", prensa_path, class: 'navbar-link'
@@ -14,15 +14,24 @@
       .content-header-title
         h2.header-title La forma inteligente de beber cerveza.
         h4 Dínos qué te apetece tomar y nosotros te diremos dónde.
+      // FeedBack Form
+      .content-feedback.hide
+        .row
+          .col-md-8.col-md-offset-2
+            h3 CervezaYa aún no está en la App Store. ¿Quieres que te avisemos cuando esté?
+            input type="text" placeholder="Escribe aquí tu mail..."
+            .button-send
+              span ¡Informadme!
+      // AppStore & PlayStore Boxes
       .content-header-link
         .row
           .col-md-6.col-md-offset-3
             .col-md-6
               .content-app-store
-                = image_tag "appstore.png"
+                = image_tag "appstore.png", id:"appstore"
             .col-md-6
               .content-play-store
-                = image_tag "googleplay.png"
+                = image_tag "googleplay.png", id:"playstore"
 
 
 // Start Section 1
@@ -51,10 +60,10 @@
         p Elige en qué bar quieres bebértela fresquita.
       .col-md-3
         = image_tag src="promociones.png"
-        p.special Te mostramos las mejores ofertas de la ciudad.
+        p Te mostramos las mejores ofertas de la ciudad.
       .col-md-3
         = image_tag src="irhacia.png"
-        p.special ¡No te pierdas! Te guiamos hasta que llegues al bar.
+        p ¡No te pierdas! Te guiamos hasta que llegues al bar.
 
 // Section 3
 .section-3

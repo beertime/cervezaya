@@ -29,9 +29,9 @@ class Promotion < ActiveRecord::Base
 
       result = date_range.select { |d| days_availables.include?(d.wday) }.first
 
-      if result > date.to_date
-        return nil
-      end
+      # if result > date.to_date
+      #   return nil
+      # end
 
       [
         self.format_date(result, promotion.start_hour),

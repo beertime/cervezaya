@@ -37,6 +37,7 @@ Rails.application.routes.draw do
   get 'legal', to: 'static#legal'
   get 'contacto', to: 'static#contact'
 
-  match '/business_contact', to: 'contact#send_mail', via: 'post'
+  match '/business_contact', to: 'contact#bussines_mail', via: 'post'
+  match '/ios_contact', to: 'contact#ios_mail', via: 'post'
 
 end

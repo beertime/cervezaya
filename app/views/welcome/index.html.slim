@@ -16,13 +16,17 @@
         h4 Dínos qué te apetece tomar y nosotros te diremos dónde.
       // FeedBack Form
       .content-feedback.hide
-        .row
-          .col-md-8.col-md-offset-2
-            h3 CervezaYa aún no está en la App Store. ¿Quieres que te avisemos cuando esté?
-            .col-md-6
-              input type="text" placeholder="Escribe aquí tu mail..."
-            .col-md-6
-              .content-informame
+        = form_tag(ios_contact_path) do
+          .row
+            .col-md-8.col-md-offset-2
+              h3 CervezaYa aún no está en la App Store. ¿Quieres que te avisemos cuando esté?
+              .col-md-6
+                = email_field_tag 'email', nil, placeholder: "Escribe aquí tu mail...", required: true
+              .col-md-6
+                button.content-informame type="submit"
+            - if notice
+              .col-md-8.col-md-offset-2
+                p.message = notice
       // AppStore & PlayStore Boxes
       .content-header-link
         .row

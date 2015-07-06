@@ -19,6 +19,9 @@
       .content-header-form
         = form_tag(business_contact_path) do
           .row
+            - if notice
+              .col-md-8.col-md-offset-2
+                p.message = notice
             .col-md-8.col-md-offset-2
               .col-md-6
                 = text_field_tag 'phone', nil, placeholder: "Escribe tu teléfono...", required: true

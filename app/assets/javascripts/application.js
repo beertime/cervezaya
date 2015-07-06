@@ -13,6 +13,8 @@ function onDocumentReady() {
     AppStoreFeedback();
   });
 
+  
+
 }
 
 $(document).on('ready', onDocumentReady);

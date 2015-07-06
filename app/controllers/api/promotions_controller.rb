@@ -10,9 +10,8 @@ class API::PromotionsController < ApiController
     promotions = Promotion.all
 
     if !date.blank?
-      day_of_week = date.to_date.strftime("%A").downcase
       promotions = promotions.where('start_date <= ?', date)
-        .where('end_date >= ?', date).where("#{day_of_week} = TRUE")
+        .where('end_date >= ?', date)
     elsif !end_date.blank?
       promotions = promotions.where('start_date <= ?', start_date)
         .where('end_date >= ?', end_date)
@@ -21,9 +20,7 @@ class API::PromotionsController < ApiController
         .where('end_date >= ?', Date.today)
     end
 
-    promotions = promotions.where(published: true)
-
-    render json: promotions, status: 200, date: date || Date.today
+    render json: promotions.where(published: true), status: 200, date: date || Date.today
   end
 
 end

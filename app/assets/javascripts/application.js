@@ -13,7 +13,12 @@ function onDocumentReady() {
     AppStoreFeedback();
   });
 
-  
+  // $('#marketAndroid'). market://details?
+  var ua = navigator.userAgent.toLowerCase();
+  var isAndroid = ua.indexOf("android") > -1;
+  if(isAndroid) {
+    $('#marketAndroid').attr('href', 'market://details?id=com.cervezaya.cervezaya');
+  }
 
 }
 

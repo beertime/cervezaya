@@ -9,9 +9,10 @@ var AppStoreFeedback = function(){
 }
 
 function onDocumentReady() {
-  $('#appstore').on('click',function(){
+  $('.content-app-store').on('click',function(){
     AppStoreFeedback();
-  })
+  });
+
 }
 
 $(document).on('ready', onDocumentReady);

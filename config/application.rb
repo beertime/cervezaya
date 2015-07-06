@@ -24,18 +24,6 @@ module Cervezaya
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
 
-    # Mailer
-    config.action_mailer.delivery_method = :smtp
-    config.action_mailer.smtp_settings = {
-      address: 'smtp.mandrillapp.com',
-      port: 587,
-      enable_starttls_auto: true,
-      user_name: ENV["MANDRIL_USERNAME"],
-      password: ENV["MANDRIL_API_KEY"],
-      authentication: 'login',
-      domain: 'cervezaya.com'
-    }
-
     # Setup scaffold
     config.generators do |g|
       g.template_engine :slim

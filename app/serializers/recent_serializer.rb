@@ -17,7 +17,7 @@ class RecentSerializer < ActiveModel::Serializer
 
   def address
     address = object.bar.try(:address)
-    "#{address.split(',')[0]}, #{address.split(',')[1]}"
+    "#{address.split(',')[0]}, #{address.split(',')[1]}" if address
   end
 
   def region

@@ -78,7 +78,8 @@ class Bar < ActiveRecord::Base
     if params.has_key?(:sort) and params[:sort] == 'price'
       self.select('bars.*, MIN(products.price) AS product_price')
         .joins('LEFT JOIN products ON bars.id = products.bar_id OR bars.franchise_id = products.franchise_id')
-        .group('bars.id').order('product_price ASC').within(50, origin: [params[:latitude].to_f, params[:longitude].to_f])
+        .group('bars.id').order('product_price ASC')
+        .within(50, origin: [params[:latitude].to_f, params[:longitude].to_f])
     elsif params.has_key?(:sort) and params[:sort] == 'rank'
       self.joins('LEFT JOIN products ON bars.id = products.bar_id OR bars.franchise_id = products.franchise_id')
       .group('bars.id').where.not(rank: nil).order(rank: :desc)

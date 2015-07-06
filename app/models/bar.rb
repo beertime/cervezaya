@@ -32,7 +32,7 @@ class Bar < ActiveRecord::Base
 
     if params.has_key?(:latitude) and params.has_key?(:longitude)
       origin = [params[:latitude], params[:longitude]]
-      bars = self.filter_by_lat_lng(origin, params[:min_distance], params[:max_distance] || 40)
+      bars = self.filter_by_lat_lng(origin, params[:min_distance], params[:max_distance])
     end
 
     if params.has_key?(:q)

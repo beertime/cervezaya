@@ -462,10 +462,13 @@ body {
 
 .content-header-form input, .content-feedback input{
   border-radius: 3px;
-  min-width: 350px;
+  width: 100%;
+  max-width: 350px;
   border: 0;
   padding-left: 15px;
-  line-height: 40px;
+  line-height: 38px;
+  padding-top: 0;
+  padding-bottom: 0;
 }
 
 .hosteleros-link{
@@ -474,8 +477,11 @@ body {
 }
 
 .content-send{
-  min-height: 42px;
+  width: 160px;
+  min-height: 38px;
   cursor: pointer;
+  border: 0;
+  background-color: transparent;
   background-image: asset-url("enviar.png");
   background-position: center;
   background-size: contain;

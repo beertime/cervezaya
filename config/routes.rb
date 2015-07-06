@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'contact/send_mail'
+
   constraints subdomain: "#{ENV['ADMIN_SUBDOMAIN']}" do
     ActiveAdmin.routes(self)
     devise_for :admin_users, ActiveAdmin::Devise.config
@@ -34,5 +36,7 @@ Rails.application.routes.draw do
   get 'prensa', to: 'static#press'
   get 'legal', to: 'static#legal'
   get 'contacto', to: 'static#contact'
+
+  match '/business_contact', to: 'contact#send_mail', via: 'post'
 
 end

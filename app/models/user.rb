@@ -16,6 +16,7 @@ class User < ActiveRecord::Base
     length: { minimum: 4, message: "\"username\" must be longer than 4 characters"},
     uniqueness: true,
     allow_blank: true
+    # format: {  with: /\A(?=.*[a-z])[a-z\d]+\Z/i }
   validates :gender, format: { with: /male|female|other/i, message: "Gender must be \"male\", \"female\" or \"other\"" },
     allow_blank: true
 

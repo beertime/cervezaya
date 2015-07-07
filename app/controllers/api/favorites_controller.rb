@@ -27,8 +27,10 @@ class API::FavoritesController < ApiController
   def destroy
     user = User.find(params[:user_id])
     favorite = user.favorites.find(params[:id])
-    favorite.destroy
-    head 204
+    if favorite
+      favorite.destroy
+      head 204
+    end
   end
 
   private

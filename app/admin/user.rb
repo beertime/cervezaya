@@ -7,9 +7,12 @@ ActiveAdmin.register User do
     selectable_column
     id_column
     column :email
-    column :usename
+    column :username
     column :avatar do |user|
       image_tag user.avatar
+    end
+    column :custom_avatar do |user|
+      image_tag user.custom_avatar.small.url
     end
     column :gender
     column :city

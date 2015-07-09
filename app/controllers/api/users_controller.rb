@@ -9,7 +9,7 @@ class API::UsersController < ApiController
 
   # POST /users
   def create
-    user = User.where(user_params.slice(:email)).first_or_create
+    user = User.where(email: params[:email]).first_or_create
     if user.update(user_params)
       render json: user, status: 201, location: [:api, user]
     else

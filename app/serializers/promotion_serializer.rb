@@ -2,7 +2,7 @@ class PromotionSerializer < ActiveModel::Serializer
   attributes :id, :title, :description, :image,
     :start_date, :end_date, :recurrent, :current_iteration
 
-  has_one :bar
+  has_one :bar, serializer: BarDetailSerializer
 
   def start_date
     Promotion.format_date(object.start_date, object.start_hour)

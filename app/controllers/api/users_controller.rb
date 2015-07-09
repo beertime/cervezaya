@@ -9,11 +9,15 @@ class API::UsersController < ApiController
 
   # POST /users
   def create
-    user = User.where(user_params.slice(:email)).first_or_create
-    if user.update(user_params)
-      render json: user, status: 201, location: [:api, user]
+    unless params[:email]
+      render json: { errors: "email is required" }, status: 422
     else
-      render json: { errors: user.errors }, status: 422
+      user = User.where(email: params[:email]).first_or_create
+      if user.update(user_params)
+        render json: user, status: 201, location: [:api, user]
+      else
+        render json: { errors: user.errors }, status: 422
+      end
     end
   end
 
@@ -37,7 +41,7 @@ class API::UsersController < ApiController
   private
 
     def user_params
-      params.permit(:push_uid, :facebook_uid, :google_uid, :publicname, :username, :email, :birth, :city, :country, :avatar, :custom_avatar, :gender, :active)
+      params.permit(:push_uid, :facebook_uid, :google_uid, :email, :publicname, :username, :birth, :city, :country, :avatar, :custom_avatar, :gender, :active)
     end
 
 end

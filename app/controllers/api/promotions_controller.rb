@@ -6,6 +6,8 @@ class API::PromotionsController < ApiController
     start_date = params[:start_date] || Time.now.to_date
     end_date = params[:end_date]
 
+    current_user = params.has_key?(:user_id) ? User.select('id').find(params[:user_id]) : nil
+
     promotions = Promotion.all
 
     if !date.blank?
@@ -20,7 +22,7 @@ class API::PromotionsController < ApiController
         .where('end_date >= ?', Date.today)
     end
 
-    render json: promotions.where(published: true), status: 200, date: date || start_date
+    render json: promotions.where(published: true), status: 200, date: date || start_date, user: current_user
   end
 
 end

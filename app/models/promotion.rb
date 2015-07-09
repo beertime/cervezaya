@@ -10,35 +10,30 @@ class Promotion < ActiveRecord::Base
   mount_uploader :image, PromotionUploader
 
   def self.current_iteration(promotion, date = Date.today)
-    if promotion.recurrent
-      days_availables = [
-        promotion.sunday ? 0 : nil,
-        promotion.monday ? 1 : nil,
-        promotion.tuesday ? 2 : nil,
-        promotion.wednesday ? 3 : nil,
-        promotion.thursday ? 4 : nil,
-        promotion.friday ? 5 : nil,
-        promotion.saturday ? 6 : nil
-      ]
+    days_availables = [
+      promotion.sunday ? 0 : nil,
+      promotion.monday ? 1 : nil,
+      promotion.tuesday ? 2 : nil,
+      promotion.wednesday ? 3 : nil,
+      promotion.thursday ? 4 : nil,
+      promotion.friday ? 5 : nil,
+      promotion.saturday ? 6 : nil
+    ]
 
-      if promotion.end_date > date.to_date
-        date_range = date.to_date..promotion.end_date
-      else
-        return []
-      end
+    date = date.to_date
 
-      result = date_range.select { |d| days_availables.include?(d.wday) }.first
-
-      [
-        self.format_date(result, promotion.start_hour),
-        self.format_date(result, promotion.end_hour)
-      ]
+    if promotion.end_date > date
+      date_range = date..promotion.end_date
     else
-      [
-        self.format_date(promotion.start_date, promotion.start_hour),
-        self.format_date(promotion.end_date, promotion.end_hour)
-      ]
+      return nil
     end
+
+    result = date_range.select { |d| days_availables.include?(d.wday) }.first
+
+    [
+      self.format_date(result, promotion.start_hour),
+      self.format_date(result, promotion.end_hour)
+    ]
   end
 
   def self.format_date(date, hour)

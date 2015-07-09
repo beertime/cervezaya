@@ -26,9 +26,15 @@ class API::FavoritesController < ApiController
   # DELETE /users/:user_id/favorites/:id
   def destroy
     user = User.find(params[:user_id])
-    favorite = user.favorites.find(params[:id])
-    favorite.destroy
-    head 204
+    if defined?(user)
+      favorite = user.favorites.size > 0 ? user.favorites.find(params[:id]) : nil
+    end
+    if favorite
+      favorite.destroy
+      head 204
+    else
+      render json: { errors: user.errors }, status: 422
+    end
   end
 
   private

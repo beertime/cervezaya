@@ -13,6 +13,7 @@ class API::UsersController < ApiController
       render json: { errors: "email is required" }, status: 422
     else
       user = User.where(email: params[:email]).first_or_create
+      logger.debug params.permit(:push_uid, :facebook_uid, :google_uid, :publicname, :username, :email, :birth, :city, :country, :avatar, :custom_avatar, :gender, :active)
       if user.update(user_params)
         render json: user, status: 201, location: [:api, user]
       else

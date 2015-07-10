@@ -1,10 +1,10 @@
-role :app, %w{ubuntu@cervezaya-staging}
-role :web, %w{ubuntu@cervezaya-staging}
-role :db,  %w{ubuntu@cervezaya-staging}
+role :app, %w{ubuntu@beta.cervezaya.com}
+role :web, %w{ubuntu@beta.cervezaya.com}
+role :db,  %w{ubuntu@beta.cervezaya.com}
 
 set :branch, :develop
 
-server 'cervezaya-staging', user: 'ubuntu', roles: %w{web app}
+server 'beta.cervezaya.com', user: 'ubuntu', roles: %w{web app}
 
 set :ssh_options, {
   keys: %w(~/.ssh/teysa.pem),

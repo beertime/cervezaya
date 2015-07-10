@@ -13,8 +13,8 @@ class API::UsersController < ApiController
       render json: { errors: "email is required" }, status: 422
     else
       user = User.where(email: params[:email]).first_or_create
-      if user.update(user_params)
-        render json: user, status: 201, location: [:api, user]
+      if user.update_attributes(user_params) or defined?(user)
+        render json: user, status: 200, location: [:api, user]
       else
         render json: { errors: user.errors }, status: 422
       end
@@ -24,7 +24,7 @@ class API::UsersController < ApiController
   # PUT /users/:id
   def update
     user = User.find(params[:id])
-    if user.update(user_params)
+    if user.update_attributes(user_params)
       render json: user, status: 200, location: [:api, user]
     else
       render json: { errors: user.errors }, status: 422

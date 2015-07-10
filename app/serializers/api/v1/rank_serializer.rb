@@ -1,9 +1,9 @@
-class RecentSerializer < ActiveModel::Serializer
-  attributes :recent_id, :id, :name, :address, :region, :phone, :rank, :latitude, :longitude, :photo,
+class API::V1::RankSerializer < ActiveModel::Serializer
+  attributes :rank_id, :id, :name, :address, :region, :phone, :rank, :latitude, :longitude, :photo, :value,
     :user_favorite, :user_rank, :user_rank_id,
     :product_name, :product_price, :product_image, :franchise_id, :is_franchise
 
-  def recent_id
+  def rank_id
     object.id
   end
 
@@ -32,10 +32,6 @@ class RecentSerializer < ActiveModel::Serializer
     object.bar.try(:rank) || 0
   end
 
-  def user_rank_id
-    Bar.get_user_rank_id(object.id)
-  end
-
   def latitude
     object.bar.try(:latitude)
   end
@@ -54,48 +50,48 @@ class RecentSerializer < ActiveModel::Serializer
 
   def product_brand_id
     products = get_products
-    products.first.try(:brand_id) if products
+    products.first.try(:brand_id)
   end
 
   def product_name
     products = get_products
-    products.first.try(:brand).try(:name) if products
+    products.first.try(:brand).try(:name)
   end
 
   def product_price
     products = get_products
-    products.first.try(:price).to_f if products
+    products.first.try(:price).to_f
   end
 
   def product_image
     products = get_products
-    products.first.try(:brand).try(:image_identifier) if products
+    products.first.try(:brand).try(:image_identifier)
   end
 
   def user_favorite
-    !Favorite.get_by_user_and_bar(object.user_id, object.bar_id).nil?
+    !Favorite.get_by_user_and_bar(object.user_id, object.bar.id).nil?
   end
 
   def user_rank_id
-    Rank.get_by_user_and_bar(object.user_id, object.bar_id).try(:id)
+    Rank.get_by_user_and_bar(object.user_id, object.bar.id).try(:id)
   end
 
   def user_rank
-    Rank.get_by_user_and_bar(object.user_id,object.bar_id).try(:value) or 0
+    Rank.get_by_user_and_bar(object.user_id, object.bar.id).try(:value) or 0
   end
 
   def franchise_id
-    object.bar.try(:franchise) ? object.bar.try(:franchise).id : nil
+    object.bar.franchise ? object.bar.franchise.id : nil
   end
 
   def is_franchise
-    !object.bar.try(:franchise).nil?
+    !object.bar.franchise.nil?
   end
 
   private
 
     def get_products
-      object.bar.try(:franchise).nil? ? object.bar.try(:products) : object.bar.try(:franchise).try(:products)
+      object.bar.franchise.nil? ? object.bar.try(:products) : object.bar.franchise.try(:products)
     end
 
 end

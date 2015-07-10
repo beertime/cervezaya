@@ -1,4 +1,4 @@
-class OpinionSerializer < ActiveModel::Serializer
+class API::V1::OpinionSerializer < ActiveModel::Serializer
 
   attributes :id, :comment, :time_value, :time_unit
   has_one :user

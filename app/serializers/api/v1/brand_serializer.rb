@@ -1,4 +1,4 @@
-class BrandSerializer < ActiveModel::Serializer
+class API::V1::BrandSerializer < ActiveModel::Serializer
 
   attributes :id, :name, :color, :image, :image_alt, :image_shadow
 

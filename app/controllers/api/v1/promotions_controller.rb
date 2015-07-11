@@ -1,4 +1,4 @@
-class API::PromotionsController < ApiController
+class API::V1::PromotionsController < ApiController
 
   # GET /promotions
   def index

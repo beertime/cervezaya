@@ -1,4 +1,4 @@
-class API::UsersController < ApiController
+class API::V1::UsersController < ApiController
 
   respond_to :json
 

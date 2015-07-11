@@ -1,4 +1,4 @@
-class API::TypesController < ApiController
+class API::V1::TypesController < ApiController
 
   # GET /types
   def index

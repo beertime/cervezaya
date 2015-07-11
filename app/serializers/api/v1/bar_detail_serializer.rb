@@ -1,4 +1,4 @@
-class BarDetailSerializer < ActiveModel::Serializer
+class API::V1::BarDetailSerializer < ActiveModel::Serializer
 
   attributes :id, :name, :description, :address, :region, :phone, :rank, :latitude, :longitude,
     :user_favorite, :user_favorite_id, :user_rank, :user_rank_id, :products, :is_franchise

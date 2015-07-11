@@ -16,7 +16,6 @@ gem 'slim-rails'
 
 # Activer record components
 gem 'pg'
-# gem 'jbuilder', '~> 2.0'
 gem 'activeadmin', github: 'activeadmin'
 gem 'active_admin_import' , '2.1.2'
 gem 'active_model_serializers'
@@ -24,6 +23,7 @@ gem 'devise'
 gem 'bcrypt', '~> 3.1.7'
 
 # Utilities
+gem 'versionist'
 gem 'dotenv-rails'
 gem 'carrierwave'
 gem 'mini_magick'

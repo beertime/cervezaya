@@ -1,3 +1,3 @@
 class API::V2::TypeSerializer < ActiveModel::Serializer
-  attributes :id
+  attributes :id, :name
 end

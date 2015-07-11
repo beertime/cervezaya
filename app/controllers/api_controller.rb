@@ -1,6 +1,6 @@
 class ApiController < ApplicationController
 
-  # http_basic_authenticate_with name: "admin", password: "secret"
+  abstract!
 
   # The API responds only to JSON
   respond_to :json

@@ -1,5 +1,3 @@
-require 'api_constraints'
-
 Rails.application.routes.draw do
 
   # Admin routes
@@ -12,7 +10,7 @@ Rails.application.routes.draw do
   namespace :api, constraints: { subdomain: "#{ENV['API_SUBDOMAIN']}" }, path: '/', defaults: { format: :json } do
 
     # API V1
-    scope module: :v1, constraints: ApiConstraints.new(version: 1, default: true) do
+    api_version(module: 'V1', header: { name: 'Accept', value: 'application/vnd.cervezaya.com; version=1' }, default: true) do
 
       with_options only: :index do |r|
         r.resources :types
@@ -36,7 +34,7 @@ Rails.application.routes.draw do
     end
 
     # API V2
-    scope module: :v2, constraints: ApiConstraints.new(version: 2) do
+    api_version(module: 'V2', header: { name: 'Accept', value: 'application/vnd.cervezaya.com; version=2' }) do
 
       with_options only: :index do |r|
         r.resources :types

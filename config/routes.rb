@@ -46,7 +46,7 @@ Rails.application.routes.draw do
   # Landing routes
   root 'welcome#index'
 
-  get 'empresas-y-bares', to: 'static#business'
+  get 'bares', to: 'static#business'
   get 'prensa', to: 'static#press'
   get 'legal', to: 'static#legal'
   get 'contacto', to: 'static#contact'

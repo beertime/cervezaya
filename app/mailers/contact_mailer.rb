@@ -1,7 +1,13 @@
 class ContactMailer < ApplicationMailer
 
-  def business_mail(phone)
-    @phone = phone
+  def business_mail(params)
+    @name = params['name']
+    @email = params['email']
+    @address = params['address']
+    @phone = params['phone']
+    @products = params['products']
+    @comment = params['comment']
+
     if Rails.env == 'production'
       mail(to: "contact@cervezaya.com", subject: 'Business')
     else

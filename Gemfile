@@ -4,27 +4,30 @@ ruby '2.2.2'
 
 gem 'rails', '4.2.1'
 
+# Front end libraries
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'select2-rails'
-
+gem 'country_select'
 gem 'slim-rails'
-gem 'jbuilder', '~> 2.0'
+
+# Activer record components
+gem 'pg'
 gem 'activeadmin', github: 'activeadmin'
 gem 'active_admin_import' , '2.1.2'
+gem 'active_model_serializers'
 gem 'devise'
+gem 'bcrypt', '~> 3.1.7'
+
+# Utilities
+gem 'versionist'
+gem 'dotenv-rails'
 gem 'carrierwave'
 gem 'mini_magick'
-gem 'country_select'
-gem 'bcrypt', '~> 3.1.7'
-gem 'active_model_serializers'
 gem 'geokit-rails', github: 'geokit/geokit-rails'
-gem 'pg'
-gem 'dotenv-rails'
-gem 'newrelic_rpm'
 
 group :development, :test do
   gem 'spring'
@@ -35,11 +38,7 @@ group :development, :test do
   gem 'capistrano-bower'
 end
 
-group :development, :test, :staging do
-  gem 'rails-perftest'
-  gem 'ruby-prof'
-end
-
 group :production do
   gem 'puma'
+  gem 'newrelic_rpm'
 end

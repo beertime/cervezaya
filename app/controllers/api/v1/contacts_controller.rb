@@ -1,4 +1,4 @@
-class API::ContactsController < ApiController
+class API::V1::ContactsController < ApiController
 
   # POST /users
   def create

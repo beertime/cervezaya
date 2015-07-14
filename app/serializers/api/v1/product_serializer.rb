@@ -1,4 +1,4 @@
-class ProductSerializer < ActiveModel::Serializer
+class API::V1::ProductSerializer < ActiveModel::Serializer
   attributes :id, :price,
     :brand_id, :brand_name, :brand_color,
     :size_icon, :size_volume,

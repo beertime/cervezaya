@@ -1,4 +1,4 @@
-class PromotionSerializer < ActiveModel::Serializer
+class API::V1::PromotionSerializer < ActiveModel::Serializer
   attributes :id, :title, :description, :image,
     :start_date, :end_date, :recurrent, :current_iteration
 

@@ -1,4 +1,4 @@
-class BarSerializer < ActiveModel::Serializer
+class API::V1::BarSerializer < ActiveModel::Serializer
 
   attributes :id, :name, :address, :region, :phone, :rank, :latitude, :longitude, :photo,
     :product_brand_id, :product_name, :product_price, :product_image,

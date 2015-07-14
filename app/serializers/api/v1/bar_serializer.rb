@@ -1,9 +1,15 @@
 class API::V1::BarSerializer < ActiveModel::Serializer
 
+  cached
+
   attributes :id, :name, :address, :region, :phone, :rank, :latitude, :longitude, :photo,
     :product_brand_id, :product_name, :product_price, :product_image,
     :user_favorite, :user_rank, :user_rank_id,
     :franchise_id, :is_franchise
+
+  def cache_key
+    [object, scope]
+  end
 
   def address
     "#{object.address.split(', ')[0]}, #{object.address.split(', ')[1]}"

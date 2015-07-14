@@ -30,8 +30,8 @@
                 p = text_field_tag 'address', nil, placeholder: "Dirección completa", required: true
                 p = email_field_tag 'email', nil, placeholder: "Correo electrónico", required: false
                 p = text_field_tag 'phone', nil, placeholder: "Teléfono de contacto", required: true
-                p = text_area_tag 'products', nil, placeholder: "Productos (Marca, formato y precio). Ej: Cruzcampo tercio 1,20€", required: true
-                p = text_area_tag 'comment', nil, placeholder: "Comentario adicional", required: true
+                p = text_area_tag 'products', nil, placeholder: "Productos (Marca, formato y precio). Ej: Cruzcampo tercio 1,20€", required: false
+                p = text_area_tag 'comment', nil, placeholder: "Comentario adicional", required: false
               .col-md-12
                 button.content-send type="submit"
 

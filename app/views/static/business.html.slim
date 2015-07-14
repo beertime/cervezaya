@@ -17,7 +17,7 @@
             = link_to "CONTACTO", contacto_path, class: 'navbar-link'
       .content-header-title
         h2.header-title Si tienes un bar, te interesa CervezaYa.
-        h4 Introduce tu teléfono y contactaremos contigo para incluir tu negocio en nuestra aplicación.
+        h4 Completa el siguiente formulario y tu bar aparecerá en CervezaYa.
       .content-header-form
         = form_tag(business_contact_path) do
           .row
@@ -27,11 +27,11 @@
             .col-md-6.col-md-offset-3
               .col-md-12
                 p = text_field_tag 'name', nil, placeholder: "Nombre del bar", required: true
-                p = text_field_tag 'address', nil, placeholder: "Dirección completa", required: true
+                p = text_field_tag 'address', nil, placeholder: " Dirección completa (calle, número...)", required: true
                 p = email_field_tag 'email', nil, placeholder: "Correo electrónico", required: false
                 p = text_field_tag 'phone', nil, placeholder: "Teléfono de contacto", required: true
                 p = text_area_tag 'products', nil, placeholder: "Productos (Marca, formato y precio). Ej: Cruzcampo tercio 1,20€", required: false
-                p = text_area_tag 'comment', nil, placeholder: "Comentario adicional", required: false
+                p = text_area_tag 'comment', nil, placeholder: "¿Algún comentario adiccional?", required: false
               .col-md-12
                 button.content-send type="submit"
 

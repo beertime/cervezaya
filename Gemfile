@@ -21,6 +21,7 @@ gem 'active_admin_import' , '2.1.2'
 gem 'active_model_serializers'
 gem 'devise'
 gem 'bcrypt', '~> 3.1.7'
+gem 'dalli'
 
 # Utilities
 gem 'versionist'

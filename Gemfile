@@ -28,6 +28,7 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'geokit-rails', github: 'geokit/geokit-rails'
 gem 'gcm'
+gem 'whenever', :require => false
 
 group :development, :test do
   gem 'spring'
@@ -41,5 +42,4 @@ end
 group :production do
   gem 'puma'
   gem 'newrelic_rpm'
-  gem 'whenever'
 end

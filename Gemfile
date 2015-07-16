@@ -41,5 +41,5 @@ end
 group :production do
   gem 'puma'
   gem 'newrelic_rpm'
-  gem 'whenever', :require => false
+  gem 'whenever'
 end

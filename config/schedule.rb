@@ -19,7 +19,7 @@
 
 # Learn more: http://github.com/javan/whenever
 
-set :output, '/var/www/cervezaya/shared/log/cron_log.log')
+set :output, '/var/www/cervezaya/shared/log/cron_log.log'
 
 every 10.minutes do
   rake 'notifications:all'

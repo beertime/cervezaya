@@ -29,7 +29,7 @@ gem 'mini_magick'
 gem 'geokit-rails', github: 'geokit/geokit-rails'
 
 group :development, :test do
-  gem 'spring'
+  gem 'thin'
   gem 'capistrano', '~> 3.1'
   gem 'capistrano-rails', '~> 1.1', require: false
   gem 'capistrano-bundler', '~> 1.1', require: false

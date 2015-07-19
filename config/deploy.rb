@@ -47,8 +47,6 @@ namespace :deploy do
       within release_path do
         execute :rake, 'tmp:clear'
       end
-      # Restart Puma
-      execute :sudo, "restart puma app=#{current_path}"
     end
   end
 

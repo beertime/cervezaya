@@ -31,15 +31,15 @@ gem 'gcm'
 gem 'whenever', :require => false
 
 group :development, :test do
-  gem 'spring'
+  gem 'thin'
   gem 'capistrano', '~> 3.1'
   gem 'capistrano-rails', '~> 1.1', require: false
   gem 'capistrano-bundler', '~> 1.1', require: false
   gem 'capistrano-rbenv', '~> 2.0', require: false
   gem 'capistrano-bower'
+  gem 'capistrano-passenger'
 end
 
 group :production do
-  gem 'puma'
   gem 'newrelic_rpm'
 end

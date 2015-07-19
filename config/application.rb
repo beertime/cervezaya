@@ -13,7 +13,7 @@ module Cervezaya
     # -- all .rb files in that directory are automatically loaded.
 
     # Forcing https
-    config.force_ssl = Rails.env != 'development'
+    # config.force_ssl = Rails.env != 'development'
 
     # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
     # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.

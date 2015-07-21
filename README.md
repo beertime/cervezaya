@@ -18,12 +18,11 @@ Requirements:
 Install global dependencies:
 
     gem install bundler
-    npm install -g bower
+    npm install -g bower phantomjs
 
 Install project dependencies:
 
     bundle install --without production
-    npm install
 
 Finally, duplicate `.env.sample` file to `.env` and edit with your options:
 
@@ -32,7 +31,7 @@ Finally, duplicate `.env.sample` file to `.env` and edit with your options:
 ## Usage
 
 First time execute:
-    
+
     bundle exec rake db:create
     bundle exec rake db:migrate
 

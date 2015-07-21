@@ -41,3 +41,7 @@ end
 group :production do
   gem 'newrelic_rpm'
 end
+
+source 'https://rails-assets.org' do
+  gem 'rails-assets-bootstrap'
+end

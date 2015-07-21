@@ -1,6 +1,6 @@
-//= require jquery
+//= require jquery2
 //= require jquery_ujs
-//= require bootstrap/dist/js/bootstrap
+//= require bootstrap
 
 // Functions
 var AppStoreFeedback = function(){

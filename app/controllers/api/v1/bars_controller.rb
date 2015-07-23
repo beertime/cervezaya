@@ -23,13 +23,13 @@ class API::V1::BarsController < ApiController
     # Pagination
     bars = bars.offset(offset).limit(limit)
 
-    render json: bars.where(published: true), status: 200, user: current_user, min_price: min_price, max_price: max_price
+    render json: bars.where(published: true), each_serializer: API::V1::BarSerializer, status: 200, user: current_user, min_price: min_price, max_price: max_price
   end
 
   # GET /bars/:id
   def show
     current_user = params.has_key?(:user_id) ? User.select('id').find(params[:user_id]) : nil
-    render json: Bar.find(params[:id]), status: 200, serializer: BarDetailSerializer, user: current_user
+    render json: Bar.find(params[:id]), status: 200, serializer: API::V1::BarDetailSerializer, user: current_user
   end
 
 end

@@ -1,9 +1,8 @@
 class ContactController < ApplicationController
 
   def bussines_mail
-    phone = params[:phone]
-    ContactMailer.business_mail(phone).deliver
-    redirect_to empresas_y_bares_path, notice: 'Mensaje enviado correctamente'
+    ContactMailer.business_mail(params).deliver
+    redirect_to bares_path, notice: 'Mensaje enviado correctamente'
   end
 
   def ios_mail

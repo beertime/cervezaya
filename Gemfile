@@ -27,6 +27,8 @@ gem 'dotenv-rails'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'geokit-rails', github: 'geokit/geokit-rails'
+gem 'gcm'
+gem 'whenever', :require => false
 
 group :development, :test do
   gem 'thin'

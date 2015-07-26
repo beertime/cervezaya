@@ -21,6 +21,6 @@
 
 set :output, '/var/www/cervezaya/shared/log/cron_log.log'
 
-every 1.hour do
-  rake 'notifications:all'
-end
+# every 1.hour do
+#   rake 'notifications:all'
+# end

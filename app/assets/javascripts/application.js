@@ -14,8 +14,11 @@ function onDocumentReady() {
   });
 
   // $('#marketAndroid'). market://details?
+  var isMobile = screen.width <= 960;
   var isAndroid = /android/i.test(navigator.userAgent.toLowerCase());
-  if(isAndroid) {
+  if (isMobile && isAndroid) {
+    window.open('market://details?id=com.cervezaya.cervezaya');
+  } else if (isAndroid) {
     $('#marketAndroid').attr('href', 'market://details?id=com.cervezaya.cervezaya');
   }
 

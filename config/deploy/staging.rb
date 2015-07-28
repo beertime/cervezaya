@@ -2,7 +2,7 @@ role :app, %w{ubuntu@beta.cervezaya.com}
 role :web, %w{ubuntu@beta.cervezaya.com}
 role :db,  %w{ubuntu@beta.cervezaya.com}
 
-set :branch, :develop
+ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
 server 'beta.cervezaya.com', user: 'ubuntu', roles: %w{web app}
 

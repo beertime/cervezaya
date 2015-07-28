@@ -37,6 +37,8 @@ set :keep_releases, 5
 set :rbenv_ruby, '2.2.2'
 set :rails_env, 'production'
 
+set :whenever_identifier, ->{ "#{fetch(:application)}_#{fetch(:stage)}" }
+
 namespace :deploy do
 
   after :restart, :clear_cache do

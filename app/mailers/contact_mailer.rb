@@ -9,7 +9,7 @@ class ContactMailer < ApplicationMailer
     @comment = params['comment']
 
     if Rails.env == 'production'
-      mail(to: "contact@cervezaya.com", subject: 'Business')
+      mail(to: "contacto@cervezaya.com", subject: 'Business')
     else
       mail(to: "davidsingal@icloud.com", subject: 'Business')
     end
@@ -18,7 +18,7 @@ class ContactMailer < ApplicationMailer
   def ios_mail(email)
     @email = email
     if Rails.env == 'production'
-      mail(to: "contact@cervezaya.com", subject: 'iOS Request')
+      mail(to: "contacto@cervezaya.com", subject: 'iOS Request')
     else
       mail(to: "davidsingal@icloud.com", subject: 'iOS Request')
     end

@@ -6,7 +6,7 @@ namespace :notifications do
   task all: :environment do
     # app_name = com.cervezaya.cervezaya
     gcm = GCM.new(ENV['GCM_KEY'])
-    message = "⚡🍺 ¿Quien dijo que los Martes no era un buen día para cervecear? ¡Hazlo de forma inteligente! 🍺✨"
+    message = "⚡🍺¿Unas cervezas? Yo te llevo!🍺✨"
     registration_ids = User.all.pluck(:push_uid)
     options = { data: { title: "CervezaYa", content: message, type: "all" } }
     gcm.send(registration_ids, options)
@@ -16,7 +16,7 @@ namespace :notifications do
   task nacho: :environment do
     # app_name = com.cervezaya.cervezaya
     gcm = GCM.new(ENV['GCM_KEY'])
-    message = "⚡🍺 ¿Quien dijo que los Martes no era un buen día para cervecear? ¡Hazlo de forma inteligente! 🍺✨"
+    message = "⚡🍺¿Unas cervezas? Yo te llevo!🍺✨"
     registration_ids = User.where(id: 74).pluck(:push_uid)
     options = { data: { title: "CervezaYa", content: message, type: "all" } }
     gcm.send(registration_ids, options)

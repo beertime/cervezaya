@@ -1,7 +1,5 @@
 class ApiController < ApplicationController
 
-  protected
-
   abstract!
 
   # The API responds only to JSON

@@ -13,6 +13,15 @@ class ApiController < ApplicationController
   # Check token
   before_filter :authenticate_user_from_token!
 
+  # Errors
+  rescue_from ActionController::UnknownController, :with => :not_found
+  rescue_from ActionController::RoutingError, :with => :not_found
+  rescue_from ActiveRecord::RecordNotFound, with: :not_found
+
+  def not_found
+    respond_with '{ "status": "404", "message": "Not found" }', status: :not_found
+  end
+
   def default_serializer_options
     { root: false }
   end

@@ -1,4 +1,4 @@
-class API::V2::BarSerializer < ActiveModel::Serializer
+class API::V2::BarDetailSerializer < ActiveModel::Serializer
 
   attributes :id, :name, :description, :address, :region, :phone, :rank, :latitude, :longitude, :photo
 
@@ -6,7 +6,7 @@ class API::V2::BarSerializer < ActiveModel::Serializer
   has_one :franchise
 
   def address
-    "#{object.address.split(', ')[0]}, #{object.address.split(', ')[1]}"
+    "#{object.address.split(',')[0]}, #{object.address.split(',')[1]}"
   end
 
   def photo

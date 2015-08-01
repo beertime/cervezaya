@@ -7,7 +7,7 @@ namespace :notifications do
     # app_name = com.cervezaya.cervezaya
     gcm = GCM.new(ENV['GCM_KEY'])
     message = "⚡🍺¿Unas cervezas? Yo te llevo!🍺✨"
-    registration_ids = User.all.pluck(:push_uid)
+    registration_ids = User.where.not(push_uid: nil).pluck(:push_uid)
     options = { data: { title: "CervezaYa", content: message, type: "all" } }
     gcm.send(registration_ids, options)
   end

@@ -42,7 +42,7 @@ Resultado:
 ### Creat usuario `PUT /users/:id`
 
 | param | type | default | required | description |
-| --- | --- | --- | --- |
+| --- | --- | --- | --- | --- |
 | email | alphanumeric | | si | Email único para cada usuario |
 | push_uid | alphanumeric | | no | Push ID para notificaciones Android |
 | facebook_uid | alphanumeric | | no | Facebook ID |
@@ -55,7 +55,7 @@ Resultado:
 | birth | date | | no | Fecha de nacimiento del usuario |
 | city | string | | no | Ciudad del usuario |
 | country | string | ES | no | País del usuario |
-| last_connection_date | datetime | Time.now | Fecha última actividad del usuario, automáticamente se genera si no se especifica cada vez que el usuario hace POST o PUT |
+| last_connection_date | datetime | Time.now | no | Fecha última actividad del usuario, automáticamente se genera si no se especifica cada vez que el usuario hace POST o PUT |
 
 Resultado:
 

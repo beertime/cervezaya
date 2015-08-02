@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150802093230) do
+ActiveRecord::Schema.define(version: 20150802110337) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -70,9 +70,11 @@ ActiveRecord::Schema.define(version: 20150802093230) do
     t.integer  "franchise_id"
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
+    t.integer  "zone_id"
   end
 
   add_index "bars", ["franchise_id"], name: "index_bars_on_franchise_id", using: :btree
+  add_index "bars", ["zone_id"], name: "index_bars_on_zone_id", using: :btree
 
   create_table "brands", force: :cascade do |t|
     t.string   "name"
@@ -246,6 +248,7 @@ ActiveRecord::Schema.define(version: 20150802093230) do
     t.datetime "updated_at",                 null: false
   end
 
+  add_foreign_key "bars", "zones"
   add_foreign_key "brands_types", "brands"
   add_foreign_key "brands_types", "types"
 end

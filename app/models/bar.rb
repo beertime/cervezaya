@@ -16,6 +16,8 @@ class Bar < ActiveRecord::Base
   has_many :users, through: :opinions
 
   belongs_to :franchise
+  belongs_to :zone
+
   has_many :products
 
   validates :name, presence: true

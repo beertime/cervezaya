@@ -1,7 +1,7 @@
 ActiveAdmin.register Bar do
 
-  permit_params :name, :description, :photo, :address, :region, :email,
-    :country, :postal, :phone, :rank, :latitude, :longitude, :published, :franchise_id,
+  permit_params :name, :description, :photo, :address, :region, :email, :city,
+    :country, :postal, :zone_id, :phone, :rank, :latitude, :longitude, :published, :franchise_id,
     products_attributes: [ :id, :price, :brand_id, :size_id, :published, :_destroy ]
 
   active_admin_import
@@ -14,6 +14,7 @@ ActiveAdmin.register Bar do
       image_tag bar.photo.small
     end
     column :address
+    column :zone
     column :rank
     column :published
     column :updated_at

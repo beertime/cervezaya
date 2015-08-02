@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150802060856) do
+ActiveRecord::Schema.define(version: 20150802093230) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -235,6 +235,16 @@ ActiveRecord::Schema.define(version: 20150802060856) do
   add_index "users", ["google_uid"], name: "index_users_on_google_uid", unique: true, using: :btree
   add_index "users", ["push_uid"], name: "index_users_on_push_uid", unique: true, using: :btree
   add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
+
+  create_table "zones", force: :cascade do |t|
+    t.string   "name"
+    t.string   "geometry"
+    t.string   "city"
+    t.string   "country",    default: "ES"
+    t.boolean  "published",  default: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
 
   add_foreign_key "brands_types", "brands"
   add_foreign_key "brands_types", "types"

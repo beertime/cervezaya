@@ -40,10 +40,10 @@ Rails.application.routes.draw do
         r.resources :types
         r.resources :sizes
         r.resources :brands
+        r.resources :zones
       end
 
       resources :bars, only: [:index, :show]
-
       resources :users, only: [:show, :create, :update, :destroy]
 
     end

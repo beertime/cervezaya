@@ -11,10 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150530154129) do
+ActiveRecord::Schema.define(version: 20150802060856) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "unaccent"
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -223,9 +224,10 @@ ActiveRecord::Schema.define(version: 20150530154129) do
     t.string   "city"
     t.date     "birth"
     t.boolean  "active"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
     t.string   "custom_avatar"
+    t.date     "last_connection_date"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

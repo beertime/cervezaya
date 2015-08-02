@@ -224,10 +224,10 @@ ActiveRecord::Schema.define(version: 20150802060856) do
     t.string   "city"
     t.date     "birth"
     t.boolean  "active"
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.datetime "created_at",                                           null: false
+    t.datetime "updated_at",                                           null: false
     t.string   "custom_avatar"
-    t.date     "last_connection_date"
+    t.datetime "last_connection_date", default: '2015-08-02 06:37:58'
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

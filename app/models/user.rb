@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   has_many :bars, through: :ranks
   has_many :opinions
   has_many :bars, through: :opinions
+  has_many :contacts
 
   mount_uploader :custom_avatar, AvatarUploader
 

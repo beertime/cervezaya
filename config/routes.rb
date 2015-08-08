@@ -41,10 +41,19 @@ Rails.application.routes.draw do
         r.resources :sizes
         r.resources :brands
         r.resources :zones
+        r.resources :promotions
       end
 
-      resources :bars, only: [:index, :show]
-      resources :users, only: [:show, :create, :update, :destroy]
+      resources :bars, only: [:index, :show] do
+        resources :opinions, only: [:index, :create]
+      end
+
+      resources :users, only: [:show, :create, :update, :destroy] do
+        resources :favorites, only: [:index, :create, :destroy]
+        resources :recents, only: [:index, :create]
+        resources :ranks, only: [:show, :create]
+        resources :contacts, :only => [:create]
+      end
 
     end
   end

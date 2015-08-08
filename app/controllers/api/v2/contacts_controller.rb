@@ -2,7 +2,8 @@ class API::V2::ContactsController < ApiController
 
   # POST /users
   def create
-    contact = Contact.new(contact_params)
+    user = User.find(params[:user_id])
+    contact = user.contacts.build(contact_params)
     if contact.save
       render json: contact, status: 201
     else

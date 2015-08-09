@@ -7,6 +7,8 @@ Resultado:
     [
         {
             "id": 1,
-            "name": "Sin Alcohol"
+            "name": "Sin Alcohol",
+            "image": null,
+            "brands_count": 11
         }
     ]

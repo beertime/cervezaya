@@ -2,6 +2,10 @@
 
 ### Lista de marcas `GET /brands`
 
+| param | type | default | description |
+| --- | --- | --- | --- |
+| types_ids | array[number] | | ID de tipos `types_ids[]=1&types_ids=2` |
+
 Resultado:
 
     [

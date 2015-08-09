@@ -51,6 +51,10 @@ Rails.application.routes.draw do
       resources :users, only: [:show, :create, :update, :destroy] do
         resources :favorites, only: [:index, :create, :destroy]
         resources :recents, only: [:index, :create]
+        resources :favorites_zones, only: [:index, :create, :destroy]
+        resources :recents_zones, only: [:index, :create]
+        resources :favorites_brands, only: [:index, :create, :destroy]
+        resources :recents_brands, only: [:index, :create]
         resources :ranks, only: [:show, :create]
         resources :contacts, :only => [:create]
       end

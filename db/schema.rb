@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150802110337) do
+ActiveRecord::Schema.define(version: 20150808090052) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -106,6 +106,26 @@ ActiveRecord::Schema.define(version: 20150802110337) do
 
   add_index "contacts", ["user_id"], name: "index_contacts_on_user_id", using: :btree
 
+  create_table "favorite_brands", force: :cascade do |t|
+    t.integer  "brand_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "favorite_brands", ["brand_id"], name: "index_favorite_brands_on_brand_id", using: :btree
+  add_index "favorite_brands", ["user_id"], name: "index_favorite_brands_on_user_id", using: :btree
+
+  create_table "favorite_zones", force: :cascade do |t|
+    t.integer  "zone_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "favorite_zones", ["user_id"], name: "index_favorite_zones_on_user_id", using: :btree
+  add_index "favorite_zones", ["zone_id"], name: "index_favorite_zones_on_zone_id", using: :btree
+
   create_table "favorites", force: :cascade do |t|
     t.integer  "bar_id"
     t.integer  "user_id"
@@ -186,6 +206,26 @@ ActiveRecord::Schema.define(version: 20150802110337) do
 
   add_index "ranks", ["bar_id"], name: "index_ranks_on_bar_id", using: :btree
   add_index "ranks", ["user_id"], name: "index_ranks_on_user_id", using: :btree
+
+  create_table "recent_brands", force: :cascade do |t|
+    t.integer  "brand_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "recent_brands", ["brand_id"], name: "index_recent_brands_on_brand_id", using: :btree
+  add_index "recent_brands", ["user_id"], name: "index_recent_brands_on_user_id", using: :btree
+
+  create_table "recent_zones", force: :cascade do |t|
+    t.integer  "zone_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "recent_zones", ["user_id"], name: "index_recent_zones_on_user_id", using: :btree
+  add_index "recent_zones", ["zone_id"], name: "index_recent_zones_on_zone_id", using: :btree
 
   create_table "recents", force: :cascade do |t|
     t.integer  "bar_id"

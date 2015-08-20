@@ -122,7 +122,7 @@ Resultado:
         }
     ]
 
-### Borrar favorito de usuario  `DELETE /users/:id/favorites/:id`
+### Borrar favorito de usuario  `DELETE /users/:user_id/favorites/:id`
 
 Resultado:
 

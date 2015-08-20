@@ -4,7 +4,9 @@
 
 | param | type | description |
 | --- | --- | --- | --- |
-| city | string | Filtro por ciudad `city=Sevilla` |
+| city | string | Filtro por ciudad `city=Sevilla`, si no se especifica devuelve según IP |
+| longitude | float | | Longitud `longitude=-3.00000`, sólo si no se especifica city |
+| latitude | float | | Latitud `latitude=40.00000`, sólo si no se especifica city |
 
 Resultado:
 

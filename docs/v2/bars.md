@@ -14,9 +14,11 @@
 | brands_ids | array[number] | | ID de marcas `brands_ids[]=1&brands_ids=2` |
 | sizes_ids | array[number] | | ID de marcas `sizes_ids[]=1&sizes_ids=2` |
 | types_ids | array[number] | | ID de tipos `types_ids[]=1&types_ids=2` |
-| icons | array[number] | | ID de iconos `icons[]=1&icons=2` |
+| icons_ids | array[number] | | ID de iconos `icons_ids[]=1&icons_ids=2` |
 | limit | number | 25 | Limita el número de resultados `limit=25` |
 | offset | number | 0 | Número de bares que se salta antes de dar el resultado `offset=25` |
+| city | string | | Ciudad `city=Sevilla` |
+| zones_ids | array[number] | | ID de zonas `zones_ids[]=1&zones_ids=2` |
 
 Resultado:
 

@@ -45,8 +45,8 @@ class Bar < ActiveRecord::Base
           OR unaccent(address) ILIKE unaccent('%#{params[:q]}%')")
     end
 
-    if params.has_key?(:icons)
-      bars = bars.filter_by_icons(params[:icons])
+    if params.has_key?(:icons_ids)
+      bars = bars.filter_by_icons(params[:icons_ids])
     end
 
     if params.has_key?(:brands_ids)
@@ -59,10 +59,6 @@ class Bar < ActiveRecord::Base
 
     if params.has_key?(:types_ids)
       bars = bars.filter_by_types(params[:types_ids])
-    end
-
-    if params.has_key?(:icons)
-      bars = bars.filter_by_icons(params[:icons])
     end
 
     # if params.has_key?(:min_price)
@@ -79,6 +75,11 @@ class Bar < ActiveRecord::Base
     elsif params.has_key?(:latitude) and params.has_key?(:longitude)
       location = GoogleGeocoder.reverse_geocode([params[:latitude], params[:longitude]].join(','))
       bars = bars.where(region: location.city)
+    end
+
+    # Filter by zones
+    if params.has_key?(:zones)
+      bars = bars.where(zone: params[:zones_ids])
     end
 
     bars
@@ -128,8 +129,8 @@ class Bar < ActiveRecord::Base
     self.where({ products: { size: sizes_ids } })
   end
 
-  def self.filter_by_icons(icons)
-    sizes_ids = Size.where(icon: icons).pluck(:id)
+  def self.filter_by_icons(icons_ids)
+    sizes_ids = Size.where(icon: icons_ids).pluck(:id)
     self.where({ products: { size: sizes_ids } })
   end
 

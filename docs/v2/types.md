@@ -9,6 +9,7 @@ Resultado:
             "id": 1,
             "name": "Sin Alcohol",
             "image": null,
-            "brands_count": 11
+            "brands_count": 11,
+            "bars_count": 282
         }
     ]

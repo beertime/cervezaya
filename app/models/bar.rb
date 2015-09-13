@@ -141,4 +141,10 @@ class Bar < ActiveRecord::Base
     bar.update_attributes(rank: avg.round)
   end
 
+  def self.types_count(type_id)
+    brands_ids = Brand.includes(:brands_types).where(brands_types: { type_id: type_id }).pluck(:id)
+    bars = self.includes(:products).where({ products: { brand: brands_ids } })
+    bars.count
+  end
+
 end

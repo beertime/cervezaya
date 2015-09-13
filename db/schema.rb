@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150809073518) do
+ActiveRecord::Schema.define(version: 20150913174742) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -270,7 +270,7 @@ ActiveRecord::Schema.define(version: 20150809073518) do
     t.datetime "created_at",                                           null: false
     t.datetime "updated_at",                                           null: false
     t.string   "custom_avatar"
-    t.datetime "last_connection_date", default: '2015-08-02 06:37:58'
+    t.datetime "last_connection_date", default: '2015-09-13 18:14:39'
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
@@ -287,6 +287,7 @@ ActiveRecord::Schema.define(version: 20150809073518) do
     t.boolean  "published",  default: false
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
+    t.string   "image"
   end
 
   add_foreign_key "bars", "zones"

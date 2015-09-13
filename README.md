@@ -24,7 +24,7 @@ Install project dependencies:
 
     bundle install --without production
 
-Finally, duplicate `.env.sample` file to `.env` and edit with your options:
+Finally, **duplicate `.env.sample` file to `.env`** and edit with your options:
 
     DEVISE_KEY=secret
 

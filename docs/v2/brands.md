@@ -15,6 +15,7 @@ Resultado:
             "color": "#ecab0e",
             "image": "AKDammColor.png",
             "alt_image": "AKDammBlanca.png",
-            "shadow_image": "AKDammSombra.png"
+            "shadow_image": "AKDammSombra.png",
+            "brands_count": 100
         }
     ]

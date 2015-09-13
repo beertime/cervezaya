@@ -1,5 +1,7 @@
 class Bar < ActiveRecord::Base
 
+  include Geokit::Geocoders
+
   acts_as_mappable :default_units => :kms,
     :default_formula => :sphere,
     :distance_field_name => :distance,
@@ -69,6 +71,14 @@ class Bar < ActiveRecord::Base
 
     if params.has_key?(:max_price)
       bars = bars.where('products.price <= ?', params[:max_price].to_f)
+    end
+
+    # Filter by city
+    if params.has_key?(:city)
+      bars = bars.where(region: params[:city])
+    elsif params.has_key?(:latitude) and params.has_key?(:longitude)
+      location = GoogleGeocoder.reverse_geocode([params[:latitude], params[:longitude]].join(','))
+      bars = bars.where(region: location.city)
     end
 
     bars

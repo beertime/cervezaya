@@ -147,4 +147,9 @@ class Bar < ActiveRecord::Base
     bars.count
   end
 
+  def self.brands_count(brand_id)
+    bars = self.includes(:products).where({ products: { brand: brand_id } })
+    bars.count
+  end
+
 end

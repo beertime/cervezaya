@@ -270,7 +270,7 @@ ActiveRecord::Schema.define(version: 20150913174742) do
     t.datetime "created_at",                                           null: false
     t.datetime "updated_at",                                           null: false
     t.string   "custom_avatar"
-    t.datetime "last_connection_date", default: '2015-09-13 18:14:39'
+    t.datetime "last_connection_date", default: '2015-09-26 10:11:42'
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

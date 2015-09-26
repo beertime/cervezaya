@@ -6,5 +6,4 @@ class Zone < ActiveRecord::Base
   validates :country, presence: true
 
   mount_uploader :image, BarUploader
-
 end

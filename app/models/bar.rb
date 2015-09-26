@@ -152,4 +152,9 @@ class Bar < ActiveRecord::Base
     bars.count
   end
 
+  def self.zones_count(zone_id)
+    bars = self.where(zone_id: zone_id)
+    bars.count
+  end
+
 end

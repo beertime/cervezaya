@@ -14,6 +14,7 @@ Requirements:
 * NodeJs 0.10+ [How to install](https://nodejs.org/download/)
 * Ruby 2.2.0 [How to install](https://gorails.com/setup/osx/10.10-yosemite)
 * PostgreSQL 9+ [How to install](http://exponential.io/blog/2015/02/21/install-postgresql-on-mac-os-x-via-brew/)
+* PostGIS
 
 Install global dependencies:
 

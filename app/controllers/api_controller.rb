@@ -11,7 +11,9 @@ class ApiController < ApplicationController
   protect_from_forgery with: :null_session
 
   # Check token
-  before_filter :authenticate_user_from_token!
+  if Rails.env == 'production'
+    before_filter :authenticate_user_from_token!
+  end
 
   # Errors
   rescue_from ActionController::UnknownController, :with => :not_found

@@ -20,6 +20,7 @@ Resultado:
             "city": "Sevilla",
             "country": "ES",
             "published": true,
-            "bars_count": 10
+            "bars_count": 10,
+            "image": "zone.png"
         }
     ]

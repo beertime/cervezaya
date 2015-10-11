@@ -1,13 +1,14 @@
-class API::V2::ZonesController < ApplicationController
+class API::V2::ZonesController < ApiController
 
   include Geokit::Geocoders
 
   # GET /zones
   def index
-    zones = Zone.select("id, name, geometry, city, country, published").all
+    zones = Zone.select("id, name, geometry, city, country, image, published").all
       .where(published: true).order(:name)
     if params.has_key?(:city)
       zones = zones.where(city: params[:city])
+      logger.debug zones.size
     elsif params.has_key?(:latitude) and params.has_key?(:longitude)
       location = GoogleGeocoder.reverse_geocode([params[:latitude], params[:longitude]].join(','))
       zones = zones.where(city: location.city)

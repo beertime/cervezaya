@@ -11,11 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150913174742) do
+ActiveRecord::Schema.define(version: 20151011134025) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "unaccent"
+  enable_extension "postgis"
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -96,6 +97,18 @@ ActiveRecord::Schema.define(version: 20150913174742) do
 
   add_index "brands_types", ["brand_id"], name: "index_brands_types_on_brand_id", using: :btree
   add_index "brands_types", ["type_id"], name: "index_brands_types_on_type_id", using: :btree
+
+  create_table "cities", force: :cascade do |t|
+    t.string "iso_country_code"
+    t.string "subdivision_code"
+    t.string "gns_fd"
+    t.string "gns_ufi"
+    t.string "iso_language_code"
+    t.string "language_script"
+    t.string "name"
+    t.float  "latitude"
+    t.float  "longitude"
+  end
 
   create_table "contacts", force: :cascade do |t|
     t.text     "message"
@@ -244,6 +257,13 @@ ActiveRecord::Schema.define(version: 20150913174742) do
     t.boolean  "published",  default: false
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
+  end
+
+  create_table "spatial_ref_sys", primary_key: "srid", force: :cascade do |t|
+    t.string  "auth_name", limit: 256
+    t.integer "auth_srid"
+    t.string  "srtext",    limit: 2048
+    t.string  "proj4text", limit: 2048
   end
 
   create_table "types", force: :cascade do |t|

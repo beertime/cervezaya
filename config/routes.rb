@@ -59,6 +59,9 @@ Rails.application.routes.draw do
         resources :contacts, :only => [:create]
       end
 
+      resources :countries, only: [:index]
+      resources :cities, only: [:index]
+
     end
   end
 

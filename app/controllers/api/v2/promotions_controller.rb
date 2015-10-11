@@ -22,6 +22,10 @@ class API::V2::PromotionsController < ApiController
         .where('end_date >= ?', Date.today)
     end
 
+    if params.has_key?(:zones_ids)
+      promotions = promotions.find_by_zones(params[:zones_ids])
+    end
+
     render json: promotions.where(published: true), status: 200, date: date || start_date, user: current_user
   end
 

@@ -7,6 +7,7 @@
 | date | date | | Devuelve promociones de la fecha indicada |
 | start_date | date | | Devuelve promociones desde la fecha |
 | end_date | date | | Devuelve promociones hasta la fecha |
+| zones_ids | array[number] | | ID de zonas `zonas_ids[]=1&zonas_ids=2` |
 
 Resultado:
 

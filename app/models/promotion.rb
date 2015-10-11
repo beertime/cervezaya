@@ -40,4 +40,9 @@ class Promotion < ActiveRecord::Base
     "#{date} #{hour.strftime("%H:%M")}"
   end
 
+  def self.find_by_zones(zones_ids)
+    bars = Bar.where(zone: zones_ids)
+    self.where(bar: bars.pluck(:id))
+  end
+
 end

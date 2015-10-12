@@ -1,5 +1,5 @@
 class API::V2::CitySerializer < ActiveModel::Serializer
 
-  attributes :id, :iso_country_code, :name
+  attributes :id, :iso_country_code, :name, :subdivision_code
 
 end
